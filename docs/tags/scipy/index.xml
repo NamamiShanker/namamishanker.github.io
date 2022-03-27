@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scipy on #!bin/namami</title>
+    <link>https://namamishanker.github.io/tags/scipy/</link>
+    <description>Recent content in Scipy on #!bin/namami</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 24 Mar 2022 14:01:12 +0530</lastBuildDate>
+    
+	<atom:link href="https://namamishanker.github.io/tags/scipy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Why are Numpy and Scipy so fast? And how can I create my superfast Python library?</title>
+      <link>https://namamishanker.github.io/posts/scipy_fortran_f2py/</link>
+      <pubDate>Thu, 24 Mar 2022 14:01:12 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/scipy_fortran_f2py/</guid>
+      <description>Numpy and Scipy are industry leading Python libraries for fast numerical computation, providing speed and accuracy matching MATLAB and highly optimized low-level numerical computation libraries. In this blog I&amp;rsquo;ll explain to you how they work and how can you create your own superfast Python library.
+SciPy The name SciPy is a well-known scientific computation industry. Every engineer, researcher, teacher or student who has used Python has used Scipy at least once or more in their career.</description>
+    </item>
+    
+  </channel>
+</rss>

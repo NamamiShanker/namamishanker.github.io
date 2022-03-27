@@ -3,6 +3,71 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://namamishanker.github.io/authors/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/series/beginning-with-scipy/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/categories/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/tags/f2py/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/tags/fortran/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/categories/informational/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/authors/namami-shanker/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/posts/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/categories/programming/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/tags/scipy/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/series/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/tags/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/posts/scipy_fortran_f2py/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://namamishanker.github.io/</loc>
     <lastmod>2022-03-19T15:09:52+05:30</lastmod>
   </url>
@@ -15,22 +80,6 @@
   <url>
     <loc>https://namamishanker.github.io/about/</loc>
     <lastmod>2022-03-19T13:06:04+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/authors/</loc>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/series/</loc>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/</loc>
   </url>
   
 </urlset>
