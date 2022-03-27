@@ -1,7 +1,7 @@
 +++ 
 draft = false
 date = 2022-03-24T14:01:12+05:30
-title = "Why are Numpy and Scipy so fast?"
+title = "Why are Numpy and Scipy so fast? And how can I create my superfast Python library?"
 description = "Scipy is a thin wrapper on top of fast Fortran code. Learn how Scipy provides high level interface to the extremely fast and efficient BLAS and LAPACK libraries."
 slug = ""
 authors = ["Namami Shanker"]
@@ -10,6 +10,9 @@ categories = ["Informational", "Programming"]
 externalLink = ""
 series = ["Beginning with Scipy"]
 +++
+
+
+Numpy and Scipy are industry leading Python libraries for fast numerical computation, providing speed and accuracy matching MATLAB and highly optimized low-level numerical computation libraries. In this blog I'll explain to you how they work and how can you create your own superfast Python library.
 
 ## SciPy
 
@@ -37,17 +40,17 @@ You might wonder how Scipy and Numpy,  implemented in Python, are fast. The trut
 
 ![Compilation](https://i.imgur.com/v6rinJc.png)
 
-This is just an output message from the compiler compiling C and FORTRAN code that ships with Scipy. These files were compiled to produce *.so* files, which is called a **shared object** file. 
+This is just an output message from the compiler compiling C and Fortran code that ships with Scipy. These files were compiled to produce *.so* files, which is called a **shared object** file. 
 
 ![So files](https://i.imgur.com/vFX5MOG.png)
 
 These shared object *.so* files which are dynamically linked during program execution contain can be called directly from your Python program. This is the reason why Scipy is so fast. Lets take a look at the speeds ourselves below.
 
-### Python, Fortran and F2PY
+### How to create your own superfast Python library?
 
-Suppose you want to create your own super-fast Python library that computes the Fibonacci series. Obviously, you can write it in Python, but you can write your code in FORTRAN and call it in your Python library, making it faster.
+Suppose you want to create your own super-fast Python library that computes the Fibonacci series. Obviously, you can write it in Python, but you can write your code in Fortran and call it in your Python library, making it faster.
 
-Here comes in F2PY. F2PY makes that job of calling FORTRAN code in Python much more straightforward. You can write your FORTRAN code and add special comments starting with `Cf2py` to tell F2PY how to call your FORTRAN code. You can then compile your FORTRAN code to a shared object file and call it from your Python library. F2PY is a fantastic tool, and you can read more about it [here](https://numpy.org/doc/stable/f2py/).
+Here comes in F2PY. F2PY is a commandline that provides a connection between Python and Fortran languages. It makes that job of calling Fortran code in Python much more straightforward. You can write your Fortran code and add special comments starting with `Cf2py` to tell F2PY how  you want Python interpreter to call your Fortran code. You can then compile your Fortran code to a shared object file and call it from your Python library. F2PY is a fantastic tool, and you can read more about it [here](https://numpy.org/doc/stable/f2py/).
 
 Create a file `fib3.f` with the following code:-
 
@@ -123,7 +126,7 @@ $ python fib2.py
 	0.00019550323486328125
 {{< /highlight >}}
 
-Our FORTRAN calling Python code is much faster than the natively  implemented Python code, around 15 times faster.
+Our Fortran calling Python code is much faster than the natively  implemented Python code, around 15 times faster.
 
 You can now feel the gravity of why you want computations of your scientific library to be done in Low-Level Languages. Scipy ships with highly optimized Fortran and C code, which are then fed to F2PY to generate Python extension modules. For example, if you view the `scipy/interpolate/fitpack` directory in Scipy's source code, it is filled with Fortran subroutines. F2PY is used to build an extension module out of these subroutines, which you actually call in your Python code.
 
