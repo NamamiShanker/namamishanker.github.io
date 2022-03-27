@@ -120,9 +120,9 @@ print(time.time() - start)
 Now, lets run both the files and compare the results:-
 
 {{< highlight bash >}}
-$ python fib1.py 
+**$** python fib1.py 
 	1.2159347534179688e-05
-$ python fib2.py 
+**$** python fib2.py 
 	0.00019550323486328125
 {{< /highlight >}}
 
