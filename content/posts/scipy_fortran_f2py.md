@@ -16,7 +16,7 @@ Numpy and Scipy are industry leading Python libraries for fast numerical computa
 
 ## SciPy
 
-The name SciPy is a well-known scientific computation industry. Every engineer, researcher, teacher or student who has used Python has used Scipy at least once or more in their career. SciPy is a collection of mathematical algorithms and convenience functions built on the NumPy extension of Python. Scipy is a thin wrapper on top of fast Fortran libraries and it provides a high-level interface to the extremely fast and efficient BLAS and LAPACK libraries written in Fortran.
+The name SciPy is very well-known in the scientific computation industry. Every engineer, researcher, teacher or student who has used Python has used Scipy at least once or more in their career. SciPy is a collection of mathematical algorithms and convenience functions built on the NumPy extension of Python. Scipy is a thin wrapper on top of fast Fortran libraries and it provides a high-level interface to the extremely fast and efficient BLAS and LAPACK libraries written in Fortran.
 
 ### BLAS and LAPACK (Historical Context)
 
