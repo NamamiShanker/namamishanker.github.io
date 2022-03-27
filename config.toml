@@ -66,17 +66,16 @@ weight = 5
 url = "https://www.youtube.com/channel/UCG6jTGPkBJy-DpH-LeEG8dg"
 
 [[menu.main]]
-name = "About"
+name = "Blog"
 weight = 1
+url = "posts/"
+
+[[menu.main]]
+name = "About"
+weight = 2
 url = "about/"
-target = "_self"
-rel = "alternate"
-type = "text/html"
 
 [[menu.main]]
 name = "Contact"
-weight = 1
+weight = 3
 url = "contact/"
-target = "_self"
-rel = "alternate"
-type = "text/html"
