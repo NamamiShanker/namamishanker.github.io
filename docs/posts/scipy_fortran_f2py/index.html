@@ -211,7 +211,7 @@ Cf2py depend(n) a
 </span><span style="font-weight:bold"></span>C <span style="font-weight:bold">END FILE </span>FIBFORTRAN.F</code></pre></div>
 <p>This contains the code for a subroutine <code>FIB</code> that calculates the first N Fibonacci numbers. Building the extension module can be now carried out in one command:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">python -m numpy.f2py -c -m fibfortran fibfortran.f
-</code></pre></div><p>Do mind that you would need a Fortran compiler and Numpy library for this. This will create a shared object file in your directory. You can now import this in your Python program with <code>import fibfortran</code> and call the function using `fibfortran.fib(n).</p>
+</code></pre></div><p>Do mind that you would need a Fortran compiler and Numpy library for this. This will create a shared object file in your directory. You can now import this in your Python program with <code>import fibfortran</code> and call the function using <code>fibfortran.fib(n)</code>.</p>
 <p>Look at this file <code>fib1.py</code> with the following code:-</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">import</span> <span style="font-weight:bold">fibfortran</span>
 <span style="font-weight:bold">import</span> <span style="font-weight:bold">time</span>
