@@ -88,7 +88,7 @@ This contains the code for a subroutine `FIB` that calculates the first N Fibona
 ```
 python -m numpy.f2py -c -m fibfortran fibfortran.f
 ```
-Do mind that you would need a Fortran compiler and Numpy library for this. This will create a shared object file in your directory. You can now import this in your Python program with `import fibfortran` and call the function using `fibfortran.fib(n).
+Do mind that you would need a Fortran compiler and Numpy library for this. This will create a shared object file in your directory. You can now import this in your Python program with `import fibfortran` and call the function using `fibfortran.fib(n)`.
 
 Look at this file `fib1.py` with the following code:-
 
