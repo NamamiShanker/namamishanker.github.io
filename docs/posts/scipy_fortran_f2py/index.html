@@ -240,7 +240,7 @@ a[1] = 1
 	1.7642974853515625e-05
 $ python fib2.py 
 	0.0007617473602294922
-</code></pre></div><p>Our Fortran calling Python code is much faster than the natively  implemented Python code, around forty times faster.</p>
+</code></pre></div><p>Our Fortran calling Python code is much faster than the natively  implemented Python code, <strong>around forty times faster</strong>.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>You can now feel the gravity of why you want computations of your scientific library to be done in Low-Level Languages. Scipy ships with highly optimized Fortran and C code, which are then fed to F2PY to generate Python extension modules. For example, if you view the <code>scipy/interpolate/fitpack</code> directory in Scipy&rsquo;s source code, it is filled with Fortran subroutines. F2PY is used to build an extension module out of these subroutines, which you actually call in your Python code.</p>
 <p><img src="https://i.imgur.com/zEf3rUQ.png" alt="Fortran code in Scipy repository"></p>
