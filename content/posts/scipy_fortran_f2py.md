@@ -131,7 +131,7 @@ $ python fib2.py
 	0.0007617473602294922
 ````
 
-Our Fortran calling Python code is much faster than the natively  implemented Python code, around forty times faster.
+Our Fortran calling Python code is much faster than the natively  implemented Python code, **around forty times faster**.
 
 ## Conclusion
 
