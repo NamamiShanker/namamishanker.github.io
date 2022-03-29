@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Why are Numpy and Scipy so fast? And how can I create my superfast Python library?</title>
+      <title>Building fast libraries: Numpy and SciPy</title>
       <link>https://namamishanker.github.io/posts/scipy_fortran_f2py/</link>
       <pubDate>Thu, 24 Mar 2022 14:01:12 +0530</pubDate>
       
