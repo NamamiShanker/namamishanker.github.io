@@ -7,4 +7,4 @@ draft: true
 **LinkedIn**: https://www.linkedin.com/in/namamishanker/  
 **GitHub**: https://github.com/NamamiShanker  
 **Twitter**: https://twitter.com/namami_shanker  
-**Email**: namami2011@gmail.com  
+**Email**: namami2011@gmail.com
