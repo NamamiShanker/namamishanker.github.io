@@ -15,11 +15,11 @@ I have talked previously about [building fast libraries](https://namamishanker.g
 
 ## F2PY
 
-F2PY is an open-source utilty tool that provides an easy connection between Python and Fortran languages. It was written in the late 90s by [Dr. Pearu Peterson](https://github.com/pearu). The first version of this software was released in 1999 when it was called Fortran to Python Interface Generator (FPIG). It remained a stand-alone software till 2007 when it was moved to the NumPy project. F2PY is currently maintained by the NumPy developer team and users can install numpy to use it.
+[F2PY](https://numpy.org/doc/stable/f2py/) is an open-source utilty tool that provides an easy connection between Python and Fortran languages. It was written in the late 90s by [Dr. Pearu Peterson](https://github.com/pearu). The first version of this software was released in 1999 when it was called Fortran to Python Interface Generator (FPIG). It remained a stand-alone software till 2007 when it was moved to the NumPy project. F2PY is currently maintained by the NumPy developer team and users can install numpy to use it.
 
 ### Current status
 
-F2PY is an old software and it has not had any major releases since 2009. If you browse its [codebase in the current state](https://github.com/numpy/numpy/tree/eecd16210ffb487d4e862c71e86cc6f88f2e9aa2/numpy/f2py), you will find it a bit difficult to read, understand and contribute to. Recently, pushes have been made by [Rohit Goswami](https://github.com/HaoZeke/) to modernise its CLI and backend compilation process. Probably the F2PY you will get to use will be a more user-friendly and faster CLI.
+F2PY is an old software and it has not had any major releases since 2009. If you browse its [codebase in the current state](https://github.com/numpy/numpy/tree/eecd16210ffb487d4e862c71e86cc6f88f2e9aa2/numpy/f2py), you will find it a bit difficult to read, understand and contribute to. Recently, efforts have been made to modernise its CLI and backend compilation process. Probably the F2PY you will get to use will be a more user-friendly and faster CLI.
 
 ### Codebase
 
@@ -50,9 +50,9 @@ If you explore the current directory [`numpy/f2py`](https://github.com/numpy/num
 └── __version__.py
 {{< / highlight >}}
 
-{{< notice info >}} [`crackfortran.py`](https://github.com/numpy/numpy/blob/main/numpy/f2py/crackfortran.py) file is the heart of f2py. It is responsible of reading Fortran code and extracting decleration information which is used to create `.pyf` files. [`f2py2e.py`](https://github.com/numpy/numpy/blob/main/numpy/f2py/f2py2e.py) stands for **F2PY Second edition**. It is the CLI program that sits on top of `crackfortran.py` that provides user interface. {{< /notice >}}
+{{< notice info >}} [`crackfortran.py`](https://github.com/numpy/numpy/blob/main/numpy/f2py/crackfortran.py) file is the heart of f2py. It is responsible of reading Fortran code and extracting declaration information which is used to create `.pyf` files. [`f2py2e.py`](https://github.com/numpy/numpy/blob/main/numpy/f2py/f2py2e.py) stands for **F2PY Second edition**. It is the CLI program that sits on top of `crackfortran.py` and provides user interface. {{< /notice >}}
 
-We will talk mostly about the test suite of F2PY in this blog which consists of the `tests` directory. 
+We will talk mostly about the test suite of F2PY in this blog which consists of the [`tests`](https://github.com/numpy/numpy/tree/main/numpy/f2py/tests) directory. 
 
 ### Testing f2py
 
@@ -97,15 +97,15 @@ class F2PyTest:
 	.
 {{< / highlight >}}
 
-This superclass contains many helper functions responsible for parsing and compiling test source files. Its child classes can override its `sources` data member to provide their own source files. This superclass will then compile the added source files upon object creation and their functions will be appended to `self.module` data member. Thus, the child classes will be able to access the functions specified in source file by calling `self.module.[fortran_function_name]`.
+This superclass contains many helper functions responsible for parsing and compiling test source files. Its child classes can override its `sources` data member to provide their own source files. This superclass will then compile the added source files upon object creation and their functions will be appended to `self.module` data member. Thus, the child classes will be able to access the fortran functions specified in source file by calling `self.module.[fortran_function_name]`.
 
-Anyone looking to add more tests can follow the same strategy. He/She can add new test classes to the appropriate file in `tests` directory inheriting from `util.F2PyTest` superclass and test the fortran function by calling `self.module.[fortran_function_name]`.
+Anyone looking to add more tests can follow the same strategy. The user can add new test classes to the appropriate file in `tests` directory inheriting from `util.F2PyTest` superclass and test the fortran function by calling `self.module.[fortran_function_name]`.
 
 #### Example
 
 Suppose you found [this bug](https://github.com/numpy/numpy/issues/14625) in f2py. You corrected it and now want to add tests for it. How do you do that?  
 
-Well, first of all you would have to identify the correct file to add the test. This bug was related to incorrect parsing of Fortran code where subroutines ending with `endsubroutine` were not parsed and compiled. Upon importing such subroutines, the user would encounter a missing attribute error. Since `crackfortran.py` file is responsible for parsing, we add the test to `test_crackfortran.py` file. The testing source file should also be created in `numpy/f2py/tests/src/crackfortran/` directory. Similarly other tests can be added to already present `test_` files based on user's discretion.
+Well, first of all you would have to identify the correct file to add the test. This bug was related to incorrect parsing of Fortran code where subroutines ending with `endsubroutine` were not parsed correctly and therefore not compiled. Upon importing such subroutines, the user would encounter a missing attribute error. Since `crackfortran.py` file is responsible for parsing, we add the test to `test_crackfortran.py` file. The testing source file should also be created in `numpy/f2py/tests/src/crackfortran/` directory. Similarly other tests can be added to already present `test_` files based on user's discretion.
 
 First lets create a file `my_source_file.f` containing subroutines ending with `endsubroutine`. This file contains two self-explanatory Fortran subroutines :-
 
@@ -139,8 +139,8 @@ class TestNoSpace(util.F2PyTest):
         assert np.allclose(k, w + 1)
 {{< /highlight >}}
 
-We override the `sources` data member to provide the source file. The source files are compiled and subroutines are attached to module datamember when the class object is created. The `test_module` function calls the subroutines and tests their results.
+We override the `sources` data member to provide the source file. The source files are compiled and subroutines are attached to module data member when the class object is created. The `test_module` function calls the subroutines and tests their results.
 
 ### Conclusion
 
-The current test suite of F2PY is a bit old. Modern python programmers accustomed to `pytest` might find its lack of fixtures, setups and tear downs little unappealing. However, once you get the hang of it, its easy to understand and improve. It is not an exhaustive test suite, but it is improving everyday. A new test suite for testing the CLI program `f2py2e.py` is being developed with modern `pytest` style testing and you can have a look at it in [Rohit Goswami's fork](https://github.com/HaoZeke/numpy/blob/f2py2eTests/numpy/f2py/tests/test_f2py2e.py). F2PY and its test suite are sure to undergo heavy refactoring in the coming times.
+The current test suite of F2PY is a bit old. Modern python programmers accustomed to `pytest` might find its lack of fixtures, setups and tear downs little unappealing. However, once you get the hang of it, its easy to understand and improve. It is not an exhaustive test suite, but it is improving everyday. A new test suite for testing the CLI program `f2py2e.py` is being developed with modern `pytest` style testing and you can have a look at it [here](https://github.com/HaoZeke/numpy/blob/f2py2eTests/numpy/f2py/tests/test_f2py2e.py). F2PY and its test suite are sure to undergo heavy refactoring in the coming times.
