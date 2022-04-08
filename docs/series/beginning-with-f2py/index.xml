@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>F2PY on #!bin/namami</title>
-    <link>https://namamishanker.github.io/tags/f2py/</link>
-    <description>Recent content in F2PY on #!bin/namami</description>
+    <title>Beginning with F2PY on #!bin/namami</title>
+    <link>https://namamishanker.github.io/series/beginning-with-f2py/</link>
+    <description>Recent content in Beginning with F2PY on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 03 Apr 2022 10:22:28 +0530</lastBuildDate>
     
-	<atom:link href="https://namamishanker.github.io/tags/f2py/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://namamishanker.github.io/series/beginning-with-f2py/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
