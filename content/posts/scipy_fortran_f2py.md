@@ -8,7 +8,7 @@ authors = ["Namami Shanker"]
 tags = ["Fortran", "F2PY", "Scipy"]
 categories = ["Informational", "Programming"]
 externalLink = ""
-series = ["Beginning with Scipy"]
+series = ["Beginning with F2PY"]
 +++
 
 

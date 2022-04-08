@@ -5,10 +5,10 @@ title = "F2PY Tests"
 description = "Lets look into the test suite of F2PY, how to use it, and how you can add tests to it."
 slug = ""
 authors = ["Namami Shanker"]
-tags = []
-categories = []
+tags = ["F2PY", "Fortran", "Testing"]
+categories = ["F2PY", "Programming"]
 externalLink = ""
-series = []
+series = ["Beginning with F2PY"]
 +++
 
 I have talked previously about [building fast libraries](https://namamishanker.github.io/posts/scipy_fortran_f2py/) for Python using Fortran. The key software that facilitates easy integration of Fortran code into Python is [F2PY](https://numpy.org/doc/stable/f2py/). The user can write fast Fortran code with F2PY specific comments and compile it using F2PY to produce a high-speed ready-to-use Python library.
