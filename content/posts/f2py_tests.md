@@ -19,7 +19,7 @@ I have talked previously about [building fast libraries](https://namamishanker.g
 
 ### Current status
 
-F2PY is an old software and it has not had any major releases since 2009. If you browse its [codebase in the current state](https://github.com/numpy/numpy/tree/eecd16210ffb487d4e862c71e86cc6f88f2e9aa2/numpy/f2py), you will find it a bit difficult to read, understand and contribute to. Recently, efforts have been made to modernise its CLI and backend compilation process. Probably the F2PY you will get to use will be a more user-friendly and faster CLI.
+F2PY is an old software and it has not had any major releases since 2009. If you browse its [codebase in the current state](https://github.com/numpy/numpy/tree/eecd16210ffb487d4e862c71e86cc6f88f2e9aa2/numpy/f2py), you will find it a bit difficult to read, understand and contribute to. Recently, efforts have been made to modernise its CLI and backend compilation process. The F2PY you will get to use will be a more user-friendly and faster CLI.
 
 ### Codebase
 
