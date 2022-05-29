@@ -6,7 +6,7 @@
     <description>Recent content in Tags on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Apr 2022 10:22:28 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 30 May 2022 00:56:39 +0530</lastBuildDate>
     
 	<atom:link href="https://namamishanker.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,27 @@
     <item>
       <title>F2PY</title>
       <link>https://namamishanker.github.io/tags/f2py/</link>
-      <pubDate>Sun, 03 Apr 2022 10:22:28 +0530</pubDate>
+      <pubDate>Mon, 30 May 2022 00:56:39 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/tags/f2py/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GSoC22</title>
+      <link>https://namamishanker.github.io/tags/gsoc22/</link>
+      <pubDate>Mon, 30 May 2022 00:56:39 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/tags/gsoc22/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Numpy</title>
+      <link>https://namamishanker.github.io/tags/numpy/</link>
+      <pubDate>Mon, 30 May 2022 00:56:39 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/tags/numpy/</guid>
       <description></description>
     </item>
     

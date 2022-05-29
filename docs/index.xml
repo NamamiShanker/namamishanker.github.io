@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>GSoC&#39;22 project introduction and tentative plan</title>
+      <link>https://namamishanker.github.io/posts/gsoc_project_intro/</link>
+      <pubDate>Mon, 30 May 2022 00:56:39 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/gsoc_project_intro/</guid>
+      <description>I applied for Google Summer of Code 2022 to work with NumPy&amp;rsquo;s F2PY maintainence team and improve F2PY under Python Software Foundation. Breifly said, F2PY is a CLI that provides an easy connection between Python and Fortran languagues. I have previously dicussed F2PY on my website on the topics Scipy, Fortran and F2PY and F2PY tests.
+During my time of application, F2PY&amp;rsquo;s frontend was a handwritten command line parser with handwritten interfacing.</description>
+    </item>
+    
+    <item>
       <title>F2PY Tests</title>
       <link>https://namamishanker.github.io/posts/f2py_tests/</link>
       <pubDate>Sun, 03 Apr 2022 10:22:28 +0530</pubDate>

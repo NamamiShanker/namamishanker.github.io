@@ -6,10 +6,28 @@
     <description>Recent content in Categories on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Apr 2022 10:22:28 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 30 May 2022 00:56:39 +0530</lastBuildDate>
     
 	<atom:link href="https://namamishanker.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blog</title>
+      <link>https://namamishanker.github.io/categories/blog/</link>
+      <pubDate>Mon, 30 May 2022 00:56:39 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/categories/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GSoC22</title>
+      <link>https://namamishanker.github.io/categories/gsoc22/</link>
+      <pubDate>Mon, 30 May 2022 00:56:39 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/categories/gsoc22/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>F2PY</title>
