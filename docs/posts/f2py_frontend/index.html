@@ -200,7 +200,7 @@ f2py fibsign.pyf -m fib
 <table>
 <thead>
 <tr>
-<th align="center">Flag</th>
+<th align="center">Argument</th>
 <th align="center">Activates function</th>
 </tr>
 </thead>
@@ -210,7 +210,7 @@ f2py fibsign.pyf -m fib
 <td align="center">run_compile()</td>
 </tr>
 <tr>
-<td align="center"><code>-m</code>, <code>-h</code></td>
+<td align="center">Everything else</td>
 <td align="center">run_main()</td>
 </tr>
 </tbody>
@@ -222,11 +222,33 @@ f2py fibsign.pyf -m fib
 <p>This is a really tricky function to understand. It is called by the <code>f2py</code> if the <code>argv</code> array contains the <code>-c</code> flag. It parses the command line again without the use of <code>scaninputline()</code>, basically filtering out all the possible flags and options, and then searching for the fortran, <code>.pyf</code>, or object files. It then passes the source files and related flags to numpy.disutils where C wrapper is generated and shared library is compiled and linked to produce a Python extension module.</p>
 <p>This function needs a lot of work. All the flag filtering is needs to be done by another function, which should be common to both <code>run_compile()</code> and <code>run_main()</code>. This function also uses regex to parse the command line which is hard to understand. The code is not self-explanatory or modular. It is essentially a bohemoth that does the entire job from parsing the command line to creating extension module in a single shot.</p>
 <h2 id="the-new-f2py-frontend">The new F2PY frontend</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Argument</th>
+<th align="center">Activates parser</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Source files and functions</td>
+<td align="center">main parser</td>
+</tr>
+<tr>
+<td align="center"><code>-c</code></td>
+<td align="center">build helper parser</td>
+</tr>
+<tr>
+<td align="center"><code>-h</code>, <code>-m</code></td>
+<td align="center">Wrapper generation parser</td>
+</tr>
+</tbody>
+</table>
 <p>The NumPy team is aiming to make F2PY to more user and developer friendly. F2PY will be soon shifting to a modern <code>argparse</code> based CLI. An ongoing implementation can be found in <a href="https://github.com/numpy/numpy/blob/argparse_f2py/numpy/f2py/f2pyarg.py">Rohit Goswami&rsquo;s fork</a> (the core function to handle flags is remaining). The new frontend will leverage <a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_subparsers">subparser</a> functionality of <code>argparse</code> to handle the three major tasks.</p>
 <h4 id="the-main-parser">The main parser</h4>
 <p><a href="https://github.com/numpy/numpy/blob/argparse_f2py/numpy/f2py/f2pyarg.py#L226">The main parser</a> will accept fortran source files and functions to generate C wrapper for and general flags related to module name (<code>-m</code>), documentation generation(<code>--rest-doc</code>), incuding other header files (<code>--include-paths</code>), verbosity (<code>--verbose</code>, <code>--quiet</code>) etc.</p>
 <p><a href="https://github.com/numpy/numpy/blob/ade978b9f7de5cb42fb4e2573972b128158aa41e/numpy/f2py/f2pyarg.py#L263%60">The build helper subparser</a> will activated by <code>-c</code> flag to generate the shared object file which can be imported in Python. It will handle all the build related options like fortran compiler and its flags (<code>--fcompiler</code>, <code>--f77exec</code>, <code>f77flags</code>), architecture optimization (<code>--arch</code>), linking (<code>--link-&lt;name&gt;</code>)etc.</p>
-<p><a href="https://github.com/numpy/numpy/blob/ade978b9f7de5cb42fb4e2573972b128158aa41e/numpy/f2py/f2pyarg.py#L264">The wrapper generation subparser</a> will activated by the <code>-h</code> flag to generate the signature file.</p>
+<p><a href="https://github.com/numpy/numpy/blob/ade978b9f7de5cb42fb4e2573972b128158aa41e/numpy/f2py/f2pyarg.py#L264">The wrapper generation subparser</a> will activated by the <code>-h</code> flag to generate the signature file and <code>-m</code> to generate the wrapper file.</p>
 <h2 id="why-do-we-need-a-new-argparse-implementation">Why do we need a new <code>argparse</code> implementation?</h2>
 <p>One may raise a question about why we need a new <code>argparse</code> implementation. If the CLI has been working fine for more than a decade, why not leave it as it is?
 I am still a newbie to <code>f2py</code> and fortran, but there are a lot of ways we can improve F2PY, like adding the derived types support, improving syntax tree mechanism. The current development team will pass on F2PY to new developers, and it will be worthwhile to modernise and make its functionalities granular. A better codebase and documentation will facilitate easier development and maintenance. Making it more modular will increase flexibility and will allow other programs to use specific functionalities of F2PY exclusively (like how SciPy uses <code>--build-dir</code> flag to generate shared object file from its <code>pyf</code> files). It will also be much easier to enhace the functionality of the CLI. A developer could just go add a new flag to the appropriate subparser and link to the handling function. Here are the three parsers and functionalities they provide:</p>
