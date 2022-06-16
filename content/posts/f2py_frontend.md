@@ -105,7 +105,7 @@ The NumPy team is aiming to make F2PY to more user and developer friendly. F2PY 
 
 [The build helper subparser](https://github.com/numpy/numpy/blob/ade978b9f7de5cb42fb4e2573972b128158aa41e/numpy/f2py/f2pyarg.py#L263`) will activated by `-c` flag to generate the shared object file which can be imported in Python. It will handle all the build related options like fortran compiler and its flags (`--fcompiler`, `--f77exec`, `f77flags`), architecture optimization (`--arch`), linking (`--link-<name>`)etc. 
 
-[The wrapper generation subparser](https://github.com/numpy/numpy/blob/ade978b9f7de5cb42fb4e2573972b128158aa41e/numpy/f2py/f2pyarg.py#L264) will activated by the `-h` flag to generate the signature file.
+[The wrapper generation subparser](https://github.com/numpy/numpy/blob/ade978b9f7de5cb42fb4e2573972b128158aa41e/numpy/f2py/f2pyarg.py#L264) will activated by the `-h` flag to generate the signature file and `-m` to generate the wrapper file.
 
 ## Why do we need a new `argparse` implementation?
 One may raise a question about why we need a new `argparse` implementation. If the CLI has been working fine for more than a decade, why not leave it as it is?
