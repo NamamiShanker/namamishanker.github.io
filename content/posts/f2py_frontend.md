@@ -74,10 +74,10 @@ The current F2PY frontend can be found in [numpy/f2py/f2py2e.py](https://github.
 
 There are two important functions that run the entire program - [run_main()](https://github.com/numpy/numpy/blob/6032e0ab72be408497c14fd5b865bb25a4c800e7/numpy/f2py/f2py2e.py#L411) and [run_compile()](https://github.com/numpy/numpy/blob/6032e0ab72be408497c14fd5b865bb25a4c800e7/numpy/f2py/f2py2e.py#L411).
 
-| Flag | Activates function |
+| Argument | Activates function |
 |:----:|:----------------:|
 | `-c` | run_compile() |
-| `-m`, `-h` | run_main() |
+| Everything else | run_main() |
 
 #### run_main()
 
@@ -92,6 +92,13 @@ This is a really tricky function to understand. It is called by the `f2py` if th
 This function needs a lot of work. All the flag filtering is needs to be done by another function, which should be common to both `run_compile()` and `run_main()`. This function also uses regex to parse the command line which is hard to understand. The code is not self-explanatory or modular. It is essentially a bohemoth that does the entire job from parsing the command line to creating extension module in a single shot. 
 
 ## The new F2PY frontend
+
+| Argument | Activates parser |
+|:----:|:----------------:|
+| Source files and functions | main parser |
+| `-c` | build helper parser       |
+| `-h`, `-m` | Wrapper generation parser |
+
 The NumPy team is aiming to make F2PY to more user and developer friendly. F2PY will be soon shifting to a modern `argparse` based CLI. An ongoing implementation can be found in [Rohit Goswami's fork](https://github.com/numpy/numpy/blob/argparse_f2py/numpy/f2py/f2pyarg.py) (the core function to handle flags is remaining). The new frontend will leverage [subparser](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_subparsers) functionality of `argparse` to handle the three major tasks. 
 #### The main parser
 [The main parser](https://github.com/numpy/numpy/blob/argparse_f2py/numpy/f2py/f2pyarg.py#L226) will accept fortran source files and functions to generate C wrapper for and general flags related to module name (`-m`), documentation generation(`--rest-doc`), incuding other header files (`--include-paths`), verbosity (`--verbose`, `--quiet`) etc.
