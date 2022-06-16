@@ -51,7 +51,9 @@ body.colorscheme-dark {
   body.colorscheme-dark td {
     padding: 1.6rem; }
   body.colorscheme-dark table {
-    border-collapse: collapse; }
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto; }
   body.colorscheme-dark table td,
   body.colorscheme-dark table th {
     border: 2px solid #dadada; }
@@ -120,7 +122,9 @@ body.colorscheme-dark {
     body.colorscheme-auto td {
       padding: 1.6rem; }
     body.colorscheme-auto table {
-      border-collapse: collapse; }
+      border-collapse: collapse;
+      margin-left: auto;
+      margin-right: auto; }
     body.colorscheme-auto table td,
     body.colorscheme-auto table th {
       border: 2px solid #dadada; }

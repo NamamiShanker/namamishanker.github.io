@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>F2PY Frontend</title>
+      <link>https://namamishanker.github.io/posts/f2py_frontend/</link>
+      <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/f2py_frontend/</guid>
+      <description>F2PY frontend: The Old and the New We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
+Introduction F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.</description>
+    </item>
+    
+    <item>
       <title>GSoC&#39;22 project introduction and tentative plan</title>
       <link>https://namamishanker.github.io/posts/gsoc_project_intro/</link>
       <pubDate>Mon, 30 May 2022 00:56:39 +0530</pubDate>
