@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>F2PY on #!bin/namami</title>
-    <link>https://namamishanker.github.io/categories/f2py/</link>
-    <description>Recent content in F2PY on #!bin/namami</description>
+    <title>cli on #!bin/namami</title>
+    <link>https://namamishanker.github.io/tags/cli/</link>
+    <description>Recent content in cli on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 15 Jun 2022 21:34:26 +0530</lastBuildDate>
     
-	<atom:link href="https://namamishanker.github.io/categories/f2py/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://namamishanker.github.io/tags/cli/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       <guid>https://namamishanker.github.io/posts/f2py_frontend/</guid>
       <description>F2PY frontend: The Old and the New We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
 Introduction F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.</description>
-    </item>
-    
-    <item>
-      <title>F2PY Tests</title>
-      <link>https://namamishanker.github.io/posts/f2py_tests/</link>
-      <pubDate>Sun, 03 Apr 2022 10:22:28 +0530</pubDate>
-      
-      <guid>https://namamishanker.github.io/posts/f2py_tests/</guid>
-      <description>I have talked previously about building fast libraries for Python using Fortran. The key software that facilitates easy integration of Fortran code into Python is F2PY. The user can write fast Fortran code with F2PY specific comments and compile it using F2PY to produce a high-speed ready-to-use Python library.
-F2PY F2PY is an open-source utilty tool that provides an easy connection between Python and Fortran languages. It was written in the late 90s by Dr.</description>
     </item>
     
   </channel>

@@ -6,10 +6,28 @@
     <description>Recent content in Categories on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 30 May 2022 00:56:39 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jun 2022 21:34:26 +0530</lastBuildDate>
     
 	<atom:link href="https://namamishanker.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>F2PY</title>
+      <link>https://namamishanker.github.io/categories/f2py/</link>
+      <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/categories/f2py/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Programming</title>
+      <link>https://namamishanker.github.io/categories/programming/</link>
+      <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/categories/programming/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Blog</title>
@@ -26,24 +44,6 @@
       <pubDate>Mon, 30 May 2022 00:56:39 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/categories/gsoc22/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>F2PY</title>
-      <link>https://namamishanker.github.io/categories/f2py/</link>
-      <pubDate>Sun, 03 Apr 2022 10:22:28 +0530</pubDate>
-      
-      <guid>https://namamishanker.github.io/categories/f2py/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Programming</title>
-      <link>https://namamishanker.github.io/categories/programming/</link>
-      <pubDate>Sun, 03 Apr 2022 10:22:28 +0530</pubDate>
-      
-      <guid>https://namamishanker.github.io/categories/programming/</guid>
       <description></description>
     </item>
     

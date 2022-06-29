@@ -6,17 +6,53 @@
     <description>Recent content in Tags on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 30 May 2022 00:56:39 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jun 2022 15:36:42 +0530</lastBuildDate>
     
 	<atom:link href="https://namamishanker.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>build</title>
+      <link>https://namamishanker.github.io/tags/build/</link>
+      <pubDate>Tue, 28 Jun 2022 15:36:42 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/tags/build/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>F2PY</title>
       <link>https://namamishanker.github.io/tags/f2py/</link>
-      <pubDate>Mon, 30 May 2022 00:56:39 +0530</pubDate>
+      <pubDate>Tue, 28 Jun 2022 15:36:42 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/tags/f2py/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>meson</title>
+      <link>https://namamishanker.github.io/tags/meson/</link>
+      <pubDate>Tue, 28 Jun 2022 15:36:42 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/tags/meson/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>argparse</title>
+      <link>https://namamishanker.github.io/tags/argparse/</link>
+      <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/tags/argparse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cli</title>
+      <link>https://namamishanker.github.io/tags/cli/</link>
+      <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/tags/cli/</guid>
       <description></description>
     </item>
     

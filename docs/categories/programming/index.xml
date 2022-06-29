@@ -6,10 +6,20 @@
     <description>Recent content in Programming on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Apr 2022 10:22:28 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jun 2022 21:34:26 +0530</lastBuildDate>
     
 	<atom:link href="https://namamishanker.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 1: F2PY Frontend</title>
+      <link>https://namamishanker.github.io/posts/f2py_frontend/</link>
+      <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/f2py_frontend/</guid>
+      <description>F2PY frontend: The Old and the New We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
+Introduction F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.</description>
+    </item>
     
     <item>
       <title>F2PY Tests</title>

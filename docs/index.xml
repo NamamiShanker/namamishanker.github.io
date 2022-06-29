@@ -6,13 +6,23 @@
     <description>Recent content on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 19 Mar 2022 15:09:52 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 19 Mar 2022 13:06:04 +0530</lastBuildDate>
     
 	<atom:link href="https://namamishanker.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>F2PY Frontend</title>
+      <title>Week 2: Moving F2PY to Meson build system</title>
+      <link>https://namamishanker.github.io/posts/f2py-meson-backend/</link>
+      <pubDate>Tue, 28 Jun 2022 15:36:42 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/f2py-meson-backend/</guid>
+      <description>Meson as a backend build system for F2PY Last week we discussed F2PY&amp;rsquo;s frontend and how it is undergoing re-implementation using the argparse python library. This week we will look at the backend build system of F2PY, and how meson will be used to build the extension module.
+What is the use of a build system? Simply explained, build system exist to automate compilation and linking of big programs. A program&amp;rsquo;s source code might consist of several hundred C++ files, some C and a few Fortran files.</description>
+    </item>
+    
+    <item>
+      <title>Week 1: F2PY Frontend</title>
       <link>https://namamishanker.github.io/posts/f2py_frontend/</link>
       <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
       
@@ -49,18 +59,6 @@ F2PY F2PY is an open-source utilty tool that provides an easy connection between
       <guid>https://namamishanker.github.io/posts/scipy_fortran_f2py/</guid>
       <description>Numpy and Scipy are industry leading Python libraries for fast numerical computation, providing speed and accuracy matching MATLAB and highly optimized low-level numerical computation libraries. In this blog I&amp;rsquo;ll explain to you how they work and how can you create your own superfast Python library.
 SciPy The name SciPy is very well-known in the scientific computation industry. Every engineer, researcher, teacher or student who has used Python has used Scipy at least once or more in their career.</description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>https://namamishanker.github.io/contact/</link>
-      <pubDate>Sat, 19 Mar 2022 15:09:52 +0530</pubDate>
-      
-      <guid>https://namamishanker.github.io/contact/</guid>
-      <description>LinkedIn: https://www.linkedin.com/in/namamishanker/
-GitHub: https://github.com/NamamiShanker
-Twitter: https://twitter.com/namami_shanker
-Email: namami2011@gmail.com</description>
     </item>
     
     <item>
