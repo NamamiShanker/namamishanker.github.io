@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = false
 date = 2022-06-28T15:36:42+05:30
 title = "Week 2: Moving F2PY to Meson build system"
 description = "We discuss implementing F2PY's compilation options in meson"

@@ -1,7 +1,7 @@
 ---
 title: "Week 1: F2PY Frontend"
 date: 2022-06-15T21:34:26+05:30
-draft: true
+draft: false
 slug : ""
 authors : ["Namami Shanker"]
 tags : ["F2PY", "argparse", "cli"]
