@@ -2,6 +2,12 @@
 title: "F2PY Frontend"
 date: 2022-06-15T21:34:26+05:30
 draft: true
+slug : ""
+authors : ["Namami Shanker"]
+tags : ["F2PY", "argparse", "cli"]
+categories : ["F2PY", "Programming"]
+externalLink : ""
+series : ["GSoC'22"]
 ---
 
 # F2PY frontend: The Old and the New
