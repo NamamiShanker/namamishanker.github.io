@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = false
 date = 2022-07-14T18:38:33+05:30
 title = "Week 3 and 4: The new argparse F2PY"
 description = "The new argparse F2PY is here"
