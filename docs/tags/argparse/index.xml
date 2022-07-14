@@ -6,10 +6,16 @@
     <description>Recent content in argparse on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 15 Jun 2022 21:34:26 +0530</lastBuildDate>
-    
-	<atom:link href="https://namamishanker.github.io/tags/argparse/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 14 Jul 2022 18:38:33 +0530</lastBuildDate><atom:link href="https://namamishanker.github.io/tags/argparse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Week 3 and 4: The new argparse F2PY</title>
+      <link>https://namamishanker.github.io/posts/argparse-f2py/</link>
+      <pubDate>Thu, 14 Jul 2022 18:38:33 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/argparse-f2py/</guid>
+      <description>Week 3 and 4: Argparse F2PY The much awaited F2PY with an argparse frontend is here. It is in review as I write this blog but if you are feeling too excited and can&amp;rsquo;t wait use it, you can clone my fork of NumPy at f2py_front branch and install this experimental NumPy version using these instructions.(Of course I am joking, no one gets excited over F2PY)
+Lets dive into the changes that have taken place:-</description>
+    </item>
     
     <item>
       <title>Week 1: F2PY Frontend</title>

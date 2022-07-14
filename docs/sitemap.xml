@@ -1,155 +1,98 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://namamishanker.github.io/authors/</loc>
-    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/build/</loc>
-    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/f2py/</loc>
-    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/series/gsoc22/</loc>
-    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/meson/</loc>
-    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/authors/namami-shanker/</loc>
-    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/posts/</loc>
-    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/series/</loc>
-    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/</loc>
-    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/posts/f2py-meson-backend/</loc>
-    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/argparse/</loc>
-    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/categories/</loc>
-    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/cli/</loc>
-    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/categories/f2py/</loc>
-    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/categories/programming/</loc>
-    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/posts/f2py_frontend/</loc>
-    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/categories/blog/</loc>
-    <lastmod>2022-05-30T00:56:39+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/posts/gsoc_project_intro/</loc>
-    <lastmod>2022-05-30T00:56:39+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/gsoc22/</loc>
-    <lastmod>2022-05-30T00:56:39+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/categories/gsoc22/</loc>
-    <lastmod>2022-05-30T00:56:39+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/numpy/</loc>
-    <lastmod>2022-05-30T00:56:39+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/series/beginning-with-f2py/</loc>
-    <lastmod>2022-04-03T10:22:28+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/posts/f2py_tests/</loc>
-    <lastmod>2022-04-03T10:22:28+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/fortran/</loc>
-    <lastmod>2022-04-03T10:22:28+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/testing/</loc>
-    <lastmod>2022-04-03T10:22:28+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/posts/scipy_fortran_f2py/</loc>
-    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/categories/informational/</loc>
-    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/scipy/</loc>
-    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
-  </url>
-  
   <url>
     <loc>https://namamishanker.github.io/</loc>
-    <lastmod>2022-03-19T13:06:04+05:30</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/argparse/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/authors/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/f2py/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/series/gsoc22/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/authors/namami-shanker/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/numpy/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/posts/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/scipy/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/series/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/posts/argparse-f2py/</loc>
+    <lastmod>2022-07-14T18:38:33+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/build/</loc>
+    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/meson/</loc>
+    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/posts/f2py-meson-backend/</loc>
+    <lastmod>2022-06-28T15:36:42+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/categories/</loc>
+    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/cli/</loc>
+    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/categories/f2py/</loc>
+    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/categories/programming/</loc>
+    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/posts/f2py_frontend/</loc>
+    <lastmod>2022-06-15T21:34:26+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/categories/blog/</loc>
+    <lastmod>2022-05-30T00:56:39+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/posts/gsoc_project_intro/</loc>
+    <lastmod>2022-05-30T00:56:39+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/gsoc22/</loc>
+    <lastmod>2022-05-30T00:56:39+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/categories/gsoc22/</loc>
+    <lastmod>2022-05-30T00:56:39+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/series/beginning-with-f2py/</loc>
+    <lastmod>2022-04-03T10:22:28+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/posts/f2py_tests/</loc>
+    <lastmod>2022-04-03T10:22:28+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/fortran/</loc>
+    <lastmod>2022-04-03T10:22:28+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/tags/testing/</loc>
+    <lastmod>2022-04-03T10:22:28+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/posts/scipy_fortran_f2py/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url><url>
+    <loc>https://namamishanker.github.io/categories/informational/</loc>
+    <lastmod>2022-03-24T14:01:12+05:30</lastmod>
+  </url><url>
     <loc>https://namamishanker.github.io/about/</loc>
     <lastmod>2022-03-19T13:06:04+05:30</lastmod>
   </url>
-  
 </urlset>

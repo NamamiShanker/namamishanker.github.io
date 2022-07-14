@@ -19,9 +19,10 @@
     <meta property="og:title" content="F2PY Tests" />
 <meta property="og:description" content="Lets look into the test suite of F2PY, how to use it, and how you can add tests to it." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://namamishanker.github.io/posts/f2py_tests/" />
+<meta property="og:url" content="https://namamishanker.github.io/posts/f2py_tests/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-04-03T10:22:28+05:30" />
 <meta property="article:modified_time" content="2022-04-03T10:22:28+05:30" />
+<meta property="og:see_also" content="https://namamishanker.github.io/posts/scipy_fortran_f2py/" />
 
 
 
@@ -38,7 +39,7 @@
     
       
       
-      <link rel="stylesheet" href="/css/coder.min.843ee18d510f7cb1bb49110db117b99ea65489c095d620a5d79ea71693478e77.css" integrity="sha256-hD7hjVEPfLG7SRENsRe5nqZUicCV1iCl156nFpNHjnc=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -61,7 +62,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
-    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="generator" content="Hugo 0.101.0" />
   </head>
 
   
@@ -166,62 +167,77 @@
       <div>
         
         <p>I have talked previously about <a href="https://namamishanker.github.io/posts/scipy_fortran_f2py/">building fast libraries</a> for Python using Fortran. The key software that facilitates easy integration of Fortran code into Python is <a href="https://numpy.org/doc/stable/f2py/">F2PY</a>. The user can write fast Fortran code with F2PY specific comments and compile it using F2PY to produce a high-speed ready-to-use Python library.</p>
-<h2 id="f2py">F2PY</h2>
+<h2 id="f2py">
+  F2PY
+  <a class="heading-link" href="#f2py">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p><a href="https://numpy.org/doc/stable/f2py/">F2PY</a> is an open-source utilty tool that provides an easy connection between Python and Fortran languages. It was written in the late 90s by <a href="https://github.com/pearu">Dr. Pearu Peterson</a>. The first version of this software was released in 1999 when it was called Fortran to Python Interface Generator (FPIG). It remained a stand-alone software till 2007 when it was moved to the NumPy project. F2PY is currently maintained by the NumPy developer team and users can install numpy to use it.</p>
-<h3 id="current-status">Current status</h3>
+<h3 id="current-status">
+  Current status
+  <a class="heading-link" href="#current-status">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>F2PY&rsquo;s codebase is a bit older than the rest of Numpy. It has not had any major releases since 2009 ever since it became feature complete for Fortran 77. Beginners browsing its <a href="https://github.com/numpy/numpy/tree/eecd16210ffb487d4e862c71e86cc6f88f2e9aa2/numpy/f2py">codebase in the current state</a> mightfind it a bit difficult to read, understand and contribute to. Recently, efforts have been made to modernise its CLI and backend compilation process. The F2PY you will get to use will be a more user-friendly and faster CLI.</p>
-<h3 id="codebase">Codebase</h3>
+<h3 id="codebase">
+  Codebase
+  <a class="heading-link" href="#codebase">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>If you explore the current directory <a href="https://github.com/numpy/numpy/tree/main/numpy/f2py"><code>numpy/f2py</code></a> you will open up a directory that looks likes this:-
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="background-color:#e5e5e5"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span></span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="background-color:#e5e5e5"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span></span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="background-color:#e5e5e5"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">.
-<span style="">├──</span> auxfuncs.py
-<span style="">├──</span> capi_maps.py
-<span style="">├──</span> cb_rules.py
-<span style="">├──</span> cfuncs.py
-<span style="">├──</span> common_rules.py
-<span style="display:block;width:100%;background-color:#e5e5e5"><span style="">├──</span> crackfortran.py
-</span><span style="">├──</span> diagnose.py
-<span style="display:block;width:100%;background-color:#e5e5e5"><span style="">├──</span> f2py2e.py
-</span><span style="">├──</span> f2py_testing.py
-<span style="">├──</span> f90mod_rules.py
-<span style="">├──</span> func2subr.py
-<span style="">├──</span> __init__.py
-<span style="">├──</span> __init__.pyi
-<span style="">├──</span> __main__.py
-<span style="">├──</span> rules.py
-<span style="">├──</span> setup.cfg
-<span style="">├──</span> setup.py
-<span style="">├──</span> src
-<span style="">├──</span> symbolic.py
-<span style="display:block;width:100%;background-color:#e5e5e5"><span style="">├──</span> tests
-</span><span style="">├──</span> use_rules.py
-<span style="">└──</span> __version__.py</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span><span style="">├──</span> auxfuncs.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> capi_maps.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> cb_rules.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> cfuncs.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> common_rules.py
+</span></span><span style="display:flex; background-color:#e5e5e5"><span><span style="">├──</span> crackfortran.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> diagnose.py
+</span></span><span style="display:flex; background-color:#e5e5e5"><span><span style="">├──</span> f2py2e.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> f2py_testing.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> f90mod_rules.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> func2subr.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> __init__.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> __init__.pyi
+</span></span><span style="display:flex;"><span><span style="">├──</span> __main__.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> rules.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> setup.cfg
+</span></span><span style="display:flex;"><span><span style="">├──</span> setup.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> src
+</span></span><span style="display:flex;"><span><span style="">├──</span> symbolic.py
+</span></span><span style="display:flex; background-color:#e5e5e5"><span><span style="">├──</span> tests
+</span></span><span style="display:flex;"><span><span style="">├──</span> use_rules.py
+</span></span><span style="display:flex;"><span><span style="">└──</span> __version__.py</span></span></code></pre></td></tr></table>
 </div>
 </div></p>
 <div class="notice info">
@@ -232,139 +248,159 @@
 </div>
 
 <p>We will talk mostly about the test suite of F2PY in this blog which consists of the <a href="https://github.com/numpy/numpy/tree/main/numpy/f2py/tests"><code>tests</code></a> directory.</p>
-<h3 id="testing-f2py">Testing f2py</h3>
+<h3 id="testing-f2py">
+  Testing f2py
+  <a class="heading-link" href="#testing-f2py">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>The file tree of <a href="https://github.com/numpy/numpy/tree/main/numpy/f2py/tests">tests</a> directory presents us with these:-</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="display:block;width:100%;background-color:#e5e5e5"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="background-color:#e5e5e5"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span></span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="background-color:#e5e5e5"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">./tests/
-<span style="">├──</span> __init__.py
-<span style="display:block;width:100%;background-color:#e5e5e5"><span style="">├──</span> src
-</span><span style="">│</span>   <span style="">├──</span> abstract_interface
-<span style="">│</span>   <span style="">├──</span> array_from_pyobj
-<span style="">│</span>   <span style="">├──</span> <span style="font-style:italic">// ... several test folders
-</span><span style="font-style:italic"></span><span style="">│</span>   <span style="">└──</span> <span style="">string</span>
-<span style="">├──</span> test_abstract_interface.py
-<span style="">├──</span> test_array_from_pyobj.py
-<span style="">├──</span> <span style="font-style:italic">// ... several test files
-</span><span style="font-style:italic"></span><span style="">├──</span> test_symbolic.py
-<span style="display:block;width:100%;background-color:#e5e5e5"><span style="">└──</span> util.py</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>./tests/
+</span></span><span style="display:flex;"><span><span style="">├──</span> __init__.py
+</span></span><span style="display:flex; background-color:#e5e5e5"><span><span style="">├──</span> src
+</span></span><span style="display:flex;"><span><span style="">│</span>   <span style="">├──</span> abstract_interface
+</span></span><span style="display:flex;"><span><span style="">│</span>   <span style="">├──</span> array_from_pyobj
+</span></span><span style="display:flex;"><span><span style="">│</span>   <span style="">├──</span> <span style="font-style:italic">// ... several test folders
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">│</span>   <span style="">└──</span> <span style="">string</span>
+</span></span><span style="display:flex;"><span><span style="">├──</span> test_abstract_interface.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> test_array_from_pyobj.py
+</span></span><span style="display:flex;"><span><span style="">├──</span> <span style="font-style:italic">// ... several test files
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span><span style="">├──</span> test_symbolic.py
+</span></span><span style="display:flex; background-color:#e5e5e5"><span><span style="">└──</span> util.py</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Files starting with <code>test_</code> contain tests for various aspects of f2py from parsing Fortran files to checking modules&rsquo; documentation. <code>src</code> directory contains the Fortran source files upon which we do the testing. <code>util.py</code> is an interesting file. It contains superclass for class based tests in f2py which we will talk about later.</p>
-<h3 id="adding-tests">Adding tests</h3>
+<h3 id="adding-tests">
+  Adding tests
+  <a class="heading-link" href="#adding-tests">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>If you wander through the <code>tests</code> folder snooping inside the files, you will find most tests are classes that inherit from <code>util.F2PyTest</code> superclass. This superclass is present in <code>util.py</code> file.</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">327
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">328
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">329
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">330
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">331
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">332
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">333
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">334
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">335
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">336
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">337
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">338
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">339
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">340
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">341
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">327
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">328
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">329
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">330
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">331
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">332
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">333
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">334
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">335
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">336
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">337
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">338
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">339
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">340
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">341
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">class</span> <span style="font-weight:bold">F2PyTest</span>:
-    code = None
-    sources = None
-    options = []
-    skip = []
-    only = []
-    suffix = <span style="font-style:italic">&#34;.f&#34;</span>
-    module = None
-    module_name = None
-
-    <span style="font-weight:bold">def</span> setup(self):
-        <span style="font-weight:bold">if</span> sys.platform == <span style="font-style:italic">&#34;win32&#34;</span>:
-	.
-	.
-	.</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">F2PyTest</span>:
+</span></span><span style="display:flex;"><span>    code = <span style="font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>    sources = <span style="font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>    options = []
+</span></span><span style="display:flex;"><span>    skip = []
+</span></span><span style="display:flex;"><span>    only = []
+</span></span><span style="display:flex;"><span>    suffix = <span style="font-style:italic">&#34;.f&#34;</span>
+</span></span><span style="display:flex;"><span>    module = <span style="font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>    module_name = <span style="font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">def</span> setup(self):
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span> sys.platform == <span style="font-style:italic">&#34;win32&#34;</span>:
+</span></span><span style="display:flex;"><span>	.
+</span></span><span style="display:flex;"><span>	.
+</span></span><span style="display:flex;"><span>	.</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>This superclass contains many helper functions responsible for parsing and compiling test source files. Its child classes can override its <code>sources</code> data member to provide their own source files. This superclass will then compile the added source files upon object creation and their functions will be appended to <code>self.module</code> data member. Thus, the child classes will be able to access the fortran functions specified in source file by calling <code>self.module.[fortran_function_name]</code>.</p>
 <p>Anyone looking to add more tests can follow the same strategy. The user can add new test classes to the appropriate file in <code>tests</code> directory inheriting from <code>util.F2PyTest</code> superclass and test the fortran function by calling <code>self.module.[fortran_function_name]</code>.</p>
-<h4 id="example">Example</h4>
+<h4 id="example">
+  Example
+  <a class="heading-link" href="#example">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
 <p>Suppose you found <a href="https://github.com/numpy/numpy/issues/14625">this bug</a> in f2py. You corrected it and now want to add tests for it. How do you do that?</p>
 <p>Well, first of all you would have to identify the correct file to add the test. This bug was related to incorrect parsing of Fortran code where subroutines ending with <code>endsubroutine</code> were not parsed correctly and therefore not compiled. Upon importing such subroutines, the user would encounter a missing attribute error. Since <code>crackfortran.py</code> file is responsible for parsing, we add the test to <code>test_crackfortran.py</code> file. The testing source file should also be created in <code>numpy/f2py/tests/src/crackfortran/</code> directory. Similarly other tests can be added to already present <code>test_</code> files based on user&rsquo;s discretion.</p>
 <p>First lets create a file <code>my_source_file.f</code> containing subroutines ending with <code>endsubroutine</code>. This file contains two self-explanatory Fortran subroutines :-</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran">        <span style="font-weight:bold">subroutine </span>subb(k)
-          <span style="">real</span>(8), <span style="font-weight:bold">intent</span>(inout) <span style="font-weight:bold">::</span> k(:)
-          k=k+1
-        endsubroutine
-
-        <span style="font-weight:bold">subroutine </span>subc(w,k)
-          <span style="">real</span>(8), <span style="font-weight:bold">intent</span>(in) <span style="font-weight:bold">::</span> w(:)
-          <span style="">real</span>(8), <span style="font-weight:bold">intent</span>(out) <span style="font-weight:bold">::</span> k(size(w))
-          k=w+1
-        endsubroutine</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span>        <span style="font-weight:bold">subroutine </span>subb(k)
+</span></span><span style="display:flex;"><span>          <span style="">real</span>(8), <span style="font-weight:bold">intent</span>(inout) <span style="font-weight:bold">::</span> k(:)
+</span></span><span style="display:flex;"><span>          k=k+1
+</span></span><span style="display:flex;"><span>        endsubroutine
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">subroutine </span>subc(w,k)
+</span></span><span style="display:flex;"><span>          <span style="">real</span>(8), <span style="font-weight:bold">intent</span>(in) <span style="font-weight:bold">::</span> w(:)
+</span></span><span style="display:flex;"><span>          <span style="">real</span>(8), <span style="font-weight:bold">intent</span>(out) <span style="font-weight:bold">::</span> k(size(w))
+</span></span><span style="display:flex;"><span>          k=w+1
+</span></span><span style="display:flex;"><span>        endsubroutine</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>We will compile this Fortran code and test that it is working.</p>
 <p>Open <code>test_crackfortran.py</code> to add the test for the previously added Fortran file:-</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">class</span> <span style="font-weight:bold">TestNoSpace</span>(util.F2PyTest):
-    sources = [util.getpath(<span style="font-style:italic">&#34;tests&#34;</span>, <span style="font-style:italic">&#34;src&#34;</span>, <span style="font-style:italic">&#34;crackfortran&#34;</span>, <span style="font-style:italic">&#34;my_source_file.f&#34;</span>)]
-
-    <span style="font-weight:bold">def</span> test_module(self):
-        k = np.array([1, 2, 3], dtype=np.float64)
-        w = np.array([1, 2, 3], dtype=np.float64)
-        self.module.subb(k)
-        <span style="font-weight:bold">assert</span> np.allclose(k, w + 1)
-        self.module.subc([w, k])
-        <span style="font-weight:bold">assert</span> np.allclose(k, w + 1)</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="font-weight:bold">class</span> <span style="font-weight:bold">TestNoSpace</span>(util.F2PyTest):
+</span></span><span style="display:flex;"><span>    sources = [util.getpath(<span style="font-style:italic">&#34;tests&#34;</span>, <span style="font-style:italic">&#34;src&#34;</span>, <span style="font-style:italic">&#34;crackfortran&#34;</span>, <span style="font-style:italic">&#34;my_source_file.f&#34;</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">def</span> test_module(self):
+</span></span><span style="display:flex;"><span>        k = np.array([1, 2, 3], dtype=np.float64)
+</span></span><span style="display:flex;"><span>        w = np.array([1, 2, 3], dtype=np.float64)
+</span></span><span style="display:flex;"><span>        self.module.subb(k)
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">assert</span> np.allclose(k, w + 1)
+</span></span><span style="display:flex;"><span>        self.module.subc([w, k])
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">assert</span> np.allclose(k, w + 1)</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>We override the <code>sources</code> data member to provide the source file. The source files are compiled and subroutines are attached to module data member when the class object is created. The <code>test_module</code> function calls the subroutines and tests their results.</p>
-<h3 id="conclusion">Conclusion</h3>
+<h3 id="conclusion">
+  Conclusion
+  <a class="heading-link" href="#conclusion">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
 <p>The current test suite of F2PY is a bit old. Modern python programmers accustomed to <code>pytest</code> might find its lack of fixtures, setups and tear downs little unappealing. However, once you get the hang of it, its easy to understand and improve. It is not an exhaustive test suite, but it is improving everyday. A new test suite for testing the CLI program <code>f2py2e.py</code> is being developed with modern <code>pytest</code> style testing and you can have a look at it <a href="https://github.com/HaoZeke/numpy/blob/f2py2eTests/numpy/f2py/tests/test_f2py2e.py">here</a>. F2PY and its test suite are sure to undergo heavy refactoring in the coming times.</p>
 
       </div>
@@ -433,7 +469,7 @@
 
     
       
-      <script src="/js/coder.min.8ddd58e878760346f67d56a123af8e6fd8dde1bc0903de1fc025ae84b4cf686f.js" integrity="sha256-jd1Y6Hh2A0b2fVahI6&#43;Ob9jd4bwJA94fwCWuhLTPaG8="></script>
+      <script src="/js/coder.min.9cf2dbf9b6989ef8eae941ffb4231c26d1dc026bca38f1d19fdba50177d8a9ac.js" integrity="sha256-nPLb&#43;baYnvjq6UH/tCMcJtHcAmvKOPHRn9ulAXfYqaw="></script>
     
 
     

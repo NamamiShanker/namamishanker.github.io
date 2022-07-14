@@ -19,9 +19,10 @@
     <meta property="og:title" content="Week 2: Moving F2PY to Meson build system" />
 <meta property="og:description" content="We discuss implementing F2PY&#39;s compilation options in meson" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://namamishanker.github.io/posts/f2py-meson-backend/" />
+<meta property="og:url" content="https://namamishanker.github.io/posts/f2py-meson-backend/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-28T15:36:42+05:30" />
 <meta property="article:modified_time" content="2022-06-28T15:36:42+05:30" />
+<meta property="og:see_also" content="https://namamishanker.github.io/posts/argparse-f2py/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py_frontend/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/gsoc_project_intro/" />
 
 
 
@@ -38,7 +39,7 @@
     
       
       
-      <link rel="stylesheet" href="/css/coder.min.843ee18d510f7cb1bb49110db117b99ea65489c095d620a5d79ea71693478e77.css" integrity="sha256-hD7hjVEPfLG7SRENsRe5nqZUicCV1iCl156nFpNHjnc=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -61,7 +62,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
-    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="generator" content="Hugo 0.101.0" />
   </head>
 
   
@@ -160,22 +161,52 @@
 
       <div>
         
-        <h1 id="meson-as-a-backend-build-system-for-f2py">Meson as a backend build system for F2PY</h1>
+        <h1 id="meson-as-a-backend-build-system-for-f2py">
+  Meson as a backend build system for F2PY
+  <a class="heading-link" href="#meson-as-a-backend-build-system-for-f2py">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h1>
 <p>Last week we discussed <a href="/posts/f2py_frontend">F2PY&rsquo;s frontend</a> and how it is undergoing re-implementation using the <code>argparse</code> python library. This week we will look at the backend build system of F2PY, and how meson will be used to build the extension module.</p>
-<h2 id="what-is-the-use-of-a-build-system">What is the use of a build system?</h2>
+<h2 id="what-is-the-use-of-a-build-system">
+  What is the use of a build system?
+  <a class="heading-link" href="#what-is-the-use-of-a-build-system">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Simply explained, build system exist to automate compilation and linking of big programs. A program&rsquo;s source code might consist of several hundred C++ files, some C and a few Fortran files. It might also contain library dependencies which will be provided by some object files. A build system takes a simple configuration file, where user can specify the source files, libraries, and other dependencies. The build system will then compile and link the program, and provide the executable.</p>
-<h4 id="but-cant-we-do-that-using-a-simple-bash-script">But can&rsquo;t we do that using a simple bash script?</h4>
+<h4 id="but-cant-we-do-that-using-a-simple-bash-script">
+  But can&rsquo;t we do that using a simple bash script?
+  <a class="heading-link" href="#but-cant-we-do-that-using-a-simple-bash-script">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
 <p>Aha, this is a good question. Compiling and building programs from scratch take a lot of time. Imagine you are a software developer in 1997 working in a small division in IBM. Your project contains ten thousand source C files. Building the entire program from scractch takes 2 hours. You saw a bug in one of the source files, you changed some code and started building it using the shell script to test it. Even though you made changes in only a single file, the shell script will delete the previous build (or move it to archives) and create the new build from scratch, taking the full stretch of 2 hours. It can&rsquo;t identify the changes in source code and only rebuild the changed files.</p>
 <p>Here the build systems come into play, they can create a dependency tree of your source code, and only rebuild the changed files. If your manager allows, you can create a CMake configuration file, include all the source files and dependencies, and code down how your want to build your project. For the first time, CMake will obviously take a lot of time to build the project (around the same 2 hours). But the next time you make changes, and rebuild using CMake, it will smartly detect the changes and only recompile and link what is necessary.</p>
 <p>Build systems make life vastly easier for developers. A lot of them provide cross-platform building capabilities, will detect external libraries for you, install the built program for you, run tests, generate documentation, and much more. Thats why every major developing software uses a populare build system for distribution.</p>
-<h2 id="why-does-f2py-need-a-build-system">Why does F2PY need a build system</h2>
+<h2 id="why-does-f2py-need-a-build-system">
+  Why does F2PY need a build system
+  <a class="heading-link" href="#why-does-f2py-need-a-build-system">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>Most of the libraries written for Python are actually written in C and wrapped by Python C API (for ex - NumPy, Pandas, TensorFlow). This <a href="https://realpython.com/build-python-c-extension-module/">RealPython article on how to build a Python C Extension Module</a> is a good place to start if you want to build your own Python library in C. But if your want to build a Python library using Fortran, <a href="https://numpy.org/doc/stable/f2py/index.html">F2PY</a> is a go-to tool.</p>
 <p>Python does not have any official supported API for Fortran. But then how does F2PY create Python extension modules from Fortran sources? The way it pull this off is by intelligently understanding the Fortran source code and generates a C wrapper for it. This C wrapper is in turn wrapped by Python C API and thus it can be understood and used by the Python interpreter.</p>
 <p>The C wrapper and fortran source files need to be compiled and linked by a compiler family to produce a shared module (<code>.so</code> file). Here is where the build systems come in. They compile and link the source code and F2PY generated C wrapper. We can use various build systems to do this job. <a href="https://numpy.org/doc/stable/f2py/buildtools/index.html#build-systems">F2PY&rsquo;s documentation</a> explains how to use F2PY with some famous build systems.</p>
-<h2 id="what-would-we-need-from-a-build-system-to-support-f2py">What would we need from a build system to support F2PY?</h2>
+<h2 id="what-would-we-need-from-a-build-system-to-support-f2py">
+  What would we need from a build system to support F2PY?
+  <a class="heading-link" href="#what-would-we-need-from-a-build-system-to-support-f2py">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>F2PY provides a great deal of freedom to the user of how they was to produce their build. If you go through its <a href="https://numpy.org/doc/stable/f2py/usage.html#building-a-module">module building manual</a>, you can find a ton of flags and variables you can set in the command line to create a build perfect for your needs. F2PY currently uses <a href="https://numpy.org/doc/stable/reference/distutils.html">NumPy&rsquo;s distutils</a> build system, which is highly flexible system for build Python libraries. F2PY leverages unmatched flexibility provided by <code>numpy.distutils</code> to provide user such choices.</p>
 <p>Unfortunately, <code>distutils</code> will be deprecated which means we have to find a new build system. <a href="https://cmake.org/">CMake</a> and <a href="https://mesonbuild.com/">Meson</a> are great contenders, and we choose Meson because it is simple, has great documentation, and provides us enough features to maintain F2PY&rsquo;s all core building functionalities. This <a href="https://github.com/scipy/scipy/issues/13615">github issue by Ralf Gommers</a> is an excellent source to get insights of why Meson is the better alternative for many Python libraries.</p>
-<h2 id="meson-as-f2pys-backend-build-system">Meson as F2PY&rsquo;s backend build system</h2>
+<h2 id="meson-as-f2pys-backend-build-system">
+  Meson as F2PY&rsquo;s backend build system
+  <a class="heading-link" href="#meson-as-f2pys-backend-build-system">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
 <p>For the next section, I recommend you go through this small article on <a href="https://numpy.org/doc/stable/f2py/buildtools/meson.html">how to use Meson with F2PY</a>. Like most other build systems, meson uses a config file: <a href="https://mesonbuild.com/Tutorial.html">meson.build</a> to understand how the user wants the project to be built. You can go through <a href="https://numpy.org/doc/stable/f2py/usage.html#building-a-module">Building a module doc</a> and see all the functionalities we need to cover with a build system. The table below explains what the NumPy&rsquo;s developer team as agreed upon now and how Meson will implement F2PY&rsquo;s building functionalities.</p>
 <table>
 <thead>
@@ -244,58 +275,58 @@
 </tbody>
 </table>
 <p>Suppose you enter the following command to produce an extension module from your fortran sources:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f2py source1.f source2.f object.o -c --fcompiler=gfortran --compiler=gcc <span style="font-weight:bold;font-style:italic">\
-</span><span style="font-weight:bold;font-style:italic"></span>	--inclue-paths /usr/local/ --f77flags --blah=0 --link-atlas --debug <span style="font-weight:bold;font-style:italic">\
-</span><span style="font-weight:bold;font-style:italic"></span>	--noarch -L/some/path/ -lsomelibrary -Ddebug -UFINT=12
-</code></pre></div><p>The equivalent <code>meson.build</code> file will be:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">project(<span style="font-style:italic">&#39;f2py_examples&#39;</span>, <span style="font-style:italic">&#39;c&#39;</span>,
-  version : <span style="font-style:italic">&#39;0.1&#39;</span>,
-  default_options : [<span style="font-style:italic">&#39;warning_level=2&#39;</span>])
-
-add_languages(<span style="font-style:italic">&#39;fortran&#39;</span>)
-
-py_mod = import(<span style="font-style:italic">&#39;python&#39;</span>)
-py3 = py_mod.find_installation(<span style="font-style:italic">&#39;python3&#39;</span>)
-py3_dep = py3.dependency()
-message(py3.path())
-message(py3.get_install_dir())
-
-incdir_numpy = run_command(py3,
-  [<span style="font-style:italic">&#39;-c&#39;</span>, <span style="font-style:italic">&#39;import os; os.chdir(&#34;..&#34;); import numpy; print(numpy.get_include())&#39;</span>],
-  check : true
-).stdout().strip()
-
-incdir_f2py = run_command(py3,
-    [<span style="font-style:italic">&#39;-c&#39;</span>, <span style="font-style:italic">&#39;import os; os.chdir(&#34;..&#34;); import numpy.f2py; print(numpy.f2py.get_include())&#39;</span>],
-    check : true
-).stdout().strip()
-
-add_global_arguments(<span style="font-style:italic">&#39;--blah=0&#39;</span>, language : <span style="font-style:italic">&#39;fortran&#39;</span>)
-
-fibby_source = custom_target(<span style="font-style:italic">&#39;fibbymodule.c&#39;</span>,
-                            input : [<span style="font-style:italic">&#39;source.f&#39;</span>], <span style="font-style:italic"># .f so no F90 wrappers</span>
-                            output : [<span style="font-style:italic">&#39;fibbymodule.c&#39;</span>, <span style="font-style:italic">&#39;fibby-f2pywrappers.f&#39;</span>],
-                            command : [ py3, <span style="font-style:italic">&#39;-m&#39;</span>, <span style="font-style:italic">&#39;numpy.f2py&#39;</span>, <span style="font-style:italic">&#39;@INPUT@&#39;</span>,
-                            <span style="font-style:italic">&#39;-m&#39;</span>, <span style="font-style:italic">&#39;fibby&#39;</span>, <span style="font-style:italic">&#39;--lower&#39;</span>])
-
-inc_np = include_directories(incdir_numpy, incdir_f2py)
-inc_dir1 = include_directories(<span style="font-style:italic">&#39;usr/local/&#39;</span>)
-
-dep1 = dependecy(<span style="font-style:italic">&#39;atlas&#39;</span>)
-
-py3.extension_module(<span style="font-style:italic">&#39;fibby&#39;</span>,
-           <span style="font-style:italic">&#39;source.f&#39;</span>,
-           fibby_source,
-           incdir_f2py+<span style="font-style:italic">&#39;/fortranobject.c&#39;</span>,
-		   <span style="font-style:italic">&#39;object.o&#39;</span>
-           include_directories: [inc_np, inc_dir1],
-           dependencies : py3_dep,
-           install : true,
-		   link_args : [<span style="font-style:italic">&#39;-L/some/path/&#39;</span>, <span style="font-style:italic">&#39;-lsomelibrary&#39;</span>],
-		   c_args : [<span style="font-style:italic">&#39;-Ddebug&#39;</span> <span style="font-style:italic">&#39;-UFINT=12&#39;</span>])
-</code></pre></div><p>This will be run as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FC=gfortran CC=gcc meson setup builddir -Ddebug=true -Doptimization=2
-</code></pre></div><p>Support for <code>--help-fcompiler</code> will be discussed later seperately. Its Meson implementation is rather difficult and requires more discussions. This covers our core operations provided by the F2PY CLI, and soon we will implement a program for generating meson file as described above.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>f2py source1.f source2.f object.o -c --fcompiler=gfortran --compiler=gcc <span style="font-weight:bold;font-style:italic">\
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold;font-style:italic"></span>	--inclue-paths /usr/local/ --f77flags --blah=0 --link-atlas --debug <span style="font-weight:bold;font-style:italic">\
+</span></span></span><span style="display:flex;"><span><span style="font-weight:bold;font-style:italic"></span>	--noarch -L/some/path/ -lsomelibrary -Ddebug -UFINT=12
+</span></span></code></pre></div><p>The equivalent <code>meson.build</code> file will be:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>project(<span style="font-style:italic">&#39;f2py_examples&#39;</span>, <span style="font-style:italic">&#39;c&#39;</span>,
+</span></span><span style="display:flex;"><span>  version : <span style="font-style:italic">&#39;0.1&#39;</span>,
+</span></span><span style="display:flex;"><span>  default_options : [<span style="font-style:italic">&#39;warning_level=2&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>add_languages(<span style="font-style:italic">&#39;fortran&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>py_mod = import(<span style="font-style:italic">&#39;python&#39;</span>)
+</span></span><span style="display:flex;"><span>py3 = py_mod.find_installation(<span style="font-style:italic">&#39;python3&#39;</span>)
+</span></span><span style="display:flex;"><span>py3_dep = py3.dependency()
+</span></span><span style="display:flex;"><span>message(py3.path())
+</span></span><span style="display:flex;"><span>message(py3.get_install_dir())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>incdir_numpy = run_command(py3,
+</span></span><span style="display:flex;"><span>  [<span style="font-style:italic">&#39;-c&#39;</span>, <span style="font-style:italic">&#39;import os; os.chdir(&#34;..&#34;); import numpy; print(numpy.get_include())&#39;</span>],
+</span></span><span style="display:flex;"><span>  check : true
+</span></span><span style="display:flex;"><span>).stdout().strip()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>incdir_f2py = run_command(py3,
+</span></span><span style="display:flex;"><span>    [<span style="font-style:italic">&#39;-c&#39;</span>, <span style="font-style:italic">&#39;import os; os.chdir(&#34;..&#34;); import numpy.f2py; print(numpy.f2py.get_include())&#39;</span>],
+</span></span><span style="display:flex;"><span>    check : true
+</span></span><span style="display:flex;"><span>).stdout().strip()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>add_global_arguments(<span style="font-style:italic">&#39;--blah=0&#39;</span>, language : <span style="font-style:italic">&#39;fortran&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fibby_source = custom_target(<span style="font-style:italic">&#39;fibbymodule.c&#39;</span>,
+</span></span><span style="display:flex;"><span>                            input : [<span style="font-style:italic">&#39;source.f&#39;</span>], <span style="font-style:italic"># .f so no F90 wrappers</span>
+</span></span><span style="display:flex;"><span>                            output : [<span style="font-style:italic">&#39;fibbymodule.c&#39;</span>, <span style="font-style:italic">&#39;fibby-f2pywrappers.f&#39;</span>],
+</span></span><span style="display:flex;"><span>                            command : [ py3, <span style="font-style:italic">&#39;-m&#39;</span>, <span style="font-style:italic">&#39;numpy.f2py&#39;</span>, <span style="font-style:italic">&#39;@INPUT@&#39;</span>,
+</span></span><span style="display:flex;"><span>                            <span style="font-style:italic">&#39;-m&#39;</span>, <span style="font-style:italic">&#39;fibby&#39;</span>, <span style="font-style:italic">&#39;--lower&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>inc_np = include_directories(incdir_numpy, incdir_f2py)
+</span></span><span style="display:flex;"><span>inc_dir1 = include_directories(<span style="font-style:italic">&#39;usr/local/&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dep1 = dependecy(<span style="font-style:italic">&#39;atlas&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>py3.extension_module(<span style="font-style:italic">&#39;fibby&#39;</span>,
+</span></span><span style="display:flex;"><span>           <span style="font-style:italic">&#39;source.f&#39;</span>,
+</span></span><span style="display:flex;"><span>           fibby_source,
+</span></span><span style="display:flex;"><span>           incdir_f2py+<span style="font-style:italic">&#39;/fortranobject.c&#39;</span>,
+</span></span><span style="display:flex;"><span>		   <span style="font-style:italic">&#39;object.o&#39;</span>
+</span></span><span style="display:flex;"><span>           include_directories: [inc_np, inc_dir1],
+</span></span><span style="display:flex;"><span>           dependencies : py3_dep,
+</span></span><span style="display:flex;"><span>           install : true,
+</span></span><span style="display:flex;"><span>		   link_args : [<span style="font-style:italic">&#39;-L/some/path/&#39;</span>, <span style="font-style:italic">&#39;-lsomelibrary&#39;</span>],
+</span></span><span style="display:flex;"><span>		   c_args : [<span style="font-style:italic">&#39;-Ddebug&#39;</span> <span style="font-style:italic">&#39;-UFINT=12&#39;</span>])
+</span></span></code></pre></div><p>This will be run as follows:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>FC=gfortran CC=gcc meson setup builddir -Ddebug=true -Doptimization=2
+</span></span></code></pre></div><p>Support for <code>--help-fcompiler</code> will be discussed later seperately. Its Meson implementation is rather difficult and requires more discussions. This covers our core operations provided by the F2PY CLI, and soon we will implement a program for generating meson file as described above.</p>
 
       </div>
 
@@ -317,6 +348,12 @@ py3.extension_module(<span style="font-style:italic">&#39;fibby&#39;</span>,
       <nav>
         <ul>
         
+        
+          
+            <li>
+              <a href="/posts/argparse-f2py/">Week 3 and 4: The new argparse F2PY</a>
+            </li>
+          
         
           
         
@@ -369,7 +406,7 @@ py3.extension_module(<span style="font-style:italic">&#39;fibby&#39;</span>,
 
     
       
-      <script src="/js/coder.min.8ddd58e878760346f67d56a123af8e6fd8dde1bc0903de1fc025ae84b4cf686f.js" integrity="sha256-jd1Y6Hh2A0b2fVahI6&#43;Ob9jd4bwJA94fwCWuhLTPaG8="></script>
+      <script src="/js/coder.min.9cf2dbf9b6989ef8eae941ffb4231c26d1dc026bca38f1d19fdba50177d8a9ac.js" integrity="sha256-nPLb&#43;baYnvjq6UH/tCMcJtHcAmvKOPHRn9ulAXfYqaw="></script>
     
 
     

@@ -6,11 +6,7 @@
     <description>Recent content in Programming on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 15 Jun 2022 21:34:26 +0530</lastBuildDate>
-    
-	<atom:link href="https://namamishanker.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 15 Jun 2022 21:34:26 +0530</lastBuildDate><atom:link href="https://namamishanker.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Week 1: F2PY Frontend</title>
       <link>https://namamishanker.github.io/posts/f2py_frontend/</link>
