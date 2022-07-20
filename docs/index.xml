@@ -13,8 +13,7 @@
       <pubDate>Thu, 14 Jul 2022 18:38:33 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/argparse-f2py/</guid>
-      <description>Week 3 and 4: Argparse F2PY The much awaited F2PY with an argparse frontend is here. It is in review as I write this blog but if you are feeling too excited and can&amp;rsquo;t wait use it, you can clone my fork of NumPy at f2py_front branch and install this experimental NumPy version using these instructions.(Of course I am joking, no one gets excited over F2PY)
-Lets dive into the changes that have taken place:-</description>
+      <description>Week 3 and 4: Argparse F2PY The much awaited F2PY with an argparse frontend is here. It is in review as I write this blog but if you are feeling adventurous and can&amp;rsquo;t wait use it, you can clone my fork of NumPy and checkout the f2py_front branch. Installation of this experimental NumPy version are detailed in these instructions.(Of course I am joking, no one who gets excited over F2PY builds NumPy)</description>
     </item>
     
     <item>
@@ -65,6 +64,18 @@ F2PY F2PY is an open-source utilty tool that provides an easy connection between
       <guid>https://namamishanker.github.io/posts/scipy_fortran_f2py/</guid>
       <description>Numpy and Scipy are industry leading Python libraries for fast numerical computation, providing speed and accuracy matching MATLAB and highly optimized low-level numerical computation libraries. In this blog I&amp;rsquo;ll explain to you how they work and how can you create your own superfast Python library.
 SciPy The name SciPy is very well-known in the scientific computation industry. Every engineer, researcher, teacher or student who has used Python has used Scipy at least once or more in their career.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://namamishanker.github.io/contact/</link>
+      <pubDate>Sat, 19 Mar 2022 15:09:52 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/contact/</guid>
+      <description>LinkedIn: https://www.linkedin.com/in/namamishanker/
+GitHub: https://github.com/NamamiShanker
+Twitter: https://twitter.com/namami_shanker
+Email: namami2011@gmail.com</description>
     </item>
     
     <item>
