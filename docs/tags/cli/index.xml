@@ -31,5 +31,15 @@ Introduction F2PY is a command line tool that provides easy connection between F
 What did I do this week? I am so happy to say that I have completed a working and functioning argparse frontend for F2PY.</description>
     </item>
     
+    <item>
+      <title>Week 6: Continuing working on the frontend argparse</title>
+      <link>https://namamishanker.github.io/posts/f2py_pr_review/</link>
+      <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/f2py_pr_review/</guid>
+      <description>Week 6: Continuing working on the frontend argparse What did I do this week? I implemented some changes suggested by reviewers on my draft PR.
+Firstly, I added typing support to the functions I have made. Therefore, currently: f2pyarg.py, service.py, utils.py have typing support. Initially I had added typing library for type annotations. But Bas Van Beek suggested to replace them with buitlins type annotations. These are not currently supported in Python versions below 3.</description>
+    </item>
+    
   </channel>
 </rss>

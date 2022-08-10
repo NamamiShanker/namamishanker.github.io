@@ -9,31 +9,31 @@
     
 
     <meta name="author" content="Namami Shanker">
-    <meta name="description" content="Week 5: Finishing with F2PY&rsquo;s new frontend This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-
-What did I do this week? I am so happy to say that I have completed a working and functioning argparse frontend for F2PY.">
+    <meta name="description" content="Week 6: Continuing working on the frontend argparse What did I do this week? I implemented some changes suggested by reviewers on my draft PR.
+Firstly, I added typing support to the functions I have made. Therefore, currently: f2pyarg.py, service.py, utils.py have typing support. Initially I had added typing library for type annotations. But Bas Van Beek suggested to replace them with buitlins type annotations. These are not currently supported in Python versions below 3.">
     <meta name="keywords" content="blog,developer,personal">
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Week 5: Finishing with F2PY&#39;s new frontend"/>
-<meta name="twitter:description" content="Week 5: Finishing with F2PY&rsquo;s new frontend This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-
-What did I do this week? I am so happy to say that I have completed a working and functioning argparse frontend for F2PY."/>
+<meta name="twitter:title" content="Week 6: Continuing working on the frontend argparse"/>
+<meta name="twitter:description" content="Week 6: Continuing working on the frontend argparse What did I do this week? I implemented some changes suggested by reviewers on my draft PR.
+Firstly, I added typing support to the functions I have made. Therefore, currently: f2pyarg.py, service.py, utils.py have typing support. Initially I had added typing library for type annotations. But Bas Van Beek suggested to replace them with buitlins type annotations. These are not currently supported in Python versions below 3."/>
 
-    <meta property="og:title" content="Week 5: Finishing with F2PY&#39;s new frontend" />
-<meta property="og:description" content="Week 5: Finishing with F2PY&rsquo;s new frontend This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-
-What did I do this week? I am so happy to say that I have completed a working and functioning argparse frontend for F2PY." />
+    <meta property="og:title" content="Week 6: Continuing working on the frontend argparse" />
+<meta property="og:description" content="Week 6: Continuing working on the frontend argparse What did I do this week? I implemented some changes suggested by reviewers on my draft PR.
+Firstly, I added typing support to the functions I have made. Therefore, currently: f2pyarg.py, service.py, utils.py have typing support. Initially I had added typing library for type annotations. But Bas Van Beek suggested to replace them with buitlins type annotations. These are not currently supported in Python versions below 3." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://namamishanker.github.io/posts/finishing_f2py_frontend/" />
+<meta property="og:url" content="https://namamishanker.github.io/posts/f2py_pr_review/" />
 <meta property="article:published_time" content="2022-06-15T21:34:26+05:30" />
 <meta property="article:modified_time" content="2022-06-15T21:34:26+05:30" />
 
 
 
     <title>
-  Week 5: Finishing with F2PY&#39;s new frontend · #!bin/namami
+  Week 6: Continuing working on the frontend argparse · #!bin/namami
 </title>
 
     
-      <link rel="canonical" href="https://namamishanker.github.io/posts/finishing_f2py_frontend/">
+      <link rel="canonical" href="https://namamishanker.github.io/posts/f2py_pr_review/">
     
 
     <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
@@ -121,8 +121,8 @@ What did I do this week? I am so happy to say that I have completed a working an
       <header>
         <div class="post-title">
           <h1 class="title">
-            <a class="title-link" href="https://namamishanker.github.io/posts/finishing_f2py_frontend/">
-              Week 5: Finishing with F2PY&#39;s new frontend
+            <a class="title-link" href="https://namamishanker.github.io/posts/f2py_pr_review/">
+              Week 6: Continuing working on the frontend argparse
             </a>
           </h1>
         </div>
@@ -168,28 +168,15 @@ What did I do this week? I am so happy to say that I have completed a working an
 
       <div>
         
-        <h1 id="week-5-finishing-with-f2pys-new-frontend">Week 5: Finishing with F2PY&rsquo;s new frontend</h1>
-<p>This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-</p>
+        <h1 id="week-6-continuing-working-on-the-frontend-argparse">Week 6: Continuing working on the frontend argparse</h1>
 <h3 id="what-did-i-do-this-week">What did I do this week?</h3>
-<p>I am so happy to say that I have completed a working and functioning argparse frontend for F2PY. If you had read my last week&rsquo;s post, I had said that I still had to debug and implement a few changes for F2PY.</p>
-<p>Specifically:-</p>
-<ol>
-<li>F2PY&rsquo;s compilation tests were failing, because there were some bug in &ndash;f2cmap flag.</li>
-<li>F2PY would not compile .pyf.src files.</li>
-<li>I forgot to add version mentioning flag.</li>
-</ol>
-<p>I have fixed all the bugs and updated my one and only draft PR: <a href="https://github.com/numpy/numpy/pull/21923">https://github.com/numpy/numpy/pull/21923</a></p>
-<p>All the tests are working correctly and the new f2pyarg should work exactly as f2py2e used to work. Also I found a few bugs that I will report and add fix for. These bugs are:</p>
-<ol>
-<li>No test for verifying F2PY will work with .pyf.src files.</li>
-<li>F2PY&rsquo;s test_kind test fails on Max OSX M1 chip.</li>
-</ol>
-<p>Also, Rohit and I decided to drop one of our original goals. Before GSoC started we thought it would be a good idea to replace the current class based tests of F2PY to modern fixtures based tests. But we dropped it as the class based structure was performing very well, and the classes were responsible for compiling modules for testing. To get a better understanding of the F2PY&rsquo;s test suites structure and working I recommend you this documentation page: <a href="https://numpy.org/devdocs/f2py/f2py-testing.html">F2PY&rsquo;s test suite</a></p>
-<h3 id="what-will-i-do-the-next-week">What will I do the next week?</h3>
-<p>I need to add some documentation changes and a release note for the changes have taken place. That&rsquo;s probably all I need to do for the next week, if another bug doesn&rsquo;t pop up.</p>
+<p>I implemented some changes suggested by reviewers on my <a href="https://github.com/numpy/numpy/pull/21923">draft PR</a>.</p>
+<p>Firstly, I added typing support to the functions I have made. Therefore, currently: <code>f2pyarg.py</code>, <code>service.py</code>, <code>utils.py</code> have typing support. Initially I had added typing library for type annotations. But <a href="https://github.com/numpy/numpy/pull/21923#discussion_r914597755">Bas Van Beek</a> suggested to replace them with buitlins type annotations. These are not currently supported in Python versions below 3.9, but can be used by <code>from __future__ import annotations</code> statement. The <code>__future__</code> module is somewhat unique in that import therefrom enable behaviours that will only become default in future python versions. Older examples of this include the print functions and with statement, but a more recent addition is the postponed evaluation of annotations <a href="https://peps.python.org/pep-0563/#abstract">(PEP 563)</a>, which implicitly stringifies all annotations during runtime (e.g. a: int automatically becomes a: &ldquo;int&rdquo;).</p>
+<p>However, for Any type annotation I would still need to rely on typing module. Also, the <code>Optional</code> type annotation can also be replaced by builtins by piping the type with <code>None</code> keyword. (e.g. arr: Optional[list] can be replaced by arr: list | None). The tests work fine with the changes and the frontend looks more complete. The mid evaluation starts from the next week and I would need to present the changes to writers of F2PY. I hope my work is ready.</p>
+<h3 id="what-will-i-do-next-week">What will I do next week?</h3>
+<p>I will fill out the mid evaluation form, and make changes according to the review.</p>
 <h3 id="did-i-get-stuck-anywhere">Did I get stuck anywhere?</h3>
-<p>No, this week was comparatively a smooth sailing. I had already built the framework last week and, all I needed to do was to fix the bugs.</p>
-<p>That&rsquo;s all my friends.</p>
+<p>No, I mostly applied changes requested in the review. These were mostly clear requests with helpful reviewers who clarified any doubts I had.</p>
 
       </div>
 
@@ -231,11 +218,11 @@ What did I do this week? I am so happy to say that I have completed a working an
           
         
           
-        
-          
             <li>
-              <a href="/posts/f2py_pr_review/">Week 6: Continuing working on the frontend argparse</a>
+              <a href="/posts/finishing_f2py_frontend/">Week 5: Finishing with F2PY&#39;s new frontend</a>
             </li>
+          
+        
           
         
           
