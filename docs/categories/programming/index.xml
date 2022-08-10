@@ -6,10 +6,30 @@
     <description>Recent content in Programming on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 15 Jun 2022 21:34:26 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 27 Jul 2022 21:34:26 +0530</lastBuildDate>
     
 	<atom:link href="https://namamishanker.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Week 6: Continuing working on the frontend argparse</title>
+      <link>https://namamishanker.github.io/posts/f2py_pr_review/</link>
+      <pubDate>Wed, 27 Jul 2022 21:34:26 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/f2py_pr_review/</guid>
+      <description>Week 6: Continuing working on the frontend argparse What did I do this week? I implemented some changes suggested by reviewers on my draft PR.
+Firstly, I added typing support to the functions I have made. Therefore, currently: f2pyarg.py, service.py, utils.py have typing support. Initially I had added typing library for type annotations. But Bas Van Beek suggested to replace them with buitlins type annotations. These are not currently supported in Python versions below 3.</description>
+    </item>
+    
+    <item>
+      <title>Week 5: Finishing with F2PY&#39;s new frontend</title>
+      <link>https://namamishanker.github.io/posts/finishing_f2py_frontend/</link>
+      <pubDate>Thu, 21 Jul 2022 21:34:26 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/finishing_f2py_frontend/</guid>
+      <description>Week 5: Finishing with F2PY&amp;rsquo;s new frontend This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&amp;rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-
+What did I do this week? I am so happy to say that I have completed a working and functioning argparse frontend for F2PY.</description>
+    </item>
     
     <item>
       <title>Week 1: F2PY Frontend</title>
@@ -19,26 +39,6 @@
       <guid>https://namamishanker.github.io/posts/f2py_frontend/</guid>
       <description>F2PY frontend: The Old and the New We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
 Introduction F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.</description>
-    </item>
-    
-    <item>
-      <title>Week 5: Finishing with F2PY&#39;s new frontend</title>
-      <link>https://namamishanker.github.io/posts/finishing_f2py_frontend/</link>
-      <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
-      
-      <guid>https://namamishanker.github.io/posts/finishing_f2py_frontend/</guid>
-      <description>Week 5: Finishing with F2PY&amp;rsquo;s new frontend This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&amp;rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-
-What did I do this week? I am so happy to say that I have completed a working and functioning argparse frontend for F2PY.</description>
-    </item>
-    
-    <item>
-      <title>Week 6: Continuing working on the frontend argparse</title>
-      <link>https://namamishanker.github.io/posts/f2py_pr_review/</link>
-      <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
-      
-      <guid>https://namamishanker.github.io/posts/f2py_pr_review/</guid>
-      <description>Week 6: Continuing working on the frontend argparse What did I do this week? I implemented some changes suggested by reviewers on my draft PR.
-Firstly, I added typing support to the functions I have made. Therefore, currently: f2pyarg.py, service.py, utils.py have typing support. Initially I had added typing library for type annotations. But Bas Van Beek suggested to replace them with buitlins type annotations. These are not currently supported in Python versions below 3.</description>
     </item>
     
     <item>
