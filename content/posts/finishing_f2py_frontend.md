@@ -1,6 +1,6 @@
 ---
 title: "Week 5: Finishing with F2PY's new frontend"
-date: 2022-06-15T21:34:26+05:30
+date: 2022-07-21T21:34:26+05:30
 draft: false
 slug : ""
 authors : ["Namami Shanker"]
