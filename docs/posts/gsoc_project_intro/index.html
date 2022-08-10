@@ -19,10 +19,9 @@
     <meta property="og:title" content="GSoC&#39;22 project introduction and tentative plan" />
 <meta property="og:description" content="GSoC&#39;22 Project Introduction and tentative plan" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://namamishanker.github.io/posts/gsoc_project_intro/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://namamishanker.github.io/posts/gsoc_project_intro/" />
 <meta property="article:published_time" content="2022-05-30T00:56:39+05:30" />
 <meta property="article:modified_time" content="2022-05-30T00:56:39+05:30" />
-<meta property="og:see_also" content="https://namamishanker.github.io/posts/argparse-f2py/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py-meson-backend/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py_frontend/" />
 
 
 
@@ -39,7 +38,7 @@
     
       
       
-      <link rel="stylesheet" href="/css/coder.min.d9fddbffe6f27e69985dc5fe0471cdb0e57fbf4775714bc3d847accb08f4a1f6.css" integrity="sha256-2f3b/&#43;byfmmYXcX&#43;BHHNsOV/v0d1cUvD2Eesywj0ofY=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="/css/coder.min.843ee18d510f7cb1bb49110db117b99ea65489c095d620a5d79ea71693478e77.css" integrity="sha256-hD7hjVEPfLG7SRENsRe5nqZUicCV1iCl156nFpNHjnc=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -62,7 +61,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
-    <meta name="generator" content="Hugo 0.101.0" />
+    <meta name="generator" content="Hugo 0.68.3" />
   </head>
 
   
@@ -167,55 +166,20 @@
       <div>
         
         <p>I applied for Google Summer of Code 2022 to work with NumPy&rsquo;s F2PY maintainence team and improve F2PY under Python Software Foundation. Breifly said, F2PY is a CLI that provides an easy connection between Python and Fortran languagues. I have previously dicussed F2PY on my website on the topics <a href="https://namamishanker.github.io/posts/scipy_fortran_f2py.md">Scipy, Fortran and F2PY</a> and <a href="https://namamishanker.github.io/posts/f2py_tests.md">F2PY tests</a>.</p>
-<p>During my time of application, F2PY&rsquo;s frontend was a handwritten command line parser with handwritten interfacing. The backend compilation was also being done by <code>numpy.distutils</code> with is set for deprecation. A project idea was raised by Mr. Rohit Goswami from F2PY&rsquo;s maintainence team to modernise the frontend with <code>argparse</code> and replace the backend with <code>meson</code> which can be found on <a href="https://github.com/scipy/scipy/wiki/GSoC-2022-project-ideas">Scipy&rsquo;s GSoC'22 idea list</a>.</p>
-<p>This first idea in this idea list is precisely what I will be working on this summer. A detailed description of my proposal can be found at <a href="https://summerofcode.withgoogle.com/proposals/details/kirhPArq">GSoC'22 website</a>. Breifly, I will reimplement the frontend of F2PY with argparse library during the first half (which lasts till July end) of GSoC'22. During the second half (during August), I will be working on the backend of F2PY with meson. I also plan on modernising the test suite of F2PY with <code>pytest</code> and provide some critical developer&rsquo;s guide/documentation for F2PY.</p>
+<p>During my time of application, F2PY&rsquo;s frontend was a handwritten command line parser with handwritten interfacing. The backend compilation was also being done by <code>numpy.distutils</code> with is set for deprecation. A project idea was raised by Mr. Rohit Goswami from F2PY&rsquo;s maintainence team to modernise the frontend with <code>argparse</code> and replace the backend with <code>meson</code> which can be found on <a href="https://github.com/scipy/scipy/wiki/GSoC-2022-project-ideas">Scipy&rsquo;s GSoC&rsquo;22 idea list</a>.</p>
+<p>This first idea in this idea list is precisely what I will be working on this summer. A detailed description of my proposal can be found at <a href="https://summerofcode.withgoogle.com/proposals/details/kirhPArq">GSoC&rsquo;22 website</a>. Breifly, I will reimplement the frontend of F2PY with argparse library during the first half (which lasts till July end) of GSoC&rsquo;22. During the second half (during August), I will be working on the backend of F2PY with meson. I also plan on modernising the test suite of F2PY with <code>pytest</code> and provide some critical developer&rsquo;s guide/documentation for F2PY.</p>
 <p>I will post my weekly updates on this website regarding my progress on this project. A detailed tentative timeline of the action plan is given below. I recommend a thorough read of the proposal before starting. I will however give a brief overview of the project and the plan.</p>
-<h4 id="project-title---restructuring-the-f2py-frontend-and-replacing-the-build-system">
-  Project title - Restructuring the F2PY frontend and replacing the build system
-  <a class="heading-link" href="#project-title---restructuring-the-f2py-frontend-and-replacing-the-build-system">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h4>
-<h2 id="predesign">
-  Predesign
-  <a class="heading-link" href="#predesign">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h2>
-<h3 id="cli-design">
-  CLI Design
-  <a class="heading-link" href="#cli-design">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h3>
+<h4 id="project-title---restructuring-the-f2py-frontend-and-replacing-the-build-system">Project title - Restructuring the F2PY frontend and replacing the build system</h4>
+<h2 id="predesign">Predesign</h2>
+<h3 id="cli-design">CLI Design</h3>
 <p>F2PY uses <a href="https://github.com/HaoZeke/numpy/blob/f2py2eTests/numpy/f2py/f2py2e.py">f2py2e.py</a> as a CLI interface to parse user input. <a href="https://github.com/HaoZeke/numpy/blob/argparse_f2py/numpy/f2py/f2pyarg.py">f2pyarg.py</a> is an ongoing re-implementation of this CLI using the “argparse” module, but it needs to be completed. I intend to complete this rewrite and provide a modernised, developer-friendly CLI. Additionally, I plan to deliver developer-guide documentation and a test suite covering the CLI.</p>
-<h3 id="test-suite-design">
-  Test suite design
-  <a class="heading-link" href="#test-suite-design">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h3>
+<h3 id="test-suite-design">Test suite design</h3>
 <p>F2PY&rsquo;s current test suite predates “pytest” and does not use fixtures. I shall work on refactoring the existing test suite, using pytest features such as fixtures, setups and tear-downs.</p>
-<h3 id="backend-design">
-  Backend design
-  <a class="heading-link" href="#backend-design">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h3>
+<h3 id="backend-design">Backend design</h3>
 <p>F2PY currently uses “np.distutils” for compiling generated C files. Since it is to be deprecated, I intend to work on the addition of a flag that will switch the build backend to Meson for
 F2Py modules. As discussed with the NumPy developer community and noted in the documentation, the goal is to transition gradually. F2PY will support both “np.distutils” and “meson” building options for testing, after which the former can be removed completely.</p>
-<h2 id="tentative-project-timeline">
-  Tentative project timeline
-  <a class="heading-link" href="#tentative-project-timeline">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h2>
-<h4 id="week-1---2-june-13--june-25">
-  Week 1 - 2 (June 13 – June 25)
-  <a class="heading-link" href="#week-1---2-june-13--june-25">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h4>
+<h2 id="tentative-project-timeline">Tentative project timeline</h2>
+<h4 id="week-1---2-june-13--june-25">Week 1 - 2 (June 13 – June 25)</h4>
 <ul>
 <li>Complete the existing f2pyarg.py. Implement missing functionalities like
 compile, link etc.</li>
@@ -223,86 +187,46 @@ compile, link etc.</li>
 <li>Discuss linking issues and to-be-deprecated flags with the mentor and
 implement solutions.</li>
 </ul>
-<h4 id="week-3---4-june-27--july-9">
-  Week 3 - 4 (June 27 – July 9)
-  <a class="heading-link" href="#week-3---4-june-27--july-9">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h4>
+<h4 id="week-3---4-june-27--july-9">Week 3 - 4 (June 27 – July 9)</h4>
 <ul>
 <li>Start working on existing test_f2py2e.py. Implement remaining tests,
 enhance existing failing tests and increase test coverage.</li>
 <li>Communicate with the mentor and maximise tests for f2py CLI.</li>
 </ul>
-<h4 id="week-5-july-11--july-16">
-  Week 5 (July 11 – July 16)
-  <a class="heading-link" href="#week-5-july-11--july-16">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h4>
+<h4 id="week-5-july-11--july-16">Week 5 (July 11 – July 16)</h4>
 <ul>
 <li>Add developer documentation for F2PY. Will contain files
 “f2py-developer.rst” and “f2py-test.rst” explaining file structure, the
 functionality of F2PY and its test suite, respectively.</li>
 <li>Start refactoring F2PY’s test suite in a modern fixture-based style.</li>
 </ul>
-<h4 id="week-6-july-18--july-23">
-  Week 6 (July 18 – July 23)
-  <a class="heading-link" href="#week-6-july-18--july-23">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h4>
+<h4 id="week-6-july-18--july-23">Week 6 (July 18 – July 23)</h4>
 <ul>
 <li>Finish refactoring the test suite.</li>
 <li>Fix bugs and update documents.</li>
 </ul>
-<h3 id="first-evaluation-period-july-25--july-29">
-  First evaluation period (July 25 – July 29)
-  <a class="heading-link" href="#first-evaluation-period-july-25--july-29">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h3>
+<h3 id="first-evaluation-period-july-25--july-29">First evaluation period (July 25 – July 29)</h3>
 <ul>
 <li>Deliver the implemented f2py CLI, implemented tests and developer
 guide.</li>
 <li>The F2PY CLI will now be more open to study and contributions by
 developers.</li>
 </ul>
-<h4 id="week-8---9-aug-1--aug-13">
-  Week 8 - 9 (Aug 1 – Aug 13)
-  <a class="heading-link" href="#week-8---9-aug-1--aug-13">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h4>
+<h4 id="week-8---9-aug-1--aug-13">Week 8 - 9 (Aug 1 – Aug 13)</h4>
 <ul>
 <li>Create a “meson.build.src” file.</li>
 <li>Update “run_compile” method to add meson building option.</li>
 </ul>
-<h4 id="week-10-aug-15--aug-20">
-  Week 10 (Aug 15 – Aug 20)
-  <a class="heading-link" href="#week-10-aug-15--aug-20">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h4>
+<h4 id="week-10-aug-15--aug-20">Week 10 (Aug 15 – Aug 20)</h4>
 <ul>
 <li>Fix bugs and update documentation.</li>
 </ul>
-<h4 id="week-11--12-aug-22--sept-4">
-  Week 11 -12 (Aug 22 – Sept 4)
-  <a class="heading-link" href="#week-11--12-aug-22--sept-4">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h4>
+<h4 id="week-11--12-aug-22--sept-4">Week 11 -12 (Aug 22 – Sept 4)</h4>
 <ul>
 <li>Pull request for code review and merge.</li>
 <li>Buffer time for any unexpected delays.</li>
 </ul>
-<h3 id="final-evaluation-period-sept-5---12">
-  Final evaluation period (Sept 5 - 12):
-  <a class="heading-link" href="#final-evaluation-period-sept-5---12">
-    <i class="fa fa-link" aria-hidden="true"></i>
-  </a>
-</h3>
+<h3 id="final-evaluation-period-sept-5---12">Final evaluation period (Sept 5 - 12):</h3>
 <ul>
 <li>Deliver the working implementation of the Meson build system for F2PY.</li>
 <li>Wrap up the project and submit the final evaluation of my mentor.</li>
@@ -348,6 +272,12 @@ developers.</li>
           
         
           
+            <li>
+              <a href="/posts/f2py_meson_backend/">Week 5: Finishing with F2PY&#39;s new frontend</a>
+            </li>
+          
+        
+          
         
         </ul>
       </nav>
@@ -386,7 +316,7 @@ developers.</li>
 
     
       
-      <script src="/js/coder.min.9cf2dbf9b6989ef8eae941ffb4231c26d1dc026bca38f1d19fdba50177d8a9ac.js" integrity="sha256-nPLb&#43;baYnvjq6UH/tCMcJtHcAmvKOPHRn9ulAXfYqaw="></script>
+      <script src="/js/coder.min.8ddd58e878760346f67d56a123af8e6fd8dde1bc0903de1fc025ae84b4cf686f.js" integrity="sha256-jd1Y6Hh2A0b2fVahI6&#43;Ob9jd4bwJA94fwCWuhLTPaG8="></script>
     
 
     

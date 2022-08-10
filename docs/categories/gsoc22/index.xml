@@ -6,7 +6,11 @@
     <description>Recent content in GSoC22 on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 30 May 2022 00:56:39 +0530</lastBuildDate><atom:link href="https://namamishanker.github.io/categories/gsoc22/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 May 2022 00:56:39 +0530</lastBuildDate>
+    
+	<atom:link href="https://namamishanker.github.io/categories/gsoc22/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>GSoC&#39;22 project introduction and tentative plan</title>
       <link>https://namamishanker.github.io/posts/gsoc_project_intro/</link>

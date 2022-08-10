@@ -6,7 +6,11 @@
     <description>Recent content in Testing on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Apr 2022 10:22:28 +0530</lastBuildDate><atom:link href="https://namamishanker.github.io/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Apr 2022 10:22:28 +0530</lastBuildDate>
+    
+	<atom:link href="https://namamishanker.github.io/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>F2PY Tests</title>
       <link>https://namamishanker.github.io/posts/f2py_tests/</link>
