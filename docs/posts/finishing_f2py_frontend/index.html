@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+
+    
+
+    <meta name="author" content="Namami Shanker">
+    <meta name="description" content="Week 5: Finishing with F2PY&rsquo;s new frontend This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-
+What did I do this week? I am so happy to say that I have completed a working and functioning argparse frontend for F2PY.">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Week 5: Finishing with F2PY&#39;s new frontend"/>
+<meta name="twitter:description" content="Week 5: Finishing with F2PY&rsquo;s new frontend This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-
+What did I do this week? I am so happy to say that I have completed a working and functioning argparse frontend for F2PY."/>
+
+    <meta property="og:title" content="Week 5: Finishing with F2PY&#39;s new frontend" />
+<meta property="og:description" content="Week 5: Finishing with F2PY&rsquo;s new frontend This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-
+What did I do this week? I am so happy to say that I have completed a working and functioning argparse frontend for F2PY." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://namamishanker.github.io/posts/finishing_f2py_frontend/" />
+<meta property="article:published_time" content="2022-06-15T21:34:26+05:30" />
+<meta property="article:modified_time" content="2022-06-15T21:34:26+05:30" />
+
+
+
+    <title>
+  Week 5: Finishing with F2PY&#39;s new frontend · #!bin/namami
+</title>
+
+    
+      <link rel="canonical" href="https://namamishanker.github.io/posts/finishing_f2py_frontend/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.843ee18d510f7cb1bb49110db117b99ea65489c095d620a5d79ea71693478e77.css" integrity="sha256-hD7hjVEPfLG7SRENsRe5nqZUicCV1iCl156nFpNHjnc=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.fa6271f4724e2309c4c68701efc90f51b213501a87d51c8d16c784a943f151c8.css" integrity="sha256-&#43;mJx9HJOIwnExocB78kPUbITUBqH1RyNFseEqUPxUcg=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.68.3" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      #!bin/namami
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://namamishanker.github.io/posts/finishing_f2py_frontend/">
+              Week 5: Finishing with F2PY&#39;s new frontend
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2022-06-15T21:34:26&#43;05:30">
+                June 15, 2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa fa-user" aria-hidden="true"></i>
+    <a href="/authors/namami-shanker/">Namami Shanker</a></div>
+
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/f2py/">F2PY</a>
+      <span class="separator">•</span>
+    <a href="/categories/programming/">Programming</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/f2py/">F2PY</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/argparse/">argparse</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/cli/">cli</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="week-5-finishing-with-f2pys-new-frontend">Week 5: Finishing with F2PY&rsquo;s new frontend</h1>
+<p>This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-</p>
+<h3 id="what-did-i-do-this-week">What did I do this week?</h3>
+<p>I am so happy to say that I have completed a working and functioning argparse frontend for F2PY. If you had read my last week&rsquo;s post, I had said that I still had to debug and implement a few changes for F2PY.</p>
+<p>Specifically:-</p>
+<ol>
+<li>F2PY&rsquo;s compilation tests were failing, because there were some bug in &ndash;f2cmap flag.</li>
+<li>F2PY would not compile .pyf.src files.</li>
+<li>I forgot to add version mentioning flag.</li>
+</ol>
+<p>I have fixed all the bugs and updated my one and only draft PR: <a href="https://github.com/numpy/numpy/pull/21923">https://github.com/numpy/numpy/pull/21923</a></p>
+<p>All the tests are working correctly and the new f2pyarg should work exactly as f2py2e used to work. Also I found a few bugs that I will report and add fix for. These bugs are:</p>
+<ol>
+<li>No test for verifying F2PY will work with .pyf.src files.</li>
+<li>F2PY&rsquo;s test_kind test fails on Max OSX M1 chip.</li>
+</ol>
+<p>Also, Rohit and I decided to drop one of our original goals. Before GSoC started we thought it would be a good idea to replace the current class based tests of F2PY to modern fixtures based tests. But we dropped it as the class based structure was performing very well, and the classes were responsible for compiling modules for testing. To get a better understanding of the F2PY&rsquo;s test suites structure and working I recommend you this documentation page: <a href="https://numpy.org/devdocs/f2py/f2py-testing.html">F2PY&rsquo;s test suite</a></p>
+<h3 id="what-will-i-do-the-next-week">What will I do the next week?</h3>
+<p>I need to add some documentation changes and a release note for the changes have taken place. That&rsquo;s probably all I need to do for the next week, if another bug doesn&rsquo;t pop up.</p>
+<h3 id="did-i-get-stuck-anywhere">Did I get stuck anywhere?</h3>
+<p>No, this week was comparatively a smooth sailing. I had already built the framework last week and, all I needed to do was to fix the bugs.</p>
+<p>That&rsquo;s all my friends.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3 id="see-also-in-gsoc22">
+        See also in GSoC&#39;22
+        <a class="heading-link" href="#see-also-in-gsoc22">
+          <i class="fa fa-link" aria-hidden="true"></i>
+        </a>
+      </h3>
+      <nav>
+        <ul>
+        
+        
+          
+            <li>
+              <a href="/posts/argparse-f2py/">Week 3 and 4: The new argparse F2PY</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/f2py-meson-backend/">Week 2: Moving F2PY to Meson build system</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="/posts/f2py_frontend/">Week 1: F2PY Frontend</a>
+            </li>
+          
+        
+          
+        
+          
+            <li>
+              <a href="/posts/gsoc_project_intro/">GSoC&#39;22 project introduction and tentative plan</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2022
+     Namami Shanker 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.8ddd58e878760346f67d56a123af8e6fd8dde1bc0903de1fc025ae84b4cf686f.js" integrity="sha256-jd1Y6Hh2A0b2fVahI6&#43;Ob9jd4bwJA94fwCWuhLTPaG8="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>
