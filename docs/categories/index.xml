@@ -6,7 +6,7 @@
     <description>Recent content in Categories on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 27 Jul 2022 21:34:26 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 20 Aug 2022 13:26:08 +0530</lastBuildDate>
     
 	<atom:link href="https://namamishanker.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,16 +14,25 @@
     <item>
       <title>F2PY</title>
       <link>https://namamishanker.github.io/categories/f2py/</link>
-      <pubDate>Wed, 27 Jul 2022 21:34:26 +0530</pubDate>
+      <pubDate>Sat, 20 Aug 2022 13:26:08 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/categories/f2py/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Meson</title>
+      <link>https://namamishanker.github.io/categories/meson/</link>
+      <pubDate>Sat, 20 Aug 2022 13:26:08 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/categories/meson/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Programming</title>
       <link>https://namamishanker.github.io/categories/programming/</link>
-      <pubDate>Wed, 27 Jul 2022 21:34:26 +0530</pubDate>
+      <pubDate>Sat, 20 Aug 2022 13:26:08 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/categories/programming/</guid>
       <description></description>

@@ -6,7 +6,7 @@
     <description>Recent content in Tags on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 27 Jul 2022 21:34:26 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 20 Aug 2022 13:26:08 +0530</lastBuildDate>
     
 	<atom:link href="https://namamishanker.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>argparse</title>
       <link>https://namamishanker.github.io/tags/argparse/</link>
-      <pubDate>Wed, 27 Jul 2022 21:34:26 +0530</pubDate>
+      <pubDate>Sat, 20 Aug 2022 13:26:08 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/tags/argparse/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>cli</title>
       <link>https://namamishanker.github.io/tags/cli/</link>
-      <pubDate>Wed, 27 Jul 2022 21:34:26 +0530</pubDate>
+      <pubDate>Sat, 20 Aug 2022 13:26:08 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/tags/cli/</guid>
       <description></description>
@@ -32,9 +32,18 @@
     <item>
       <title>f2py</title>
       <link>https://namamishanker.github.io/tags/f2py/</link>
-      <pubDate>Wed, 27 Jul 2022 21:34:26 +0530</pubDate>
+      <pubDate>Sat, 20 Aug 2022 13:26:08 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/tags/f2py/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>meson</title>
+      <link>https://namamishanker.github.io/tags/meson/</link>
+      <pubDate>Sat, 20 Aug 2022 13:26:08 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/tags/meson/</guid>
       <description></description>
     </item>
     
@@ -62,15 +71,6 @@
       <pubDate>Tue, 28 Jun 2022 15:36:42 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/tags/build/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>meson</title>
-      <link>https://namamishanker.github.io/tags/meson/</link>
-      <pubDate>Tue, 28 Jun 2022 15:36:42 +0530</pubDate>
-      
-      <guid>https://namamishanker.github.io/tags/meson/</guid>
       <description></description>
     </item>
     

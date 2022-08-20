@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Meson on #!bin/namami</title>
+    <link>https://namamishanker.github.io/categories/meson/</link>
+    <description>Recent content in Meson on #!bin/namami</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 20 Aug 2022 13:26:08 +0530</lastBuildDate>
+    
+	<atom:link href="https://namamishanker.github.io/categories/meson/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Week 8-9: Meson backend for F2PY</title>
+      <link>https://namamishanker.github.io/posts/f2py_meson_backend/</link>
+      <pubDate>Sat, 20 Aug 2022 13:26:08 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/f2py_meson_backend/</guid>
+      <description>Week 8-9: Meson backend for F2PY F2PY and its current status I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.</description>
+    </item>
+    
+  </channel>
+</rss>
