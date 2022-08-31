@@ -10,7 +10,7 @@ externalLink : ""
 series : ["GSoC'22"]
 ---
 
-# Week 8-9: Meson backend for F2PY
+# Week 8-9: Meson build system for F2PY
 
 ## F2PY and its current status
 
