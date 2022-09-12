@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = false
 date = 2022-09-12T19:22:20+05:30
 title = "GSoC'22 closing remarks and Work Report"
 description = ""
