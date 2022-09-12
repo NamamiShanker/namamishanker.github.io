@@ -3,12 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://namamishanker.github.io/tags/argparse/</loc>
-    <lastmod>2022-08-20T13:26:08+05:30</lastmod>
+    <loc>https://namamishanker.github.io/authors/</loc>
+    <lastmod>2022-09-12T19:22:20+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://namamishanker.github.io/authors/</loc>
+    <loc>https://namamishanker.github.io/tags/f2py/</loc>
+    <lastmod>2022-09-12T19:22:20+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/tags/gsoc22/</loc>
+    <lastmod>2022-09-12T19:22:20+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/series/gsoc22/</loc>
+    <lastmod>2022-09-12T19:22:20+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/posts/gsoc-closing-remarks/</loc>
+    <lastmod>2022-09-12T19:22:20+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/authors/namami-shanker/</loc>
+    <lastmod>2022-09-12T19:22:20+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/posts/</loc>
+    <lastmod>2022-09-12T19:22:20+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/series/</loc>
+    <lastmod>2022-09-12T19:22:20+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/tags/</loc>
+    <lastmod>2022-09-12T19:22:20+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://namamishanker.github.io/tags/argparse/</loc>
     <lastmod>2022-08-20T13:26:08+05:30</lastmod>
   </url>
   
@@ -28,16 +68,6 @@
   </url>
   
   <url>
-    <loc>https://namamishanker.github.io/tags/f2py/</loc>
-    <lastmod>2022-08-20T13:26:08+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/series/gsoc22/</loc>
-    <lastmod>2022-08-20T13:26:08+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://namamishanker.github.io/categories/meson/</loc>
     <lastmod>2022-08-20T13:26:08+05:30</lastmod>
   </url>
@@ -48,27 +78,7 @@
   </url>
   
   <url>
-    <loc>https://namamishanker.github.io/authors/namami-shanker/</loc>
-    <lastmod>2022-08-20T13:26:08+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/posts/</loc>
-    <lastmod>2022-08-20T13:26:08+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://namamishanker.github.io/categories/programming/</loc>
-    <lastmod>2022-08-20T13:26:08+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/series/</loc>
-    <lastmod>2022-08-20T13:26:08+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/</loc>
     <lastmod>2022-08-20T13:26:08+05:30</lastmod>
   </url>
   
@@ -124,11 +134,6 @@
   
   <url>
     <loc>https://namamishanker.github.io/posts/gsoc_project_intro/</loc>
-    <lastmod>2022-05-30T00:56:39+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://namamishanker.github.io/tags/gsoc22/</loc>
     <lastmod>2022-05-30T00:56:39+05:30</lastmod>
   </url>
   

@@ -6,10 +6,19 @@
     <description>Recent content in Posts on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Aug 2022 13:26:08 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 12 Sep 2022 19:22:20 +0530</lastBuildDate>
     
 	<atom:link href="https://namamishanker.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GSoC&#39;22 closing remarks and Work Report</title>
+      <link>https://namamishanker.github.io/posts/gsoc-closing-remarks/</link>
+      <pubDate>Mon, 12 Sep 2022 19:22:20 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/gsoc-closing-remarks/</guid>
+      <description>GSoC&amp;rsquo;22 Work Submission and closing remarks Closing remarks Participating in Google Summer of Code 2022 with NumPy was more than just contributing to a summer coding internship for me. I remember walking around my college hostel along with my friend during the first year of my engineering in 2019 discussing what do we want to achieve over the course of our undergraduate education. Back then too, I remember that my first wish ever, even before I knew what open sources was to participate in the Google Summer of Code.</description>
+    </item>
     
     <item>
       <title>Week 8-9: Meson backend for F2PY</title>
