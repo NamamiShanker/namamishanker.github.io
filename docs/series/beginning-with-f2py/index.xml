@@ -6,11 +6,7 @@
     <description>Recent content in Beginning with F2PY on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Apr 2022 10:22:28 +0530</lastBuildDate>
-    
-	<atom:link href="https://namamishanker.github.io/series/beginning-with-f2py/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 03 Apr 2022 10:22:28 +0530</lastBuildDate><atom:link href="https://namamishanker.github.io/series/beginning-with-f2py/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>F2PY Tests</title>
       <link>https://namamishanker.github.io/posts/f2py_tests/</link>
@@ -18,7 +14,7 @@
       
       <guid>https://namamishanker.github.io/posts/f2py_tests/</guid>
       <description>I have talked previously about building fast libraries for Python using Fortran. The key software that facilitates easy integration of Fortran code into Python is F2PY. The user can write fast Fortran code with F2PY specific comments and compile it using F2PY to produce a high-speed ready-to-use Python library.
-F2PY F2PY is an open-source utilty tool that provides an easy connection between Python and Fortran languages. It was written in the late 90s by Dr.</description>
+F2PY  Link to heading   F2PY is an open-source utilty tool that provides an easy connection between Python and Fortran languages.</description>
     </item>
     
     <item>
@@ -28,7 +24,7 @@ F2PY F2PY is an open-source utilty tool that provides an easy connection between
       
       <guid>https://namamishanker.github.io/posts/scipy_fortran_f2py/</guid>
       <description>Numpy and Scipy are industry leading Python libraries for fast numerical computation, providing speed and accuracy matching MATLAB and highly optimized low-level numerical computation libraries. In this blog I&amp;rsquo;ll explain to you how they work and how can you create your own superfast Python library.
-SciPy The name SciPy is very well-known in the scientific computation industry. Every engineer, researcher, teacher or student who has used Python has used Scipy at least once or more in their career.</description>
+SciPy  Link to heading   The name SciPy is very well-known in the scientific computation industry. Every engineer, researcher, teacher or student who has used Python has used Scipy at least once or more in their career.</description>
     </item>
     
   </channel>

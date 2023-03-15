@@ -22,9 +22,10 @@
 <meta property="og:title" content="Week 3 and 4: The new argparse F2PY" />
 <meta property="og:description" content="The new argparse F2PY is here" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://namamishanker.github.io/posts/argparse-f2py/" />
+<meta property="og:url" content="https://namamishanker.github.io/posts/argparse-f2py/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-14T18:38:33+05:30" />
 <meta property="article:modified_time" content="2022-07-14T18:38:33+05:30" />
+<meta property="og:see_also" content="https://namamishanker.github.io/posts/gsoc-closing-remarks/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py_meson_backend/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py_pr_review/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/finishing_f2py_frontend/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py-meson-backend/" />
 
 
 
@@ -38,7 +39,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/coder.min.15b270eb1a966a7719a357412326bfb0e6434421100578d4f4de680b5546bc79.css" integrity="sha256-FbJw6xqWancZo1dBIya/sOZDRCEQBXjU9N5oC1VGvHk=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="/css/coder.min.c4d7e93a158eda5a65b3df343745d2092a0a1e2170feeec909b8a89443903c6a.css" integrity="sha256-xNfpOhWO2lpls980N0XSCSoKHiFw/u7JCbiolEOQPGo=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -70,7 +71,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.68.3" />
+<meta name="generator" content="Hugo 0.92.2" />
 
 
 
@@ -179,11 +180,23 @@
 
       <div>
         
-        <h1 id="week-3-and-4-argparse-f2py">Week 3 and 4: Argparse F2PY</h1>
+        <h1 id="week-3-and-4-argparse-f2py">
+  Week 3 and 4: Argparse F2PY
+  <a class="heading-link" href="#week-3-and-4-argparse-f2py">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
 <p>The much awaited <a href="https://numpy.org/doc/stable/f2py/">F2PY</a> with an <a href="https://docs.python.org/3/library/argparse.html">argparse</a> frontend is here. It is in review as I write this blog but if you are feeling adventurous and can&rsquo;t wait use it, you can clone <a href="https://github.com/NamamiShanker/numpy/tree/f2py_front">my fork of NumPy and checkout the f2py_front branch</a>. Installation of this experimental NumPy version are detailed in  <a href="https://numpy.org/devdocs/user/building.html">these instructions</a>.(Of course I am joking, no one who gets excited over F2PY builds NumPy)</p>
 <p>Lets dive into the changes that have taken place:-</p>
-<h3 id="the-argparse-framework">The <code>argparse</code> framework</h3>
-<p>Python has really good command line parsing frameworks such as <a href="https://click.palletsprojects.com/en/8.1.x/">click</a>, <a href="https://rich.readthedocs.io/en/stable/introduction.html">Rich</a>, <a href="https://typer.tiangolo.com/">Typer</a>, and of course, the built-in <code>argparse</code> module. <code>argparse</code> isn&rsquo;t usually the first choice for a developer when it comes to adding CLIs. Many developers prefer <code>click</code> and <code>typer</code> for this purpose as they provide higher degrees of freedom and more polished interfaces for flags and arguments, autocompletion, and better code structure as compared to <code>argparse</code>'s rigid requirements and boiler plate such as handling <a href="https://docs.python.org/3/library/argparse.html">Namespace</a> with an <code>if-else</code> ladder and attaching correct functions.</p>
+<h3 id="the-argparse-framework">
+  The <code>argparse</code> framework
+  <a class="heading-link" href="#the-argparse-framework">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Python has really good command line parsing frameworks such as <a href="https://click.palletsprojects.com/en/8.1.x/">click</a>, <a href="https://rich.readthedocs.io/en/stable/introduction.html">Rich</a>, <a href="https://typer.tiangolo.com/">Typer</a>, and of course, the built-in <code>argparse</code> module. <code>argparse</code> isn&rsquo;t usually the first choice for a developer when it comes to adding CLIs. Many developers prefer <code>click</code> and <code>typer</code> for this purpose as they provide higher degrees of freedom and more polished interfaces for flags and arguments, autocompletion, and better code structure as compared to <code>argparse</code>&rsquo;s rigid requirements and boiler plate such as handling <a href="https://docs.python.org/3/library/argparse.html">Namespace</a> with an <code>if-else</code> ladder and attaching correct functions.</p>
 <p>However, when you are renovating a CLI from the early 2000s and need to maintain backward compatibility, there is only so much you can modernise in one go. Additionally, <code>numpy</code> does not wish to force users to have third-party dependencies. <code>argparse</code> provides us with enough features to implement all the features of F2PY&rsquo;s <code>sys.argv</code> based front-end. In fact, BECAUSE <code>argparse</code> forces user to handle Namespace, we were able to easily maintain the <code>numpy.distutils</code> compilation backwards compatibility. Moreover, the other projects would add heavy dependencies to NumPy for maintaining and using only a very small part of the codebase.</p>
 <div class="notice info">
   <div class="notice-title">
@@ -192,8 +205,14 @@
   <div class="notice-content">NumPy has <strong>zero</strong> external Python module dependencies, while more than 10,000 out of 390,000 python packages use NumPy</div>
 </div>
 
-<h3 id="f2pys-features">F2PY&rsquo;s features</h3>
-<p>So my GSoC mentor, <a href="https://github.com/HaoZeke">Mr (soon to be Dr) Rohit Goswami</a> started with building the frontend with <code>argparse</code> in <a href="https://github.com/numpy/numpy/compare/main...HaoZeke:numpy:argparse_f2py">October&rsquo;21</a>. I wasn&rsquo;t a part of this project until a little before GSoC this year. The goal was to modernise F2PY&rsquo;s command line parsing interface of F2PY - <a href="https://github.com/numpy/numpy/blob/main/numpy/f2py/f2py2e.py">f2py2e</a>.</p>
+<h3 id="f2pys-features">
+  F2PY&rsquo;s features
+  <a class="heading-link" href="#f2pys-features">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>So my GSoC mentor, <a href="https://github.com/HaoZeke">Mr (soon to be Dr) Rohit Goswami</a> started with building the frontend with <code>argparse</code> in <a href="https://github.com/numpy/numpy/compare/main...HaoZeke:numpy:argparse_f2py">October'21</a>. I wasn&rsquo;t a part of this project until a little before GSoC this year. The goal was to modernise F2PY&rsquo;s command line parsing interface of F2PY - <a href="https://github.com/numpy/numpy/blob/main/numpy/f2py/f2py2e.py">f2py2e</a>.</p>
 <p>Now, let me remind you of the major capabilities of F2PY:-</p>
 <ol>
 <li>Generating <a href="https://numpy.org/devdocs/f2py/signature-file.html">signature file</a> for user to tweak the interface of between Python and the library user will build with F2PY.</li>
@@ -201,31 +220,49 @@
 <li><a href="https://numpy.org/devdocs/f2py/buildtools/index.html">Building the python library</a>. Basically, the automated 2nd step where F2PY generates a C wrapper to a Fortran source (or a pyf) file and uses <code>numpy.distutils</code> for compilation and linking.</li>
 </ol>
 <p>All the 3 above steps make sense in a linear flow. <strong>Firstly</strong> you create signature file of your fortran code using</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f2py -m mypythonlib -h signature.pyf source.f 	<span style="font-style:italic"># signature.pyf generated</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f2py -m mypythonlib -h signature.pyf source.f 	<span style="font-style:italic"># signature.pyf generated</span>
 </code></pre></div><p>and make sure the interace is correct. <strong>Secondly</strong> you can generate a C wrapper using the created signature file,</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f2py -m mypythonlib signature.pyf 	<span style="font-style:italic"># Generate a mypythoblibmodule.c wrapper</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f2py -m mypythonlib signature.pyf 	<span style="font-style:italic"># Generate a mypythoblibmodule.c wrapper</span>
 </code></pre></div><p>but it is almost never required outside of debugging, unless the wrappers are to be explicitly modified and checked into version control. F2PY can reliably create the desired interface of the wrapper using your tweaked <code>.pyf</code> file. However, if you want to build your library using another build system, this C wrapper file is important. It needs to be bundled with other fotran sources and F2PY&rsquo;s internal C libaries which as described <a href="https://numpy.org/devdocs/f2py/buildtools/index.html">here</a>.
 <strong>Thirdly</strong> You will build your module using</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f2py -c -m mypythonlib signature.pyf source.f
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f2py -c -m mypythonlib signature.pyf source.f
 </code></pre></div><p>This will create your Python library shared object file, which you can import and use.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&gt;&gt;&gt; import mypythonlib
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&gt;&gt;&gt; import mypythonlib
 &gt;&gt;&gt; mypythonlib.sum([1, 2])
 3.0
-</code></pre></div><h3 id="how-didf2py2e-work">How did<code>f2py2e</code> work?</h3>
+</code></pre></div><h3 id="how-didf2py2e-work">
+  How did<code>f2py2e</code> work?
+  <a class="heading-link" href="#how-didf2py2e-work">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
 <p>If you read through <a href="https://github.com/numpy/numpy/blob/main/numpy/f2py/f2py2e.py">f2py2e</a>, you will find that it has two main functions - <a href="https://github.com/numpy/numpy/blob/cb28cd17d01a6a867517a3b8b3ea4fbb0370be10/numpy/f2py/f2py2e.py#L411">run_main()</a> for handling wrapper and signature file generation <a href="#f2pys-features">(Step 1 and 2)</a> and <a href="https://github.com/numpy/numpy/blob/cb28cd17d01a6a867517a3b8b3ea4fbb0370be10/numpy/f2py/f2py2e.py#L505">run_compile()</a> for building extension modules using <code>numpy.distutils</code><a href="#f2pys-features">(step 3)</a>. Now, the <code>f2py2e</code> command line parsing design was a product of its times. Both the <code>run_main()</code> and <code>run_compile()</code> functions have seperately implemented command line parsing in two different ways. Both use different default values of important information like the build directory and module name. <code>run_compile</code> runs the entire workflow by emulating what<code>run_main</code> does internally with <code>numpy.distutils</code>. <code>run_main</code> and <code>run_compile</code> are two divergent code-paths although they are parts of the same 3 step flow we discussed above.</p>
 <p>This design led to a lot of problems while we tried to maintain backwards compatibility with <code>numpy.distutils</code>. If you read my implementation <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L600">f2pyarg here</a>, you can see I am reconstructing command line arguments from Namespace because <code>distutils</code> needs it to call <code>f2py2e.run_main()</code>.</p>
 <p>Probably in a year, <code>numpy.distutils</code> will be deprecated, which means F2PY won&rsquo;t need to maintain the convoluted flow for building modules using <code>numpy.distutils</code>. F2PY is shifting to <a href="https://mesonbuild.com/">Meson</a>, and by the time distutils is deprecated F2PY will be fully supported by the <code>meson</code> build system.</p>
 <p>To read more about <code>f2py2e</code> you can visit my blog <a href="/posts/f2py_frontend">Week 1: F2PY Frontend</a>.</p>
-<h5 id="how-f2pyarg-does-it">How <code>f2pyarg</code> does it?</h5>
+<h5 id="how-f2pyarg-does-it">
+  How <code>f2pyarg</code> does it?
+  <a class="heading-link" href="#how-f2pyarg-does-it">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h5>
 <p><a href="https://github.com/NamamiShanker/numpy/blob/f2py_front/numpy/f2py/f2pyarg.py">f2pyarg</a> is the ongoing reimplementation of F2PY&rsquo;s frontend. I started working on it during GSoC after Rohit had created a basic layout by November last year. My plan was to split the bulky <code>f2py2e</code> into two files - <code>f2pyarg</code> for dealing with the parser which would connect to a <a href="https://github.com/NamamiShanker/numpy/blob/f2py_front/numpy/f2py/service.py">service.py file</a> responsible for dealing with F2PY internals. My goal here is to create a hierarchical file structure which can be further improved. This step seperate F2PY&rsquo;s functionalities with F2PY&rsquo;s parser. The user can now connect with user f2py functionalities by passing values instead of feeding command line arguments to a parser.</p>
-<p><code>f2pyarg.py</code>'s design is fairly straightforward and easy to understand. It has a main parser with 2 <a href="https://docs.python.org/3/library/argparse.html#argument-groups">argument groups</a> - (<a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L390">&ndash;hint-signature/-h</a> group and <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L409">-c</a> group). It has some helper functions to sanitize input arguments, and some command line flag reconstruction functions (ex. <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L600">get_f2py_flags_dist</a>, <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L636">get_fortran_compiler_flags</a>) necessary for building with <code>numpy.distutils</code>.</p>
+<p><code>f2pyarg.py</code>&rsquo;s design is fairly straightforward and easy to understand. It has a main parser with 2 <a href="https://docs.python.org/3/library/argparse.html#argument-groups">argument groups</a> - (<a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L390">&ndash;hint-signature/-h</a> group and <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L409">-c</a> group). It has some helper functions to sanitize input arguments, and some command line flag reconstruction functions (ex. <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L600">get_f2py_flags_dist</a>, <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L636">get_fortran_compiler_flags</a>) necessary for building with <code>numpy.distutils</code>.</p>
 <p>The <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L696">process_args</a> is the main argument handling part of the frontend. First we have to parse positional arguments (the file paths etc). I faced a lot of problem here in implementing <code>skip:</code> and <code>only:</code> flags of original CLI <code>f2py2e</code>. Basically, F2PY provides these flag for user to pass some functions as arguments s/he would like to omit or select. But <code>argparse</code> framework can&rsquo;t accept <code>skip:</code> or <code>only:</code> as flags, they need to start with a hyphen, like <code>--skip:</code>. So these flags and their arguments were being sent to the positional arugment list along with source files. <code>f2pyarg</code> therefore has to segregate <a href="https://github.com/NamamiShanker/numpy/blob/f2py_front/numpy/f2py/f2pyarg.py#L679-L694">this mixture of files and functions</a>.</p>
 <p>The files are then <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L704">segregated based on the extension</a>. The flow goes by <a href="https://github.com/NamamiShanker/numpy/blob/f2py_front/numpy/f2py/f2pyarg.py#L707-L709">sanitizing module name and signature file</a>, <a href="https://github.com/NamamiShanker/numpy/blob/f2py_front/numpy/f2py/f2pyarg.py#L711-L745">creating settings for F2PY&rsquo;s internal modules</a>. I want to improve this settings mechanism in the future. The current way of <a href="https://github.com/NamamiShanker/numpy/blob/f2py_front/numpy/f2py/f2pyarg.py#L711-L743">creating these large dictionaries</a> and passing them doesn&rsquo;t please me. If the user has chosen not to build the module right now (<code>-c</code> flag omitted), the <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/f2py/f2pyarg.py#L767">generate files</a> function simply creating signature file or wrapper.</p>
 <p>If the user wants to build and passes the <code>-c</code> flag, we build the module using <code>numpy.distutils</code>. Now, the new <code>f2pyarg</code> implements <code>numpy.distutils</code> module building mechaninism in a messy way too. It <a href="https://github.com/NamamiShanker/numpy/blob/f2py_front/numpy/f2py/f2pyarg.py#L600-L657">recreates the command line arguments</a> using the Namespace arguments, <code>numpy.distutils</code> <a href="https://github.com/NamamiShanker/numpy/blob/f388c96cec2c5ec0b2c17d54b7928c484eb01148/numpy/distutils/command/build_src.py#L542">internally calls <code>f2py2e</code></a> so we are still not free from it etc etc. But we couldn&rsquo;t improve it any further because of the time limitation. Furthermore, whatever new fancier implentation we make will be deprecated soon so its not worth it. We just cleaned up the original <code>run_compile</code> method as much as we could and stopped there to catch our breathes. My next part of the project, implementing backend build system with Meson will probably make everything much cleaner and maintainable.</p>
 <p>If you are a seasoned Python programmer or a veteran CLI designer, I urge you to review and drop constructuve criticism on my implementation - <a href="https://github.com/NamamiShanker/numpy/blob/f2py_front/numpy/f2py/f2pyarg.py">f2pyarg</a>.</p>
-<h2 id="moving-forwards">Moving forwards</h2>
+<h2 id="moving-forwards">
+  Moving forwards
+  <a class="heading-link" href="#moving-forwards">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>I think F2PY&rsquo;s frontend will improve a lot once we deprecate <code>numpy.distutils</code> completely. <code>f2pyarg</code> still does wrapper generation and compilation seperately due to the <code>numpy.distutils</code> requirement. Shifting F2PY completely to <code>meson</code> and possibly <code>cmake</code> will improve code reusability and frontend code structure a lot. I am looking forward to make a good design in the upcoming months as I work on Meson Integration.</p>
-<p>I am a beginner with a lot to learn about software design and programming. I will continue to maintain this code I have written and improve it with others&rsquo; help. <code>f2pyarg</code> has come and its here to stay.</p>
+<p>I am a beginner with a lot to learn about software design and programming. I will continue to maintain this code I have written and improve it with others' help. <code>f2pyarg</code> has come and its here to stay.</p>
 
       </div>
 
@@ -288,7 +325,26 @@
 </section>
 
 
-        
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "namami" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
         
         
       </footer>
@@ -305,7 +361,7 @@
     
       2019 -
     
-    2022
+    2023
      Namami Shanker 
     ·
     
@@ -320,7 +376,7 @@
 
   
   
-  <script src="/js/coder.min.414969e16b2e6340750f7a9377446e3bfa42cf051343ba8c2603d707b171a97b.js" integrity="sha256-QUlp4WsuY0B1D3qTd0RuO/pCzwUTQ7qMJgPXB7FxqXs="></script>
+  <script src="/js/coder.min.08fc7a7924db1ae6786408cb68e12ff953e6329376a469f5f517f3769c19194d.js" integrity="sha256-CPx6eSTbGuZ4ZAjLaOEv&#43;VPmMpN2pGn19RfzdpwZGU0="></script>
   
 
   

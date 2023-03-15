@@ -12,19 +12,20 @@
 
 
 <meta name="author" content="Namami Shanker">
-<meta name="description" content="Week 8-9: Meson build system for F2PY F2PY and its current status I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.">
+<meta name="description" content="Week 8-9: Meson build system for F2PY  Link to heading   F2PY and its current status  Link to heading   I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python.">
 <meta name="keywords" content="blog,developer,personal">
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Week 8-9: Meson backend for F2PY"/>
-<meta name="twitter:description" content="Week 8-9: Meson build system for F2PY F2PY and its current status I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python."/>
+<meta name="twitter:description" content="Week 8-9: Meson build system for F2PY  Link to heading   F2PY and its current status  Link to heading   I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python."/>
 
 <meta property="og:title" content="Week 8-9: Meson backend for F2PY" />
-<meta property="og:description" content="Week 8-9: Meson build system for F2PY F2PY and its current status I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python." />
+<meta property="og:description" content="Week 8-9: Meson build system for F2PY  Link to heading   F2PY and its current status  Link to heading   I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://namamishanker.github.io/posts/f2py_meson_backend/" />
+<meta property="og:url" content="https://namamishanker.github.io/posts/f2py_meson_backend/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-08-20T13:26:08+05:30" />
 <meta property="article:modified_time" content="2022-08-20T13:26:08+05:30" />
+<meta property="og:see_also" content="https://namamishanker.github.io/posts/gsoc-closing-remarks/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py_pr_review/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/finishing_f2py_frontend/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/argparse-f2py/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py-meson-backend/" />
 
 
 
@@ -38,7 +39,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/coder.min.15b270eb1a966a7719a357412326bfb0e6434421100578d4f4de680b5546bc79.css" integrity="sha256-FbJw6xqWancZo1dBIya/sOZDRCEQBXjU9N5oC1VGvHk=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="/css/coder.min.c4d7e93a158eda5a65b3df343745d2092a0a1e2170feeec909b8a89443903c6a.css" integrity="sha256-xNfpOhWO2lpls980N0XSCSoKHiFw/u7JCbiolEOQPGo=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -70,7 +71,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.68.3" />
+<meta name="generator" content="Hugo 0.92.2" />
 
 
 
@@ -186,20 +187,44 @@
 
       <div>
         
-        <h1 id="week-8-9-meson-build-system-for-f2py">Week 8-9: Meson build system for F2PY</h1>
-<h2 id="f2py-and-its-current-status">F2PY and its current status</h2>
+        <h1 id="week-8-9-meson-build-system-for-f2py">
+  Week 8-9: Meson build system for F2PY
+  <a class="heading-link" href="#week-8-9-meson-build-system-for-f2py">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<h2 id="f2py-and-its-current-status">
+  F2PY and its current status
+  <a class="heading-link" href="#f2py-and-its-current-status">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>I have talked a lot about <a href="https://numpy.org/doc/stable/f2py/">F2PY</a> during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python. It gives you the <a href="https://namamishanker.github.io/posts/scipy_fortran_f2py/">speed of Fortran and the flexibility of Python</a>. The way F2PY does this is <strong>by creating a C wrapper for your Fortran code</strong> with Python-C API which is interpretable by Python. The Fortran sources and C wrapper can be built together by any build tools (CMake, Meson etc) to produce a shared library file (.so) allowing you to import your Fortran subroutines as if you were importing any other Python module. During the period of 13th June to 31st July, I modernised the frontend of F2PY with <a href="https://docs.python.org/3/library/argparse.html">argparse</a>. From August, I started working on integrating a Meson build system for building shared library from C wrapper and Fortran source code.</p>
 <p>Though F2PY provides <a href="https://numpy.org/doc/stable/f2py/usage.html#building-a-module">options to build the Python module</a>, building the module is not the main selling point of F2PY. It is efficiently generating C wrappers for all kinds of features exclusive to Fortran (eg- <a href="https://fortran-lang.org/learn/quickstart/derived_types">derived types</a>, <a href="https://stackoverflow.com/questions/838310/fortran-90-kind-parameter#:~:text=The%20KIND%20of%20a%20variable,required%20by%20the%20Fortran%20standard.">kind parameter</a>) all through F2PY&rsquo;s internal logic. F2PY currently uses <a href="https://numpy.org/doc/stable/reference/distutils.html">NumPy&rsquo;s Distutils</a> as a build tool but <code>distutils</code> will soon be deprecated, consequently deprecating NumPy&rsquo;s <code>distutils</code>. Thus, F2PY needs to move on to other build systems like <a href="https://cmake.org/">CMake</a> or <a href="https://mesonbuild.com/">Meson</a>, and it is first going for Meson.</p>
-<h2 id="build-systems-for-f2py">Build systems for F2PY</h2>
+<h2 id="build-systems-for-f2py">
+  Build systems for F2PY
+  <a class="heading-link" href="#build-systems-for-f2py">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>As I said, module building options present in F2PY are not a core F2PY functionality. These options are simple settings which help the user specify how they want their build to be produced. For example, the user can enable debug mode, specify optimization levels, or specify a required custom header file etc. I have written an extensive article exploring build options of F2PY and how they can be implmented with Meson here: <a href="https://namamishanker.github.io/posts/f2py-meson-backend/">Week 2: Moving F2PY to Meson build system</a>. Today, we will discuss how I changed the existing structure for integrating build system dependency into F2PY for building Python modules.</p>
 <p>The general flow of generating a Python module with F2PY is as follows:</p>
 <p><img src="https://i.imgur.com/Fjsz8DG.png" alt=""></p>
 <p>In the above diagram, we can use any build system. F2PY&rsquo;s docs even provides extensive articles on how to <a href="https://numpy.org/doc/stable/f2py/buildtools/index.html">build your Python modules using different build systems</a>.</p>
 <p>To add builtin support for a build system all you need to do is parse F2PY&rsquo;s compilation flags, and provide corresponding configuration to your build system, and voila, you can now build using your favourite tool. Therefore, any build system can be <strong>integrated</strong> in the above flow by providing it correct configuration, source files, and C wrapper to produce the output module.</p>
 <p>I have followed the same principle for integrating Meson into F2PY. Let&rsquo;s dive into the changes and discuss the details.</p>
-<h3 id="a-general-superclass-structure">A general superclass structure</h3>
+<h3 id="a-general-superclass-structure">
+  A general superclass structure
+  <a class="heading-link" href="#a-general-superclass-structure">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
 <p>First and formost, I have implemented a class which can be inherited by &ldquo;build-system&rdquo; specific classes. The object of this superclass can be constructed by providing compilation specific information as mentioned below:-</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">class</span> <span style="font-weight:bold">Backend</span>(ABC):
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">class</span> <span style="font-weight:bold">Backend</span>(ABC):
 	<span style="font-style:italic">&#34;&#34;&#34;
 </span><span style="font-style:italic"> 	Superclass for backend compilation plugins to extend.
 </span><span style="font-style:italic"> 
@@ -212,7 +237,7 @@
         linker_libpath: list[Path], linker_libname: list[str],
         define_macros: list[tuple[str, str]], undef_macros: list[str],
         debug: bool, opt_flags: list[str], arch_flags: list[str],
-        no_opt: bool, no_arch: bool) -&gt; None:
+        no_opt: bool, no_arch: bool) -&gt; <span style="font-weight:bold">None</span>:
 		<span style="font-style:italic">&#34;&#34;&#34;
 </span><span style="font-style:italic">		The class is initialized with f2py compile options.
 </span><span style="font-style:italic">		The parameters are mappings of f2py compilation flags.
@@ -258,11 +283,23 @@
 </span><span style="font-style:italic">
 </span></code></pre></div><p>As you can see, this superclass elementarily <a href="https://github.com/NamamiShanker/numpy/blob/db578560a5309a1038b0a7ba309b527155f178c0/numpy/f2py/f2pyarg.py#L867">receives values of F2PY flags directly from the frontend CLI</a> and it is the responsibility of <code>compile</code> function to implement a logic to parse the information provided in the flags and build Python module. This superclass provides some useful paths containing important NumPy and F2PY C library which would be linked to your Python module during building. But more importantly, it provides an <strong>abstract method</strong> <code>compile</code> which should be implemented by children classes for their specific build system.</p>
 <p>The approach is simple and intuitive - provide sources files, C wrapper and compilation specific information and build the Python module. The <code>compile</code> method will handle all the compile specific einformation provided to F2PY.</p>
-<h3 id="the-meson-subclass-structure">The Meson subclass structure</h3>
+<h3 id="the-meson-subclass-structure">
+  The Meson subclass structure
+  <a class="heading-link" href="#the-meson-subclass-structure">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
 <p>So now, time for us to create a subclass which will inherit the above discussed <code>Backend</code> superclass and provide build producing capabilies using Meson. Now the most important feature to implement would be generating a <a href="https://mesonbuild.com/Meson-sample.html">meson.build</a> file. We provide build configuration through <code>meson.build</code> to Meson which in turn produces a <code>build.ninja</code> file which the <strong>Ninja build system</strong> uses to build the module. Meson itself is not a build tool, but an domain specific language to decalare the build system like CMake. This article <a href="https://mesonbuild.com/Design-rationale.html#overview-of-the-solution">Design rationale for Meson</a> is provides excellent insight into understanding what Meson actually is.</p>
 <p>Lets now define our problems and goals: <strong>We want to dynamically generate a Meson configuration (a <code>meson.build</code> file) from F2PY&rsquo;s compilation flags, set the correct environment, and run Meson</strong> to create the Python extension module.</p>
 <p>Our problem has a seperate subproblem - <strong>Generating <code>meson.build</code> file</strong>. The most intuitive way I could go about solving this design issue was by creating a seperate class for generating the build file.</p>
-<h4 id="generating-mesonbuild-file">Generating <code>meson.build</code> file</h4>
+<h4 id="generating-mesonbuild-file">
+  Generating <code>meson.build</code> file
+  <a class="heading-link" href="#generating-mesonbuild-file">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
 <p>The old age problem of dynamically generating text has a simple solution for our case - <a href="https://realpython.com/python-string-formatting/">formatting a string templating</a>. by quite a few libraries in Python - <a href="https://jinja.palletsprojects.com/en/3.1.x/">Jinja2</a>, <a href="https://www.makotemplates.org/">Mako</a> etc. NumPy itself comes bundled with <a href="https://pypi.org/project/Tempita/">Tempita</a>, a very old string templating library. However, we chose to use <a href="https://docs.python.org/3/library/string.html#template-strings">Python&rsquo;s builtin template string</a> instead of relying on the mentioned libraries.</p>
 <div class="notice info">
   <div class="notice-title">
@@ -272,7 +309,13 @@
 </div>
 
 <p>We have created a <a href="https://github.com/NamamiShanker/numpy/blob/meson_backend/numpy/f2py/backends/src/meson.build.src">meson.build.src</a> file which contains template for generating actual <code>meson.build</code> files. The templating is handled by a seperate class whose source code you can read here: <a href="https://github.com/NamamiShanker/numpy/blob/meson_backend/numpy/f2py/backends/meson_backend.py#L9">MesonTemplate class</a>. It has a <a href="https://github.com/NamamiShanker/numpy/blob/41b6949abdd843be0f570fba60675e2c2063c770/numpy/f2py/backends/meson_backend.py#L21">substitutions</a> dictionary as data member which is populated by the various methods present in the classes. The <a href="https://github.com/NamamiShanker/numpy/blob/41b6949abdd843be0f570fba60675e2c2063c770/numpy/f2py/backends/meson_backend.py#L49">generate_meson_build</a> calls these methods one by one and the final <code>substitutions</code> dictionary is passed to the <code>Template</code> object. This pipeline sort of structre was inspired by <strong>monad design pattern</strong>.</p>
-<h4 id="generating-build">Generating build</h4>
+<h4 id="generating-build">
+  Generating build
+  <a class="heading-link" href="#generating-build">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
 <p>So now that we have solved the problem of generating Mesob build file, lets try to use run Meson with our dynamically generated Meson build file. This can be done in three steps:</p>
 <ol>
 <li>Set <code>FC</code> and <code>CC</code> environment variables for telling Meson which compilers to use.</li>
@@ -281,16 +324,22 @@
 <li>Compile the Meson build directory and produce the Python module - a shared library file with <code>.so</code> extension.</li>
 <li>Move the <code>.so</code> file to root so that the user can import it.</li>
 </ol>
-<h3 id="how-will-we-our-frontend-f2pyarg-communicate-with-the-backend-class">How will we our frontend <code>f2pyarg</code> communicate with the Backend class?</h3>
+<h3 id="how-will-we-our-frontend-f2pyarg-communicate-with-the-backend-class">
+  How will we our frontend <code>f2pyarg</code> communicate with the Backend class?
+  <a class="heading-link" href="#how-will-we-our-frontend-f2pyarg-communicate-with-the-backend-class">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
 <p>We have created a folder <strong><a href="https://github.com/NamamiShanker/numpy/tree/meson_backend/numpy/f2py/backends">backends</a></strong> in the <code>f2py</code> directory within Numpy. This directory will contain our <code>Backend</code> superclass as well as build-system specific subclasses. The tree of the folder looks as following:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">backends/
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">backends/
 ├── backend.py
 ├── __init__.py
 ├── meson_backend.py
 └── src
     └── meson.build.src
 </code></pre></div><p>The source code of <code>__init__.py</code> is shown below:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">from</span> <span style="font-weight:bold">.backend</span> <span style="font-weight:bold">import</span> Backend
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="font-weight:bold">from</span> <span style="font-weight:bold">.backend</span> <span style="font-weight:bold">import</span> Backend
 <span style="font-weight:bold">from</span> <span style="font-weight:bold">.meson_backend</span> <span style="font-weight:bold">import</span> MesonBackend
 
 backends = {
@@ -298,12 +347,18 @@ backends = {
 <span style="font-style:italic">#	&#39;cmake&#39;: CMakeBackend</span>
 }
 </code></pre></div><p>Following the flow-diagram shown above, we need to pass the generated C wrapper and Fortran sources files after instantiating our Backend class. The Backend can be called and instantiated from <code>f2pyarg</code> simply as follow:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">c_wrapper = generate_files(f77_files + f90_files, module_name, sign_file)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">c_wrapper = generate_files(f77_files + f90_files, module_name, sign_file)
 if c_wrapper and args.c:
 	backend: Backend = backends.get(args.backend.value)(module_name=module_name, ...args)
 	backend.compile(f77_files + f90_files, c_wrapper, build_dir)
 </code></pre></div><p>This approach is more scalable than currently existing approach of compiling with <code>numpy.distutils</code> where passing <code>-c</code> flag causes F2PY to transform into a frontend <code>distutils</code>. Meson building APIs can be exposed seperately by writing them in <code>f2py/service.py</code>.</p>
-<h2 id="retrospection-of-the-changes">Retrospection of the changes</h2>
+<h2 id="retrospection-of-the-changes">
+  Retrospection of the changes
+  <a class="heading-link" href="#retrospection-of-the-changes">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>We introduced Meson to F2PY because the current build tool <code>distutils</code> was going to be deprecated. Here I found the oppurtunity to simplify how F2PY uses build system. If you try to understand my flow and the existing <code>distutils</code> building structure, I think you would find this approach much intuitive, manageable and scalable with respect to adding more build tools. Still a lot of work is left and we just yet can&rsquo;t sit down to admire the lovely, dark and deep woods.</p>
 <p>The next step would be to support <code>--f77exec, --f90exec, --f90flags, --f77flags</code> such that Meson can handle seperate compilers for Fortran 77 and Fortran 90 code. It would be followed by writing an extensive test suite and benchmarking the results to verify Meson backend is robust and ready for public usage.</p>
 
@@ -368,7 +423,26 @@ if c_wrapper and args.c:
 </section>
 
 
-        
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "namami" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
         
         
       </footer>
@@ -385,7 +459,7 @@ if c_wrapper and args.c:
     
       2019 -
     
-    2022
+    2023
      Namami Shanker 
     ·
     
@@ -400,7 +474,7 @@ if c_wrapper and args.c:
 
   
   
-  <script src="/js/coder.min.414969e16b2e6340750f7a9377446e3bfa42cf051343ba8c2603d707b171a97b.js" integrity="sha256-QUlp4WsuY0B1D3qTd0RuO/pCzwUTQ7qMJgPXB7FxqXs="></script>
+  <script src="/js/coder.min.08fc7a7924db1ae6786408cb68e12ff953e6329376a469f5f517f3769c19194d.js" integrity="sha256-CPx6eSTbGuZ4ZAjLaOEv&#43;VPmMpN2pGn19RfzdpwZGU0="></script>
   
 
   

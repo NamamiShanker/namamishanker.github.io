@@ -12,22 +12,23 @@
 
 
 <meta name="author" content="Namami Shanker">
-<meta name="description" content="F2PY frontend: The Old and the New We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
-Introduction F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.">
+<meta name="description" content="F2PY frontend: The Old and the New  Link to heading   We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
+Introduction  Link to heading   F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.">
 <meta name="keywords" content="blog,developer,personal">
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Week 1: F2PY Frontend"/>
-<meta name="twitter:description" content="F2PY frontend: The Old and the New We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
-Introduction F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python."/>
+<meta name="twitter:description" content="F2PY frontend: The Old and the New  Link to heading   We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
+Introduction  Link to heading   F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python."/>
 
 <meta property="og:title" content="Week 1: F2PY Frontend" />
-<meta property="og:description" content="F2PY frontend: The Old and the New We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
-Introduction F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python." />
+<meta property="og:description" content="F2PY frontend: The Old and the New  Link to heading   We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
+Introduction  Link to heading   F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://namamishanker.github.io/posts/f2py_frontend/" />
+<meta property="og:url" content="https://namamishanker.github.io/posts/f2py_frontend/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-15T21:34:26+05:30" />
 <meta property="article:modified_time" content="2022-06-15T21:34:26+05:30" />
+<meta property="og:see_also" content="https://namamishanker.github.io/posts/gsoc-closing-remarks/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py_meson_backend/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py_pr_review/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/finishing_f2py_frontend/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/argparse-f2py/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py-meson-backend/" />
 
 
 
@@ -41,7 +42,7 @@ Introduction F2PY is a command line tool that provides easy connection between F
 
   
   
-  <link rel="stylesheet" href="/css/coder.min.15b270eb1a966a7719a357412326bfb0e6434421100578d4f4de680b5546bc79.css" integrity="sha256-FbJw6xqWancZo1dBIya/sOZDRCEQBXjU9N5oC1VGvHk=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="/css/coder.min.c4d7e93a158eda5a65b3df343745d2092a0a1e2170feeec909b8a89443903c6a.css" integrity="sha256-xNfpOhWO2lpls980N0XSCSoKHiFw/u7JCbiolEOQPGo=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -73,7 +74,7 @@ Introduction F2PY is a command line tool that provides easy connection between F
 
 
 
-<meta name="generator" content="Hugo 0.68.3" />
+<meta name="generator" content="Hugo 0.92.2" />
 
 
 
@@ -183,19 +184,43 @@ Introduction F2PY is a command line tool that provides easy connection between F
 
       <div>
         
-        <h1 id="f2py-frontend-the-old-and-the-new">F2PY frontend: The Old and the New</h1>
+        <h1 id="f2py-frontend-the-old-and-the-new">
+  F2PY frontend: The Old and the New
+  <a class="heading-link" href="#f2py-frontend-the-old-and-the-new">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
 <p>We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the <code>argparse</code> python library.</p>
-<h2 id="introduction">Introduction</h2>
+<h2 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the <a href="https://namamishanker.github.io/posts/scipy_fortran_f2py/">speed of Fortran and the flexibility of Python</a>.</p>
-<h2 id="the-frontend-of-a-command-line-tool">The frontend of a command line tool</h2>
+<h2 id="the-frontend-of-a-command-line-tool">
+  The frontend of a command line tool
+  <a class="heading-link" href="#the-frontend-of-a-command-line-tool">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>A command line works by parsing the input on the command line, and then calling correct functions based on the input. The input on the command line is generally a list of positional arguments (like files, folders, keys or data) and flags (like <code>--help</code> or <code>--version</code>). For example, if you type</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git --version
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git --version
 </code></pre></div><p>then the command line tool will call the <code>git</code> program, and pass the <code>--version</code> flag to it as an argument. Internally, an array <code>argv</code> containing the argument is created and passed to <code>git</code> program. In this case <code>argv</code> will look like this: <code>['--version']</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git add app.py
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">git add app.py
 </code></pre></div><p>then the command line tool will call the <code>git</code> program, and pass the <code>add</code> and <code>app.py</code> to it as an argument. Internally, <code>git</code> will recognize <code>add</code> as an option, and <code>app.py</code> as a positional argument to <code>add</code> option. The <code>argv</code> array passed to <code>git</code> program will look like this: <code>['add', 'app.py']</code>.</p>
-<h2 id="f2pys-frontend">F2PY&rsquo;s frontend</h2>
+<h2 id="f2pys-frontend">
+  F2PY&rsquo;s frontend
+  <a class="heading-link" href="#f2pys-frontend">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>Suppose you have a fortran source file <code>fib.f</code>:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran">C <span style="font-weight:bold">FILE</span>: FIB1.F
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran">C <span style="font-weight:bold">FILE</span>: FIB1.F
       <span style="font-weight:bold">SUBROUTINE </span>FIB(A,N)
 C
 C     CALCULATE FIRST N FIBONACCI NUMBERS
@@ -217,76 +242,112 @@ C
 <ol>
 <li>Generate the <a href="https://numpy.org/doc/stable/f2py/signature-file.html#fortran-c-routine-signatures">signature file</a> which can be used to generate the C/API extension module, done by <code>-h</code> flag.</li>
 </ol>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">f2py fib.f -h fibsign.pyf
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">f2py fib.f -h fibsign.pyf
 </code></pre></div><p>It will produce a header file <code>fibsign.pyf</code> which the user can edit to optimize wrapper functions, to make them &ldquo;smarter&rdquo; and more &ldquo;pythonic&rdquo;.</p>
 <ol start="2">
 <li>Generate the C/API extension module, either from a signature file or from a fortran source file, done by <code>-m</code> flag.</li>
 </ol>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">f2py fib.f -m fib
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">f2py fib.f -m fib
 # OR
 f2py fibsign.pyf -m fib
 </code></pre></div><p>The first one will use create C wrapper from <code>fib.f</code> directly, <code>f2py</code> will intelligently sense input and output arguments and create the wrapper. The second one will use the signature file to create the modified wrapper.</p>
 <ol start="3">
 <li>Compile the C/API file and fortran source file to produce a shared library that can be imported in Python, done by <code>-c</code> flag.</li>
 </ol>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">f2py fib.f -c fib.c -m fib
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">f2py fib.f -c fib.c -m fib
 </code></pre></div><p>Here <code>-m</code> flag provides the name of the module, without which the C file generate will be named like &ldquo;untitled.cpython-310-x86_64-linux-gnu.so&rdquo;, and you would have to import it using <code>import untitled</code> (which is pretty funny).</p>
-<h2 id="the-current-f2py-frontend">The current F2PY frontend</h2>
+<h2 id="the-current-f2py-frontend">
+  The current F2PY frontend
+  <a class="heading-link" href="#the-current-f2py-frontend">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>The current F2PY frontend can be found in <a href="https://github.com/numpy/numpy/blob/main/numpy/f2py/f2py2e.py">numpy/f2py/f2py2e.py</a>. This handwritten parser was written by <a href="https://github.com/pearu">Dr. Pearu Peterson</a> way before <code>argparse</code> was introduced. It is not easy to understand for a beginner, so I will try to explain it in a few steps.</p>
 <p>There are two important functions that run the entire program - <a href="https://github.com/numpy/numpy/blob/6032e0ab72be408497c14fd5b865bb25a4c800e7/numpy/f2py/f2py2e.py#L411">run_main()</a> and <a href="https://github.com/numpy/numpy/blob/6032e0ab72be408497c14fd5b865bb25a4c800e7/numpy/f2py/f2py2e.py#L411">run_compile()</a>.</p>
 <table>
 <thead>
 <tr>
-<th align="center">Argument</th>
-<th align="center">Activates function</th>
+<th style="text-align:center">Argument</th>
+<th style="text-align:center">Activates function</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center"><code>-c</code></td>
-<td align="center">run_compile()</td>
+<td style="text-align:center"><code>-c</code></td>
+<td style="text-align:center">run_compile()</td>
 </tr>
 <tr>
-<td align="center">Everything else</td>
-<td align="center">run_main()</td>
+<td style="text-align:center">Everything else</td>
+<td style="text-align:center">run_main()</td>
 </tr>
 </tbody>
 </table>
-<h4 id="run_main">run_main()</h4>
+<h4 id="run_main">
+  run_main()
+  <a class="heading-link" href="#run_main">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
 <p>As I said above, <code>f2py</code> performs three major tasks. This function handles the first two tasks - generating the signature file and generating the C/API extension module. It is called by the <code>f2py</code> if the  <code>argv</code> array doesn&rsquo;t contain the <code>-c</code> flag. It uses <a href="https://github.com/numpy/numpy/blob/6032e0ab72be408497c14fd5b865bb25a4c800e7/numpy/f2py/f2py2e.py#L179">scaninputline()</a> to parse the <code>argv</code> array to get fortran source files and functions, and set a lot of internal variables accordingly (visible in <a href="https://github.com/numpy/numpy/blob/6032e0ab72be408497c14fd5b865bb25a4c800e7/numpy/f2py/f2py2e.py#L181">this line</a>).</p>
 <p><code>run_compile</code> then calls <a href="https://github.com/numpy/numpy/blob/6032e0ab72be408497c14fd5b865bb25a4c800e7/numpy/f2py/crackfortran.py">crackfortran.py</a> using <a href="https://github.com/numpy/numpy/blob/6032e0ab72be408497c14fd5b865bb25a4c800e7/numpy/f2py/f2py2e.py#L330">callcrackfortran()</a> function. If you have studied about compiler, you might know about <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax trees (AST)</a>. An AST is a tree structure that represents the source code. Here, <code>crackfortran</code> generates a similar struture out of the fortran source code, which is then used by <a href="https://github.com/numpy/numpy/blob/2d4452477245f1332b607c2899a12f6e398a8675/numpy/f2py/f2py2e.py#L366">buildmodules</a> to either generate the signature file or the C wrapper.</p>
-<h4 id="run_compile">run_compile()</h4>
+<h4 id="run_compile">
+  run_compile()
+  <a class="heading-link" href="#run_compile">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
 <p>This is a really tricky function to understand. It is called by the <code>f2py</code> if the <code>argv</code> array contains the <code>-c</code> flag. It parses the command line again without the use of <code>scaninputline()</code>, basically filtering out all the possible flags and options, and then searching for the fortran, <code>.pyf</code>, or object files. It then passes the source files and related flags to numpy.disutils where C wrapper is generated and shared library is compiled and linked to produce a Python extension module.</p>
 <p>This function will receive a major haul while modernising F2PY. All the flag filtering is needs to be done by another function, which should be common to both <code>run_compile()</code> and <code>run_main()</code>. This function also uses regex to parse the command line which is hard to understand. It is essentially a bohemoth that does the entire job from parsing the command line to creating extension module in a single shot.</p>
-<h2 id="the-new-f2py-frontend">The new F2PY frontend</h2>
+<h2 id="the-new-f2py-frontend">
+  The new F2PY frontend
+  <a class="heading-link" href="#the-new-f2py-frontend">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <table>
 <thead>
 <tr>
-<th align="center">Argument</th>
-<th align="center">Activates parser</th>
+<th style="text-align:center">Argument</th>
+<th style="text-align:center">Activates parser</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">Source files and functions</td>
-<td align="center">main parser</td>
+<td style="text-align:center">Source files and functions</td>
+<td style="text-align:center">main parser</td>
 </tr>
 <tr>
-<td align="center"><code>-c</code></td>
-<td align="center">build helper parser</td>
+<td style="text-align:center"><code>-c</code></td>
+<td style="text-align:center">build helper parser</td>
 </tr>
 <tr>
-<td align="center"><code>-h</code>, <code>-m</code></td>
-<td align="center">Wrapper generation parser</td>
+<td style="text-align:center"><code>-h</code>, <code>-m</code></td>
+<td style="text-align:center">Wrapper generation parser</td>
 </tr>
 </tbody>
 </table>
 <p>The NumPy team is aiming to make F2PY to more user and developer friendly. F2PY will be soon shifting to a modern <code>argparse</code> based CLI. An ongoing implementation can be found in <a href="https://github.com/numpy/numpy/blob/argparse_f2py/numpy/f2py/f2pyarg.py">Rohit Goswami&rsquo;s fork</a> (the core function to handle flags is remaining). The new frontend will leverage <a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_subparsers">subparser</a> functionality of <code>argparse</code> to handle the three major tasks.</p>
-<h4 id="the-main-parser">The main parser</h4>
+<h4 id="the-main-parser">
+  The main parser
+  <a class="heading-link" href="#the-main-parser">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
 <p><a href="https://github.com/numpy/numpy/blob/argparse_f2py/numpy/f2py/f2pyarg.py#L226">The main parser</a> will accept fortran source files and functions to generate C wrapper for and general flags related to module name (<code>-m</code>), documentation generation(<code>--rest-doc</code>), incuding other header files (<code>--include-paths</code>), verbosity (<code>--verbose</code>, <code>--quiet</code>) etc.</p>
 <p><a href="https://github.com/numpy/numpy/blob/ade978b9f7de5cb42fb4e2573972b128158aa41e/numpy/f2py/f2pyarg.py#L263%60">The build helper subparser</a> will activated by <code>-c</code> flag to generate the shared object file which can be imported in Python. It will handle all the build related options like fortran compiler and its flags (<code>--fcompiler</code>, <code>--f77exec</code>, <code>f77flags</code>), architecture optimization (<code>--arch</code>), linking (<code>--link-&lt;name&gt;</code>)etc.</p>
 <p><a href="https://github.com/numpy/numpy/blob/ade978b9f7de5cb42fb4e2573972b128158aa41e/numpy/f2py/f2pyarg.py#L264">The wrapper generation subparser</a> will activated by the <code>-h</code> flag to generate the signature file and <code>-m</code> to generate the wrapper file.</p>
-<h2 id="why-do-we-need-a-new-argparse-implementation">Why do we need a new <code>argparse</code> implementation?</h2>
+<h2 id="why-do-we-need-a-new-argparse-implementation">
+  Why do we need a new <code>argparse</code> implementation?
+  <a class="heading-link" href="#why-do-we-need-a-new-argparse-implementation">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>One may raise a question about why we need a new <code>argparse</code> implementation. If the CLI has been working fine for more than a decade, why not leave it as it is?
 I am still a newbie to <code>f2py</code> and fortran, but there are a lot of ways we can improve F2PY, like adding the derived types support, improving syntax tree mechanism. The current development team will pass on F2PY to new developers, and it will be worthwhile to modernise and make its functionalities granular. A better codebase and documentation will facilitate easier development and maintenance. Making it more modular will increase flexibility and will allow other programs to use specific functionalities of F2PY exclusively (like how SciPy uses <code>--build-dir</code> flag to generate shared object file from its <code>pyf</code> files). It will also be much easier to enhace the functionality of the CLI. A developer could just go add a new flag to the appropriate subparser and link to the handling function. Modernising F2PY will be a effortful task, given the features we have to develop keeping backwards compatibility. However it is essential for the future development and maintainence of this incredible tool.</p>
 
@@ -355,7 +416,26 @@ I am still a newbie to <code>f2py</code> and fortran, but there are a lot of way
 </section>
 
 
-        
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "namami" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
         
         
       </footer>
@@ -372,7 +452,7 @@ I am still a newbie to <code>f2py</code> and fortran, but there are a lot of way
     
       2019 -
     
-    2022
+    2023
      Namami Shanker 
     ·
     
@@ -387,7 +467,7 @@ I am still a newbie to <code>f2py</code> and fortran, but there are a lot of way
 
   
   
-  <script src="/js/coder.min.414969e16b2e6340750f7a9377446e3bfa42cf051343ba8c2603d707b171a97b.js" integrity="sha256-QUlp4WsuY0B1D3qTd0RuO/pCzwUTQ7qMJgPXB7FxqXs="></script>
+  <script src="/js/coder.min.08fc7a7924db1ae6786408cb68e12ff953e6329376a469f5f517f3769c19194d.js" integrity="sha256-CPx6eSTbGuZ4ZAjLaOEv&#43;VPmMpN2pGn19RfzdpwZGU0="></script>
   
 
   

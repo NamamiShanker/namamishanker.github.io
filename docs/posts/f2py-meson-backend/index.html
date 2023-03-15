@@ -22,9 +22,10 @@
 <meta property="og:title" content="Week 2: Moving F2PY to Meson build system" />
 <meta property="og:description" content="We discuss implementing F2PY&#39;s compilation options in meson" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://namamishanker.github.io/posts/f2py-meson-backend/" />
+<meta property="og:url" content="https://namamishanker.github.io/posts/f2py-meson-backend/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-06-28T15:36:42+05:30" />
 <meta property="article:modified_time" content="2022-06-28T15:36:42+05:30" />
+<meta property="og:see_also" content="https://namamishanker.github.io/posts/gsoc-closing-remarks/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py_meson_backend/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/f2py_pr_review/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/finishing_f2py_frontend/" /><meta property="og:see_also" content="https://namamishanker.github.io/posts/argparse-f2py/" />
 
 
 
@@ -38,7 +39,7 @@
 
   
   
-  <link rel="stylesheet" href="/css/coder.min.15b270eb1a966a7719a357412326bfb0e6434421100578d4f4de680b5546bc79.css" integrity="sha256-FbJw6xqWancZo1dBIya/sOZDRCEQBXjU9N5oC1VGvHk=" crossorigin="anonymous" media="screen" />
+  <link rel="stylesheet" href="/css/coder.min.c4d7e93a158eda5a65b3df343745d2092a0a1e2170feeec909b8a89443903c6a.css" integrity="sha256-xNfpOhWO2lpls980N0XSCSoKHiFw/u7JCbiolEOQPGo=" crossorigin="anonymous" media="screen" />
 
 
 
@@ -70,7 +71,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.68.3" />
+<meta name="generator" content="Hugo 0.92.2" />
 
 
 
@@ -175,22 +176,58 @@
 
       <div>
         
-        <h1 id="meson-as-a-backend-build-system-for-f2py">Meson as a backend build system for F2PY</h1>
+        <h1 id="meson-as-a-backend-build-system-for-f2py">
+  Meson as a backend build system for F2PY
+  <a class="heading-link" href="#meson-as-a-backend-build-system-for-f2py">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
 <p>Last week we discussed <a href="/posts/f2py_frontend">F2PY&rsquo;s frontend</a> and how it is undergoing re-implementation using the <code>argparse</code> python library. This week we will look at the backend build system of F2PY, and how meson will be used to build the extension module.</p>
-<h2 id="what-is-the-use-of-a-build-system">What is the use of a build system?</h2>
+<h2 id="what-is-the-use-of-a-build-system">
+  What is the use of a build system?
+  <a class="heading-link" href="#what-is-the-use-of-a-build-system">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>Simply explained, build system exist to automate compilation and linking of big programs. A program&rsquo;s source code might consist of several hundred C++ files, some C and a few Fortran files. It might also contain library dependencies which will be provided by some object files. A build system takes a simple configuration file, where user can specify the source files, libraries, and other dependencies. The build system will then compile and link the program, and provide the executable.</p>
-<h4 id="but-cant-we-do-that-using-a-simple-bash-script">But can&rsquo;t we do that using a simple bash script?</h4>
+<h4 id="but-cant-we-do-that-using-a-simple-bash-script">
+  But can&rsquo;t we do that using a simple bash script?
+  <a class="heading-link" href="#but-cant-we-do-that-using-a-simple-bash-script">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h4>
 <p>Aha, this is a good question. Compiling and building programs from scratch take a lot of time. Imagine you are a software developer in 1997 working in a small division in IBM. Your project contains ten thousand source C files. Building the entire program from scractch takes 2 hours. You saw a bug in one of the source files, you changed some code and started building it using the shell script to test it. Even though you made changes in only a single file, the shell script will delete the previous build (or move it to archives) and create the new build from scratch, taking the full stretch of 2 hours. It can&rsquo;t identify the changes in source code and only rebuild the changed files.</p>
 <p>Here the build systems come into play, they can create a dependency tree of your source code, and only rebuild the changed files. If your manager allows, you can create a CMake configuration file, include all the source files and dependencies, and code down how your want to build your project. For the first time, CMake will obviously take a lot of time to build the project (around the same 2 hours). But the next time you make changes, and rebuild using CMake, it will smartly detect the changes and only recompile and link what is necessary.</p>
 <p>Build systems make life vastly easier for developers. A lot of them provide cross-platform building capabilities, will detect external libraries for you, install the built program for you, run tests, generate documentation, and much more. Thats why every major developing software uses a populare build system for distribution.</p>
-<h2 id="why-does-f2py-need-a-build-system">Why does F2PY need a build system</h2>
+<h2 id="why-does-f2py-need-a-build-system">
+  Why does F2PY need a build system
+  <a class="heading-link" href="#why-does-f2py-need-a-build-system">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>Most of the libraries written for Python are actually written in C and wrapped by Python C API (for ex - NumPy, Pandas, TensorFlow). This <a href="https://realpython.com/build-python-c-extension-module/">RealPython article on how to build a Python C Extension Module</a> is a good place to start if you want to build your own Python library in C. But if your want to build a Python library using Fortran, <a href="https://numpy.org/doc/stable/f2py/index.html">F2PY</a> is a go-to tool.</p>
 <p>Python does not have any official supported API for Fortran. But then how does F2PY create Python extension modules from Fortran sources? The way it pull this off is by intelligently understanding the Fortran source code and generates a C wrapper for it. This C wrapper is in turn wrapped by Python C API and thus it can be understood and used by the Python interpreter.</p>
 <p>The C wrapper and fortran source files need to be compiled and linked by a compiler family to produce a shared module (<code>.so</code> file). Here is where the build systems come in. They compile and link the source code and F2PY generated C wrapper. We can use various build systems to do this job. <a href="https://numpy.org/doc/stable/f2py/buildtools/index.html#build-systems">F2PY&rsquo;s documentation</a> explains how to use F2PY with some famous build systems.</p>
-<h2 id="what-would-we-need-from-a-build-system-to-support-f2py">What would we need from a build system to support F2PY?</h2>
+<h2 id="what-would-we-need-from-a-build-system-to-support-f2py">
+  What would we need from a build system to support F2PY?
+  <a class="heading-link" href="#what-would-we-need-from-a-build-system-to-support-f2py">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>F2PY provides a great deal of freedom to the user of how they was to produce their build. If you go through its <a href="https://numpy.org/doc/stable/f2py/usage.html#building-a-module">module building manual</a>, you can find a ton of flags and variables you can set in the command line to create a build perfect for your needs. F2PY currently uses <a href="https://numpy.org/doc/stable/reference/distutils.html">NumPy&rsquo;s distutils</a> build system, which is highly flexible system for build Python libraries. F2PY leverages unmatched flexibility provided by <code>numpy.distutils</code> to provide user such choices.</p>
 <p>Unfortunately, <code>distutils</code> will be deprecated which means we have to find a new build system. <a href="https://cmake.org/">CMake</a> and <a href="https://mesonbuild.com/">Meson</a> are great contenders, and we choose Meson because it is simple, has great documentation, and provides us enough features to maintain F2PY&rsquo;s all core building functionalities. This <a href="https://github.com/scipy/scipy/issues/13615">github issue by Ralf Gommers</a> is an excellent source to get insights of why Meson is the better alternative for many Python libraries.</p>
-<h2 id="meson-as-f2pys-backend-build-system">Meson as F2PY&rsquo;s backend build system</h2>
+<h2 id="meson-as-f2pys-backend-build-system">
+  Meson as F2PY&rsquo;s backend build system
+  <a class="heading-link" href="#meson-as-f2pys-backend-build-system">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
 <p>For the next section, I recommend you go through this small article on <a href="https://numpy.org/doc/stable/f2py/buildtools/meson.html">how to use Meson with F2PY</a>. Like most other build systems, meson uses a config file: <a href="https://mesonbuild.com/Tutorial.html">meson.build</a> to understand how the user wants the project to be built. You can go through <a href="https://numpy.org/doc/stable/f2py/usage.html#building-a-module">Building a module doc</a> and see all the functionalities we need to cover with a build system. The table below explains what the NumPy&rsquo;s developer team as agreed upon now and how Meson will implement F2PY&rsquo;s building functionalities.</p>
 <table>
 <thead>
@@ -259,11 +296,11 @@
 </tbody>
 </table>
 <p>Suppose you enter the following command to produce an extension module from your fortran sources:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f2py source1.f source2.f object.o -c --fcompiler=gfortran --compiler=gcc <span style="font-weight:bold;font-style:italic">\
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">f2py source1.f source2.f object.o -c --fcompiler=gfortran --compiler=gcc <span style="font-weight:bold;font-style:italic">\
 </span><span style="font-weight:bold;font-style:italic"></span>	--inclue-paths /usr/local/ --f77flags --blah=0 --link-atlas --debug <span style="font-weight:bold;font-style:italic">\
 </span><span style="font-weight:bold;font-style:italic"></span>	--noarch -L/some/path/ -lsomelibrary -Ddebug -UFINT=12
 </code></pre></div><p>The equivalent <code>meson.build</code> file will be:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">project(<span style="font-style:italic">&#39;f2py_examples&#39;</span>, <span style="font-style:italic">&#39;c&#39;</span>,
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">project(<span style="font-style:italic">&#39;f2py_examples&#39;</span>, <span style="font-style:italic">&#39;c&#39;</span>,
   version : <span style="font-style:italic">&#39;0.1&#39;</span>,
   default_options : [<span style="font-style:italic">&#39;warning_level=2&#39;</span>])
 
@@ -309,7 +346,7 @@ py3.extension_module(<span style="font-style:italic">&#39;fibby&#39;</span>,
 		   link_args : [<span style="font-style:italic">&#39;-L/some/path/&#39;</span>, <span style="font-style:italic">&#39;-lsomelibrary&#39;</span>],
 		   c_args : [<span style="font-style:italic">&#39;-Ddebug&#39;</span> <span style="font-style:italic">&#39;-UFINT=12&#39;</span>])
 </code></pre></div><p>This will be run as follows:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FC=gfortran CC=gcc meson setup builddir -Ddebug=true -Doptimization=2
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FC=gfortran CC=gcc meson setup builddir -Ddebug=true -Doptimization=2
 </code></pre></div><p>Support for <code>--help-fcompiler</code> will be discussed later seperately. Its Meson implementation is rather difficult and requires more discussions. This covers our core operations provided by the F2PY CLI, and soon we will implement a program for generating meson file as described above.</p>
 
       </div>
@@ -373,7 +410,26 @@ py3.extension_module(<span style="font-style:italic">&#39;fibby&#39;</span>,
 </section>
 
 
-        
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "namami" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
         
         
       </footer>
@@ -390,7 +446,7 @@ py3.extension_module(<span style="font-style:italic">&#39;fibby&#39;</span>,
     
       2019 -
     
-    2022
+    2023
      Namami Shanker 
     ·
     
@@ -405,7 +461,7 @@ py3.extension_module(<span style="font-style:italic">&#39;fibby&#39;</span>,
 
   
   
-  <script src="/js/coder.min.414969e16b2e6340750f7a9377446e3bfa42cf051343ba8c2603d707b171a97b.js" integrity="sha256-QUlp4WsuY0B1D3qTd0RuO/pCzwUTQ7qMJgPXB7FxqXs="></script>
+  <script src="/js/coder.min.08fc7a7924db1ae6786408cb68e12ff953e6329376a469f5f517f3769c19194d.js" integrity="sha256-CPx6eSTbGuZ4ZAjLaOEv&#43;VPmMpN2pGn19RfzdpwZGU0="></script>
   
 
   

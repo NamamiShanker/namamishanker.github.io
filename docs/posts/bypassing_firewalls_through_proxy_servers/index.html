@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+  Bypassing Firewalls through proxy servers · #!bin/namami
+</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Namami Shanker">
+<meta name="description" content="Introduction  Link to heading   Firewalls are used in various networks to block access to certain content. Examples include college WiFi networks blocking streaming websites like Netflix and game stores like Steam.
+We can divert our internet traffic through a proxy server to bypass these restrictions rather than letting it pass directly through the firewall. The firewall will think the internet traffic is going to the proxy server, not the website we are trying to access.">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bypassing Firewalls through proxy servers"/>
+<meta name="twitter:description" content="Introduction  Link to heading   Firewalls are used in various networks to block access to certain content. Examples include college WiFi networks blocking streaming websites like Netflix and game stores like Steam.
+We can divert our internet traffic through a proxy server to bypass these restrictions rather than letting it pass directly through the firewall. The firewall will think the internet traffic is going to the proxy server, not the website we are trying to access."/>
+
+<meta property="og:title" content="Bypassing Firewalls through proxy servers" />
+<meta property="og:description" content="Introduction  Link to heading   Firewalls are used in various networks to block access to certain content. Examples include college WiFi networks blocking streaming websites like Netflix and game stores like Steam.
+We can divert our internet traffic through a proxy server to bypass these restrictions rather than letting it pass directly through the firewall. The firewall will think the internet traffic is going to the proxy server, not the website we are trying to access." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://namamishanker.github.io/posts/bypassing_firewalls_through_proxy_servers/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-14T19:56:46+05:30" />
+<meta property="article:modified_time" content="2023-03-14T19:56:46+05:30" />
+
+
+
+
+
+<link rel="canonical" href="https://namamishanker.github.io/posts/bypassing_firewalls_through_proxy_servers/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.c4d7e93a158eda5a65b3df343745d2092a0a1e2170feeec909b8a89443903c6a.css" integrity="sha256-xNfpOhWO2lpls980N0XSCSoKHiFw/u7JCbiolEOQPGo=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.afb7941e5c0355ca106d643ab7d97349753ce8573b07c16139682faa951f0921.css" integrity="sha256-r7eUHlwDVcoQbWQ6t9lzSXU86Fc7B8FhOWgvqpUfCSE=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<meta name="generator" content="Hugo 0.92.2" />
+
+
+
+
+
+  </head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      #!bin/namami
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://namamishanker.github.io/posts/bypassing_firewalls_through_proxy_servers/">
+              Bypassing Firewalls through proxy servers
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-03-14T19:56:46&#43;05:30">
+                March 14, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              7-minute read
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa fa-user" aria-hidden="true"></i>
+    <a href="/authors/namami-shanker/">Namami Shanker</a>
+      <span class="separator">•</span>
+    <a href="/authors/twisha-bansal/">Twisha Bansal</a></div>
+
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/networking/">Networking</a>
+      <span class="separator">•</span>
+    <a href="/categories/security/">Security</a>
+      <span class="separator">•</span>
+    <a href="/categories/proxy-server/">Proxy Server</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/security/">security</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/firewall/">firewall</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/networking/">networking</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h1 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Firewalls are used in various networks to block access to certain content. Examples include college WiFi networks blocking streaming websites like Netflix and game stores like Steam.</p>
+<p>We can divert our internet traffic through a proxy server to bypass these restrictions rather than letting it pass directly through the firewall. The firewall will think the internet traffic is going to the proxy server, not the website we are trying to access. Therefore, it won&rsquo;t be able to block the traffic.</p>
+<p>This tutorial will show you can bypass the Firewall and send our internet traffic through a proxy server and open up banned website for you. This tutorial especially provides a bang for students' buck because <a href="https://azure.microsoft.com/en-in/free/students/">Azure for Students</a> provides $100 credits if you login with student ID. You&rsquo;d be essentially getting this service for free. AWS also has a free tier for 1st year.</p>
+<h1 id="advantages-and-limitations">
+  Advantages and Limitations
+  <a class="heading-link" href="#advantages-and-limitations">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<ol>
+<li>All browser-based traffic will go through the proxy server. This means all the websites banned on the firewall would be <strong>accessible through Mozilla Firefox</strong>. Google Chrome and Microsoft Edge do not allow us to select proxy servers unless you change some system settings (that can be a bit dangerous).</li>
+<li>To use any peer-to-peer services, such as <strong>torrent</strong> on the network, you must ensure that the server you rented has peer-to-peer connection enabled by the ISP. You can check this by trying to download a torrent using <a href="https://cli-ck.io/transmission-cli-user-guide/"><strong>transmission-cli</strong></a> on your remote sever.</li>
+<li>Installed applications (online games, NetFlix application) directly connect to the internet instead of sending data through the proxy server. If these applications do not provide a setting for selecting a proxy server, their traffic will pass through the firewall.</li>
+</ol>
+<h1 id="why-not-a-vpn">
+  Why not a VPN?
+  <a class="heading-link" href="#why-not-a-vpn">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>Not using a VPN is not a choice but a compulsion. My college WiFi uses FortiNet firewall which has blocked all the major VPNs (including OpenVPN). A proxy server allows me to easily bypass this firewall without the fear that one day this server too will be blocked (they can&rsquo;t find the IP address of my proxy server).</p>
+<p>Also, <strong>as a student you can get small servers for no cost</strong> from Azure or AWS. Azure Students subscription plans gives you $100 credits when you start out. If you manage these credits well you can run your proxy server for a long time (or maybe just create another students account with your roommate&rsquo;s college ID).</p>
+<h1 id="how-it-works">
+  How it works
+  <a class="heading-link" href="#how-it-works">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p><img src="/posts/media/bypassing_firewalls/ProxyServer.svg" alt="Proxy server working"></p>
+<p>The above diagram shows the simplest example of a Proxy Server. Your requests and internet traffic is sent to a single server which in turn requests the website on your behalf. The website sends the data back to the proxy server which in turn sends it back to you.</p>
+<p>We will be using SOCKS5 proxy and send our data through an SSH tunnel. This is safer than HTTP or HTTPS proxy and is quite famous for bypassing firewalls.</p>
+<h1 id="lets-get-started-with-it">
+  Let&rsquo;s get started with it
+  <a class="heading-link" href="#lets-get-started-with-it">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<h2 id="step-1-get-a-server">
+  Step 1: Get a server
+  <a class="heading-link" href="#step-1-get-a-server">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>First of all you need a server you can turn into a Proxy Sever. It can be an already existing server you use for computing or a low cost basic tier server rented from Azure, AWS, Linode or any other Cloud Computing services.</p>
+<p>In this example I&rsquo;ll show you how to create a server on Azure but the process is similar for AWS, Linode or any other service. Just make sure you <strong>get a static IP Address</strong>. Follow the short video below to create your own server in a minute.</p>
+
+    
+<div style="position:relative;width:fit-content;height:fit-content;">
+    <a style="position:absolute;top:20px;right:1rem;opacity:0.8;" href="https://clipchamp.com/watch/MvTzp1gTt9Z?utm_source=embed&utm_medium=embed&utm_campaign=watch">
+        <img style="height:22px;" src="https://clipchamp.com/e.svg" alt="Server Creation" />
+    </a>
+    <iframe allow="autoplay;" allowfullscreen style="border:none" src="https://clipchamp.com/watch/MvTzp1gTt9Z/embed" width="640" height="360"></iframe>
+</div>
+
+<p><strong>Make sure you download the key file.</strong> We will use it later to generate PuTTY&rsquo;s ppk file. You have now rented a server from Azure. Click on the &ldquo;Connect&rdquo; button on top and then select &ldquo;SSH&rdquo;. You will be brought to the following page below:</p>
+<p><img src="/posts/media/bypassing_firewalls_server_login.png" alt="Server Connect"></p>
+<p>Note down you username and IP Address. We will use it now to create an SSH Tunnel.</p>
+<h2 id="step-2-create-a-dynamic-ssh-tunnel-to-your-server">
+  Step 2: Create a Dynamic SSH Tunnel to your server
+  <a class="heading-link" href="#step-2-create-a-dynamic-ssh-tunnel-to-your-server">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="windows">
+  Windows
+  <a class="heading-link" href="#windows">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<ol>
+<li>
+<p>Download and install <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">PuTTY</a> on your system.</p>
+</li>
+<li>
+<p>If you remember we downloaded a key file when we created our server. Now search for an installed software &ldquo;PuTTYgen&rdquo; and open it. It must have installed along with PuTTY. Load your existing key file.</p>
+</li>
+</ol>
+<p><img src="/posts/media/bypassing_firewalls/import_pem_key.png" alt="Import Key File"></p>
+<p>Now click on &ldquo;Save private key&rdquo; and save it in a personal folder like &ldquo;Documents&rdquo; etc. Click &ldquo;Yes&rdquo; when PuTTYgen asks if you want to save it without a passphrase. We don&rsquo;t need that much security. Just make sure you don&rsquo;t share this private key with anyone else.</p>
+<ol start="2">
+<li>Open PuTTY and paste your server&rsquo;s <strong>&lt;username&gt;@&lt;ipaddress/domain&gt;</strong> in &ldquo;Host Name&rdquo; text box of the &ldquo;Session&rdquo; section of the tree displayed on the left side of the window. It should look like below:-</li>
+</ol>
+<p><img src="/posts/media/bypassing_firewalls_PuTTY_hostname.png" alt="PuTTY Host Name"></p>
+<ol start="3">
+<li>Now go to <strong>Connection &gt; SSH &gt; Auth &gt; Credentials</strong> in the left tree. Click on the &ldquo;Browse&rdquo; button of &ldquo;Private key file for authentication&rdquo; and select the <strong>ppk</strong> key file we generated in the previous step .</li>
+</ol>
+<p><img src="/posts/media/bypassing_firewalls/select_ppk.png" alt="Select PPK key file"></p>
+<ol start="4">
+<li>Now go to <strong>Connection &gt; SSH &gt; Tunnels</strong> section and enter a &ldquo;Source Port&rdquo; of your choice. Make sure this port is free on your system currently, i.e. no application is using this port. Select &ldquo;Dynamic&rdquo; radio button in the bottom and click on &ldquo;Add&rdquo;. This setting will create a dynamic SSH tunnel from your chosen port to the Proxy Server.</li>
+</ol>
+<p><img src="/posts/media/bypassing_firewalls/dynamic_tunneling.png" alt="Dynamic tunneling port 6969"></p>
+<ol start="5">
+<li>Go back to the Session section. Now we need to save these settings for future use. Type a name of your choice in the &ldquo;Saved Sessions&rdquo; text box and click on &ldquo;Save&rdquo; button.</li>
+</ol>
+<p><img src="/posts/media/bypassing_firewalls/saving_sessions.png" alt="Saving sessions"></p>
+<p>Now the next time you start PuTTY you just need to select your Saved Session and click on the Load button. All the settings done in the above steps will be automatically filled.</p>
+<ol start="6">
+<li>Cick on the &ldquo;Open&rdquo; button to start the SSH session. You should be greeted by a dialog box asking if you should add this server to the list of Known Hosts. Select yes and now you should be in you server displayed by an empty terminal like below.</li>
+</ol>
+<p><img src="/posts/media/bypassing_firewalls/ssh_terminal.png" alt="SSH Terminal"></p>
+<p>As long as this terminal is open and responding, your tunnel is active and you can send internet traffic through it. If you want to close the connection just close this terminal window.</p>
+<h2 id="linux-and-macos">
+  Linux and MacOS
+  <a class="heading-link" href="#linux-and-macos">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Creating a dynamic SSH tunnel is rather simple on Linux and MacOS. Just open your terminal and enter the following command:-</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh -D &lt;local port&gt; &lt;username&gt;@&lt;ip/domain&gt;
+</code></pre></div><p>Fox example:-</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh -D 6969 azureuser@4.240.104.28
+</code></pre></div><p>Just make sure the port you give is free and no application is using it. Avoid ports 1 to 1024 as they are reserved for other applications. The dynamic SSH tunnel has been created and as long you keep the terminal open you can connect to the proxy server.</p>
+<h2 id="step-3-download-mozilla-firefox-and-connect-to-the-server">
+  Step 3: Download Mozilla Firefox and connect to the server
+  <a class="heading-link" href="#step-3-download-mozilla-firefox-and-connect-to-the-server">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Mozilla Firefox offers important Proxy setings that chromium based browsers like Google Chrome, Edge, Brave do not provide. <a href="https://www.mozilla.org/en-US/firefox/new/">Install Firefox</a> and go to its Settings. Scroll to the bottom of &ldquo;General&rdquo; settings and click on the &ldquo;Settings&rdquo; button next to &ldquo;Configure how Firefox connects to the internet&rdquo; of the &ldquo;Network Settings&rdquo; section.</p>
+<p><img src="/posts/media/bypassing_firewalls/firefox_settings_location.png" alt="Firefox settings"></p>
+<p>This will open the &ldquo;Connection Settings&rdquo; dialog box. Select &ldquo;Manual proxy configuration&rdquo; and enter &ldquo;localhost&rdquo; in the &ldquo;SOCKS Host&rdquo; and the tunnel port number in the &ldquo;Port&rdquo; section next to it. Also make sure &ldquo;SOCKS v5&rdquo; radio button is selected below.</p>
+<p><img src="/posts/media/bypassing_firewalls/firefox_settings.png" alt="Firefox settings"></p>
+<p>Click OK and now you are set.</p>
+<h1 id="enjoy-open-internet">
+  Enjoy open internet
+  <a class="heading-link" href="#enjoy-open-internet">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>You can now browse the internet freely without any fear of the firewall through your Firefox browser.</p>
+<p><img src="/posts/media/bypassing_firewalls/free_internet.png" alt="Free internet"></p>
+<p>The internet speed will be a bit slower but much faster than other Free VPN alternatives.</p>
+<h1 id="conclusion">
+  Conclusion
+  <a class="heading-link" href="#conclusion">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<p>This blog post is for the Firefox as it is the only popular browser that allows us to use SOCKS5 proxy. Google Chrome and Edge would require you to change you System&rsquo;s Network settings which is not flexible. Also Azure&rsquo;s servers do not allow torrent downloads so you can&rsquo;t download torrents with this method. Installed applications and games, for example - Valorant, generally do not provide settings to select a proxy server so the only option is to use a VPN in that case.</p>
+<p><strong>Remember to stop the server if you are not gonna use it for a long time.</strong></p>
+<p>Anyways, enjoy privacy and freedom. I&rsquo;ll see you in the next one.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "namami" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2023
+     Namami Shanker 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.08fc7a7924db1ae6786408cb68e12ff953e6329376a469f5f517f3769c19194d.js" integrity="sha256-CPx6eSTbGuZ4ZAjLaOEv&#43;VPmMpN2pGn19RfzdpwZGU0="></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

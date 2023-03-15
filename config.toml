@@ -9,6 +9,7 @@ pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 enableEmoji = true
 publishDir= "docs"
+disqusShortname = 'namami'
 
 [params]
 author = "Namami Shanker"

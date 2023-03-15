@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>firewall on #!bin/namami</title>
+    <link>https://namamishanker.github.io/tags/firewall/</link>
+    <description>Recent content in firewall on #!bin/namami</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 14 Mar 2023 19:56:46 +0530</lastBuildDate><atom:link href="https://namamishanker.github.io/tags/firewall/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bypassing Firewalls through proxy servers</title>
+      <link>https://namamishanker.github.io/posts/bypassing_firewalls_through_proxy_servers/</link>
+      <pubDate>Tue, 14 Mar 2023 19:56:46 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/bypassing_firewalls_through_proxy_servers/</guid>
+      <description>Introduction  Link to heading   Firewalls are used in various networks to block access to certain content. Examples include college WiFi networks blocking streaming websites like Netflix and game stores like Steam.
+We can divert our internet traffic through a proxy server to bypass these restrictions rather than letting it pass directly through the firewall. The firewall will think the internet traffic is going to the proxy server, not the website we are trying to access.</description>
+    </item>
+    
+  </channel>
+</rss>

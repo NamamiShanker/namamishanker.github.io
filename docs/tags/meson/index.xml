@@ -6,18 +6,14 @@
     <description>Recent content in meson on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Aug 2022 13:26:08 +0530</lastBuildDate>
-    
-	<atom:link href="https://namamishanker.github.io/tags/meson/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 20 Aug 2022 13:26:08 +0530</lastBuildDate><atom:link href="https://namamishanker.github.io/tags/meson/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Week 8-9: Meson backend for F2PY</title>
       <link>https://namamishanker.github.io/posts/f2py_meson_backend/</link>
       <pubDate>Sat, 20 Aug 2022 13:26:08 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/f2py_meson_backend/</guid>
-      <description>Week 8-9: Meson build system for F2PY F2PY and its current status I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.</description>
+      <description>Week 8-9: Meson build system for F2PY  Link to heading   F2PY and its current status  Link to heading   I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python.</description>
     </item>
     
     <item>
@@ -26,8 +22,8 @@
       <pubDate>Tue, 28 Jun 2022 15:36:42 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/f2py-meson-backend/</guid>
-      <description>Meson as a backend build system for F2PY Last week we discussed F2PY&amp;rsquo;s frontend and how it is undergoing re-implementation using the argparse python library. This week we will look at the backend build system of F2PY, and how meson will be used to build the extension module.
-What is the use of a build system? Simply explained, build system exist to automate compilation and linking of big programs. A program&amp;rsquo;s source code might consist of several hundred C++ files, some C and a few Fortran files.</description>
+      <description>Meson as a backend build system for F2PY  Link to heading   Last week we discussed F2PY&amp;rsquo;s frontend and how it is undergoing re-implementation using the argparse python library. This week we will look at the backend build system of F2PY, and how meson will be used to build the extension module.
+What is the use of a build system?  Link to heading   Simply explained, build system exist to automate compilation and linking of big programs.</description>
     </item>
     
   </channel>

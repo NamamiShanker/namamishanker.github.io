@@ -6,10 +6,16 @@
     <description>Recent content on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 19 Mar 2022 13:06:04 +0530</lastBuildDate>
-    
-	<atom:link href="https://namamishanker.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Tue, 14 Mar 2023 19:56:46 +0530</lastBuildDate><atom:link href="https://namamishanker.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bypassing Firewalls through proxy servers</title>
+      <link>https://namamishanker.github.io/posts/bypassing_firewalls_through_proxy_servers/</link>
+      <pubDate>Tue, 14 Mar 2023 19:56:46 +0530</pubDate>
+      
+      <guid>https://namamishanker.github.io/posts/bypassing_firewalls_through_proxy_servers/</guid>
+      <description>Introduction  Link to heading   Firewalls are used in various networks to block access to certain content. Examples include college WiFi networks blocking streaming websites like Netflix and game stores like Steam.
+We can divert our internet traffic through a proxy server to bypass these restrictions rather than letting it pass directly through the firewall. The firewall will think the internet traffic is going to the proxy server, not the website we are trying to access.</description>
+    </item>
     
     <item>
       <title>GSoC&#39;22 closing remarks and Work Report</title>
@@ -17,7 +23,7 @@
       <pubDate>Mon, 12 Sep 2022 19:22:20 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/gsoc-closing-remarks/</guid>
-      <description>GSoC&amp;rsquo;22 Work Submission and closing remarks Closing remarks Participating in Google Summer of Code 2022 with NumPy was more than just contributing to a summer coding internship for me. I remember walking around my college hostel along with my friend during the first year of my engineering in 2019 discussing what do we want to achieve over the course of our undergraduate education. Back then too, I remember that my first wish ever, even before I knew what open sources was to participate in the Google Summer of Code.</description>
+      <description>GSoC&#39;22 Work Submission and closing remarks  Link to heading   Closing remarks  Link to heading   Participating in Google Summer of Code 2022 with NumPy was more than just contributing to a summer coding internship for me. I remember walking around my college hostel along with my friend during the first year of my engineering in 2019 discussing what do we want to achieve over the course of our undergraduate education.</description>
     </item>
     
     <item>
@@ -26,7 +32,7 @@
       <pubDate>Sat, 20 Aug 2022 13:26:08 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/f2py_meson_backend/</guid>
-      <description>Week 8-9: Meson build system for F2PY F2PY and its current status I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.</description>
+      <description>Week 8-9: Meson build system for F2PY  Link to heading   F2PY and its current status  Link to heading   I have talked a lot about F2PY during past 2 months as my Google Summer of Code progressed. Simply explained, F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules from Fortran files that can be called and imported in Python.</description>
     </item>
     
     <item>
@@ -35,8 +41,8 @@
       <pubDate>Wed, 27 Jul 2022 21:34:26 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/f2py_pr_review/</guid>
-      <description>Week 6: Continuing working on the frontend argparse What did I do this week? I implemented some changes suggested by reviewers on my draft PR.
-Firstly, I added typing support to the functions I have made. Therefore, currently: f2pyarg.py, service.py, utils.py have typing support. Initially I had added typing library for type annotations. But Bas Van Beek suggested to replace them with buitlins type annotations. These are not currently supported in Python versions below 3.</description>
+      <description>Week 6: Continuing working on the frontend argparse  Link to heading   What did I do this week?  Link to heading   I implemented some changes suggested by reviewers on my draft PR.
+Firstly, I added typing support to the functions I have made. Therefore, currently: f2pyarg.py, service.py, utils.py have typing support. Initially I had added typing library for type annotations. But Bas Van Beek suggested to replace them with buitlins type annotations.</description>
     </item>
     
     <item>
@@ -45,8 +51,8 @@ Firstly, I added typing support to the functions I have made. Therefore, current
       <pubDate>Thu, 21 Jul 2022 21:34:26 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/finishing_f2py_frontend/</guid>
-      <description>Week 5: Finishing with F2PY&amp;rsquo;s new frontend This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&amp;rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-
-What did I do this week? I am so happy to say that I have completed a working and functioning argparse frontend for F2PY.</description>
+      <description>Week 5: Finishing with F2PY&amp;rsquo;s new frontend  Link to heading   This will a weekly check-in and status update regarding my work on F2PY. The reason being that I have implemented or study something new that I feel worth sharing in detail. I continued working on F2PY&amp;rsquo;s frontend, mostly debugging and improving some facets. Here are the changes:-
+What did I do this week?  Link to heading   I am so happy to say that I have completed a working and functioning argparse frontend for F2PY.</description>
     </item>
     
     <item>
@@ -55,7 +61,7 @@ What did I do this week? I am so happy to say that I have completed a working an
       <pubDate>Thu, 14 Jul 2022 18:38:33 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/argparse-f2py/</guid>
-      <description>Week 3 and 4: Argparse F2PY The much awaited F2PY with an argparse frontend is here. It is in review as I write this blog but if you are feeling adventurous and can&amp;rsquo;t wait use it, you can clone my fork of NumPy and checkout the f2py_front branch. Installation of this experimental NumPy version are detailed in these instructions.(Of course I am joking, no one who gets excited over F2PY builds NumPy)</description>
+      <description>Week 3 and 4: Argparse F2PY  Link to heading   The much awaited F2PY with an argparse frontend is here. It is in review as I write this blog but if you are feeling adventurous and can&amp;rsquo;t wait use it, you can clone my fork of NumPy and checkout the f2py_front branch. Installation of this experimental NumPy version are detailed in these instructions.(Of course I am joking, no one who gets excited over F2PY builds NumPy)</description>
     </item>
     
     <item>
@@ -64,8 +70,8 @@ What did I do this week? I am so happy to say that I have completed a working an
       <pubDate>Tue, 28 Jun 2022 15:36:42 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/f2py-meson-backend/</guid>
-      <description>Meson as a backend build system for F2PY Last week we discussed F2PY&amp;rsquo;s frontend and how it is undergoing re-implementation using the argparse python library. This week we will look at the backend build system of F2PY, and how meson will be used to build the extension module.
-What is the use of a build system? Simply explained, build system exist to automate compilation and linking of big programs. A program&amp;rsquo;s source code might consist of several hundred C++ files, some C and a few Fortran files.</description>
+      <description>Meson as a backend build system for F2PY  Link to heading   Last week we discussed F2PY&amp;rsquo;s frontend and how it is undergoing re-implementation using the argparse python library. This week we will look at the backend build system of F2PY, and how meson will be used to build the extension module.
+What is the use of a build system?  Link to heading   Simply explained, build system exist to automate compilation and linking of big programs.</description>
     </item>
     
     <item>
@@ -74,8 +80,8 @@ What is the use of a build system? Simply explained, build system exist to autom
       <pubDate>Wed, 15 Jun 2022 21:34:26 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/f2py_frontend/</guid>
-      <description>F2PY frontend: The Old and the New We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
-Introduction F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.</description>
+      <description>F2PY frontend: The Old and the New  Link to heading   We will look at the current F2PY frontend, and understand the ongoing re-implementation of it using the argparse python library.
+Introduction  Link to heading   F2PY is a command line tool that provides easy connection between Fortran languages and Python. It facilitates creating Python C/API extension modules that can be called and imported in Python. It gives you the speed of Fortran and the flexibility of Python.</description>
     </item>
     
     <item>
@@ -95,7 +101,7 @@ During my time of application, F2PY&amp;rsquo;s frontend was a handwritten comma
       
       <guid>https://namamishanker.github.io/posts/f2py_tests/</guid>
       <description>I have talked previously about building fast libraries for Python using Fortran. The key software that facilitates easy integration of Fortran code into Python is F2PY. The user can write fast Fortran code with F2PY specific comments and compile it using F2PY to produce a high-speed ready-to-use Python library.
-F2PY F2PY is an open-source utilty tool that provides an easy connection between Python and Fortran languages. It was written in the late 90s by Dr.</description>
+F2PY  Link to heading   F2PY is an open-source utilty tool that provides an easy connection between Python and Fortran languages.</description>
     </item>
     
     <item>
@@ -105,7 +111,7 @@ F2PY F2PY is an open-source utilty tool that provides an easy connection between
       
       <guid>https://namamishanker.github.io/posts/scipy_fortran_f2py/</guid>
       <description>Numpy and Scipy are industry leading Python libraries for fast numerical computation, providing speed and accuracy matching MATLAB and highly optimized low-level numerical computation libraries. In this blog I&amp;rsquo;ll explain to you how they work and how can you create your own superfast Python library.
-SciPy The name SciPy is very well-known in the scientific computation industry. Every engineer, researcher, teacher or student who has used Python has used Scipy at least once or more in their career.</description>
+SciPy  Link to heading   The name SciPy is very well-known in the scientific computation industry. Every engineer, researcher, teacher or student who has used Python has used Scipy at least once or more in their career.</description>
     </item>
     
     <item>
@@ -114,7 +120,7 @@ SciPy The name SciPy is very well-known in the scientific computation industry. 
       <pubDate>Sat, 19 Mar 2022 13:06:04 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/about/</guid>
-      <description>Who am I? I am Namami Shanker, an Electrical Engineering Undergraduate in his 3rd year at Indian Institute of Technology, Goa. I have been working as a software developer for over a year. I have experience in backend development, database management, dockerising and orchestrating applications with docker and docker-compose. I am an open-source enthusiast and I am always looking to learn new technologies and frameworks. Being an engineering student, I have a geniune interest in mathematics and scientific computing.</description>
+      <description>Who am I?  Link to heading   I am Namami Shanker, an Electrical Engineering Undergraduate in his 3rd year at Indian Institute of Technology, Goa. I have been working as a software developer for over a year. I have experience in backend development, database management, dockerising and orchestrating applications with docker and docker-compose. I am an open-source enthusiast and I am always looking to learn new technologies and frameworks.</description>
     </item>
     
   </channel>

@@ -6,19 +6,15 @@
     <description>Recent content in build on #!bin/namami</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 28 Jun 2022 15:36:42 +0530</lastBuildDate>
-    
-	<atom:link href="https://namamishanker.github.io/tags/build/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 28 Jun 2022 15:36:42 +0530</lastBuildDate><atom:link href="https://namamishanker.github.io/tags/build/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Week 2: Moving F2PY to Meson build system</title>
       <link>https://namamishanker.github.io/posts/f2py-meson-backend/</link>
       <pubDate>Tue, 28 Jun 2022 15:36:42 +0530</pubDate>
       
       <guid>https://namamishanker.github.io/posts/f2py-meson-backend/</guid>
-      <description>Meson as a backend build system for F2PY Last week we discussed F2PY&amp;rsquo;s frontend and how it is undergoing re-implementation using the argparse python library. This week we will look at the backend build system of F2PY, and how meson will be used to build the extension module.
-What is the use of a build system? Simply explained, build system exist to automate compilation and linking of big programs. A program&amp;rsquo;s source code might consist of several hundred C++ files, some C and a few Fortran files.</description>
+      <description>Meson as a backend build system for F2PY  Link to heading   Last week we discussed F2PY&amp;rsquo;s frontend and how it is undergoing re-implementation using the argparse python library. This week we will look at the backend build system of F2PY, and how meson will be used to build the extension module.
+What is the use of a build system?  Link to heading   Simply explained, build system exist to automate compilation and linking of big programs.</description>
     </item>
     
   </channel>
