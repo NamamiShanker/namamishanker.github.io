@@ -3,7 +3,7 @@ title: "Bypassing Firewalls through proxy servers"
 date: 2023-03-14T19:56:46+05:30
 draft: false
 slug: "bypassing_firewalls_through_proxy_servers"
-authors: ["Namami Shanker", "Twisha Bansal"]
+authors: ["Namami Shanker"]
 tags: ["security", "firewall", "networking"]
 categories: ["Networking", "Security", "Proxy Server"]
 ---
