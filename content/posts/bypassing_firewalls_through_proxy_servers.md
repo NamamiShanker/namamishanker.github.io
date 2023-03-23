@@ -30,6 +30,8 @@ Also, **as a student, you can get small servers for no cost** from Azure or AWS.
 
 # How it works
 
+![Proxy Server](/posts/media/bypassing_firewalls/ProxyServer.svg)
+
 The above diagram shows the simplest example of a Proxy Server. Your requests and internet traffic are sent to a single server, which requests the website on your behalf. The website sends the data back to the proxy server, which sends it back to you.
 
 We will use a SOCKS5 proxy and send our data through an SSH tunnel. It is safer than HTTP or HTTPS proxy and is quite famous for bypassing firewalls.
